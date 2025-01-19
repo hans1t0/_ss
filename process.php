@@ -4,7 +4,7 @@ $config = [
     'host' => 'localhost',
     'dbname' => 'ss_campus_db',
     'user' => 'root',
-    'password' => ''
+    'password' => 'hans'
 ];
 
 // Funciones de validación
