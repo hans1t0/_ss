@@ -1,3 +1,55 @@
+<?php
+session_start();
+
+// Configuración de la base de datos
+$config = [
+    'host' => 'localhost',
+    'dbname' => 'ss_campus_db',
+    'user' => 'root',
+    'password' => 'hans'
+];
+
+$inscripcionId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+$metodoPago = filter_input(INPUT_GET, 'metodo', FILTER_SANITIZE_STRING);
+
+if (!$inscripcionId) {
+    header('Location: index.php');
+    exit();
+}
+
+try {
+    $pdo = new PDO(
+        "mysql:host={$config['host']};dbname={$config['dbname']};charset=utf8mb4",
+        $config['user'],
+        $config['password'],
+        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+    );
+
+    // Obtener datos del padre
+    $stmtPadre = $pdo->prepare("
+        SELECT nombre, email, metodo_pago
+        FROM padres 
+        WHERE id = ?
+    ");
+    $stmtPadre->execute([$inscripcionId]);
+    $padre = $stmtPadre->fetch(PDO::FETCH_ASSOC);
+
+    // Obtener datos de los jugadores
+    $stmtJugadores = $pdo->prepare("
+        SELECT hijo_nombre_completo, grupo
+        FROM jugadores 
+        WHERE padre_id = ?
+        ORDER BY jugador_numero
+    ");
+    $stmtJugadores->execute([$inscripcionId]);
+    $jugadores = $stmtJugadores->fetchAll(PDO::FETCH_ASSOC);
+
+} catch (PDOException $e) {
+    error_log("Error en success.php: " . $e->getMessage());
+    header('Location: index.php?status=error&message=Error al recuperar los datos');
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,21 +69,25 @@
                         
                         <h1 class="display-4 mb-4">¡Inscripción Completada!</h1>
                         
-                        <?php
-                        if (isset($_GET['id'])) {
-                            $inscripcionId = htmlspecialchars($_GET['id']);
-                            echo "<p class='lead mb-4'>Número de inscripción: #$inscripcionId</p>";
-                        }
-                        ?>
+                        <p class='lead mb-4'>Número de inscripción: #<?= htmlspecialchars($inscripcionId) ?></p>
+
+                        <p class="lead">
+                            Gracias <?= htmlspecialchars($padre['nombre']) ?> por inscribir a:
+                        </p>
+                        <ul class="list-unstyled">
+                            <?php foreach ($jugadores as $jugador): ?>
+                                <li>
+                                    <?= htmlspecialchars($jugador['hijo_nombre_completo']) ?> 
+                                    (<?= htmlspecialchars($jugador['grupo']) ?>)
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
 
                         <div class="alert alert-info mb-4">
                             <h4 class="alert-heading mb-3">Próximos Pasos</h4>
                             <div id="info_pago" class="text-start">
                                 <?php
-                                // Obtener información del método de pago de la sesión o base de datos
-                                $metodoPago = $_GET['metodo'] ?? 'transferencia';
-                                
-                                if ($metodoPago === 'transferencia') {
+                                if ($padre['metodo_pago'] === 'T') {
                                     echo "
                                     <p><strong>Datos para la transferencia:</strong></p>
                                     <ul>

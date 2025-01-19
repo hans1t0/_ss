@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+// Mensaje simple de error/éxito
+$status = $_GET['status'] ?? null;
+$message = $_GET['message'] ?? null;
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -11,12 +18,12 @@
 <div class="container py-5">
     <h1 class="text-center mb-4">Inscripción Campus de Fútbol</h1>
 
-    <?php if (isset($_GET['status'])): ?>
-    <div class="alert alert-<?= $_GET['status'] === 'success' ? 'success' : 'danger' ?> alert-dismissible fade show">
-        <?php if ($_GET['status'] === 'success'): ?>
+    <?php if (isset($status)): ?>
+    <div class="alert alert-<?= $status === 'success' ? 'success' : 'danger' ?> alert-dismissible fade show">
+        <?php if ($status === 'success'): ?>
             <strong>¡Éxito!</strong> Su inscripción se completó correctamente.
         <?php else: ?>
-            <strong>Error:</strong> <?= htmlspecialchars($_GET['message'] ?? 'Hubo un problema al procesar su inscripción') ?>
+            <strong>Error:</strong> <?= htmlspecialchars($message) ?>
         <?php endif; ?>
         <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
     </div>
@@ -50,8 +57,8 @@
                             <label class="form-label">Forma de Pago</label>
                             <select class="form-control" name="metodo_pago" id="metodo_pago" required>
                                 <option value="" selected disabled>Seleccione método de pago</option>
-                                <option value="transferencia">Transferencia Bancaria</option>
-                                <option value="coordinador">Pago al Coordinador</option>
+                                <option value="T">Transferencia Bancaria</option>
+                                <option value="C">Pago al Coordinador</option>
                             </select>
                         </div>
                         <div class="col-md-6" id="cuenta_bancaria_container">
@@ -77,15 +84,15 @@
                         <div class="row g-3">
                             <div class="col-md-12">
                                 <input type="text" class="form-control" placeholder="Nombre y Apellidos del jugador" 
-                                       name="hijo_nombre_completo" required>
+                                       name="hijo_nombre_completo_1" required>  <!-- Añadido _1 -->
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Fecha de Nacimiento</label>
-                                <input type="date" class="form-control" name="hijo_fecha_nacimiento" required>
+                                <input type="date" class="form-control" name="hijo_fecha_nacimiento_1" required>  <!-- Añadido _1 -->
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Grupo de Edad</label>
-                                <select class="form-control" name="grupo" required>
+                                <select class="form-control" name="grupo_1" required>  <!-- Añadido _1 -->
                                     <option value="" selected disabled>Selecciona Grupo</option>
                                     <option value="Querubin">Querubines (5 años)</option>
                                     <option value="Prebenjamin">Prebenjamin (6-7 años)</option>
@@ -103,7 +110,7 @@
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="sexo_1" 
-                                               id="sexo_m_1" value="M">
+                                               id="sexo_m_1" value="M" required>
                                         <label class="form-check-label" for="sexo_m_1">Mujer</label>
                                     </div>
                                 </div>
@@ -112,20 +119,20 @@
                                 <label class="form-label">Demarcación</label>
                                 <div class="form-control py-2">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="demarcacion" 
-                                               value="jugador" required>
-                                        <label class="form-check-label">Jugador campo</label>
+                                        <input class="form-check-input" type="radio" name="demarcacion_1" 
+                                               id="demarcacion_j_1" value="jugador" required>
+                                        <label class="form-check-label" for="demarcacion_j_1">Jugador campo</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="demarcacion" 
-                                               value="portero">
-                                        <label class="form-check-label">Portero</label>
+                                        <input class="form-check-input" type="radio" name="demarcacion_1" 
+                                               id="demarcacion_p_1" value="portero" required>
+                                        <label class="form-check-label" for="demarcacion_p_1">Portero</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Modalidad</label>
-                                <select class="form-control" name="modalidad" required>
+                                <select class="form-control" name="modalidad_1" required>  <!-- Añadido _1 -->
                                     <option value="" selected disabled>Selecciona Modalidad</option>
                                     <option value="RPSJ">Jugador de RPSJ</option>
                                     <option value="NO_RPSJ">No jugador de RPSJ</option>
@@ -134,7 +141,7 @@
                             <div class="col-md-6">
                                 <label class="form-label">Lesiones o Alergias</label>
                                 <textarea class="form-control" placeholder="Opcional" 
-                                         name="lesiones" rows="1"></textarea>
+                                         name="lesiones_1" rows="1"></textarea>  <!-- Añadido _1 -->
                             </div>
                         </div>
                     </div>
@@ -171,84 +178,51 @@
 
 <script>
 $(document).ready(function() {
-    // Añadir función validateField al inicio
-    function validateField($field, validation) {
-        const value = $field.val();
-        const isValid = !value || validation.regex.test(value);
-        
-        $field.toggleClass('is-invalid', !isValid)
-              .toggleClass('is-valid', isValid);
-        
-        // Manejar mensaje de error
-        if (!isValid) {
-            if (!$field.next('.invalid-feedback').length) {
-                $field.after(`<div class="invalid-feedback">${validation.message}</div>`);
-            }
-        } else {
-            $field.next('.invalid-feedback').remove();
-        }
-        
-        return isValid;
-    }
-
     let jugadorCount = 1;
 
-    // Función para clonar formulario de jugador
-    function addJugadorForm() {
+    $('#add-jugador').click(function() {
         jugadorCount++;
         const newForm = $('.jugador-form:first').clone();
         
-        // Limpiar valores y actualizar ID
-        newForm.attr('data-jugador-id', jugadorCount);
-        newForm.find('input, select, textarea').val('');
-        newForm.find('input[type="radio"]').prop('checked', false);
-        newForm.find('.is-valid, .is-invalid').removeClass('is-valid is-invalid');
-        
-        // Actualizar nombres e IDs de radio buttons
-        newForm.find('input[type="radio"]').each(function() {
+        // Actualizar todos los inputs, selects y textareas
+        newForm.find('input:not([type="radio"]), select, textarea').each(function() {
             const $input = $(this);
             const oldName = $input.attr('name');
-            const oldId = $input.attr('id');
-            
-            if (oldName.startsWith('sexo_')) {
-                const newName = `sexo_${jugadorCount}`;
-                $input.attr('name', newName);
-                // Actualizar ID y label para sexo
-                const newId = oldId.replace(/_\d+$/, `_${jugadorCount}`);
-                $input.attr('id', newId);
-                $input.next('label').attr('for', newId);
-            }
-        });
-
-        // Actualizar nombres de campos radio y select
-        newForm.find('input[type="radio"], select').each(function() {
-            const oldName = $(this).attr('name');
-            if (oldName) {
-                $(this).attr('name', oldName + '_' + jugadorCount);
-            }
-        });
-
-        // Actualizar otros campos
-        newForm.find('input:not([type="radio"]), textarea').each(function() {
-            const oldName = $(this).attr('name');
             if (oldName && !oldName.includes('padre_')) {
-                $(this).attr('name', oldName + '_' + jugadorCount);
+                const newName = oldName.replace('_1', `_${jugadorCount}`);
+                $input.attr('name', newName);
+                $input.val('');
             }
         });
 
-        // Actualizar nombre y mantener valores correctos para radio buttons
-        newForm.find('input[type="radio"]').each(function() {
-            const oldName = $(this).attr('name');
-            if (oldName === 'sexo') {
-                $(this).attr('name', `sexo_${jugadorCount}`);
-            } else if (oldName === 'demarcacion') {
-                $(this).attr('name', `demarcacion_${jugadorCount}`);
-            }
-            // Mantener los valores originales
-            // No modificar el value de los radio buttons
+        // Actualizar específicamente los radio buttons
+        // Sexo
+        newForm.find('input[name="sexo_1"]').each(function() {
+            const $radio = $(this);
+            const oldId = $radio.attr('id');
+            const newId = oldId.replace('_1', `_${jugadorCount}`);
+            
+            $radio.attr('name', `sexo_${jugadorCount}`)
+                  .attr('id', newId)
+                  .prop('checked', false);
+            
+            $radio.next('label').attr('for', newId);
         });
 
-        // Añadir botón eliminar
+        // Demarcación
+        newForm.find('input[name="demarcacion_1"]').each(function() {
+            const $radio = $(this);
+            const oldId = $radio.attr('id');
+            const newId = oldId.replace('_1', `_${jugadorCount}`);
+            
+            $radio.attr('name', `demarcacion_${jugadorCount}`)
+                  .attr('id', newId)
+                  .prop('checked', false);
+            
+            $radio.next('label').attr('for', newId);
+        });
+        
+        // Actualizar el título y añadir botón eliminar
         const header = newForm.find('.d-flex');
         header.html(`
             <h3 class="card-title">Datos del Hermano ${jugadorCount}</h3>
@@ -257,23 +231,16 @@ $(document).ready(function() {
             </button>
         `);
         
-        // Añadir al contenedor
         $('#jugadores-container').append(newForm);
-        
-        // Reinicializar validaciones para el nuevo formulario
-        initializeValidations(newForm);
-    }
+    });
 
-    // Evento añadir jugador
-    $('#add-jugador').click(addJugadorForm);
-
-    // Evento eliminar jugador
+    // Resto del código existente para eliminar y gestión del formulario
     $(document).on('click', '.remove-jugador', function() {
         if (jugadorCount > 1) {
             $(this).closest('.jugador-form').remove();
             jugadorCount--;
             
-            // Actualizar títulos de los hermanos
+            // Actualizar números de hermanos
             $('.jugador-form').each(function(index) {
                 if (index > 0) {
                     $(this).find('.card-title').text(`Datos del Hermano ${index + 1}`);
@@ -282,205 +249,48 @@ $(document).ready(function() {
         }
     });
 
-    // Función para inicializar validaciones en un formulario
-    function initializeValidations($form) {
-        const formId = $form.data('jugador-id');
-        const validations = {
-            [`hijo_nombre_completo${formId ? '_' + formId : ''}`]: {
-                regex: /^[A-Za-zÀ-ÿ\s]{2,100}$/,
-                message: 'El nombre completo debe contener solo letras y espacios'
-            }
-        };
+    // Gestión básica del método de pago
+    $('#metodo_pago').change(function() {
+        const metodoPago = $(this).val();
+        $('#cuenta_bancaria_container').toggle(metodoPago === 'T');
+        $('#info_transferencia').toggle(metodoPago === 'T');
+        $('#info_coordinador').toggle(metodoPago === 'C');
+    });
 
-        // Aplicar validaciones a los campos
-        Object.keys(validations).forEach(fieldName => {
-            const $field = $form.find(`[name="${fieldName}"]`);
-            if ($field.length) {
-                $field.on('input', function() {
-                    validateField($(this), validations[fieldName]);
-                });
-            }
-        });
-
-        // Validación de selects
-        $form.find('select').on('change', function() {
-            const $select = $(this);
-            $select.toggleClass('is-valid', !!$select.val())
-                  .toggleClass('is-invalid', !$select.val());
-        });
-    }
-
-    // Validación del formulario y envío AJAX
-    $('#inscripcion-form').on('submit', function(e) {
+    // Envío simple del formulario sin limpiar datos
+    $('#inscripcion-form').submit(function(e) {
         e.preventDefault();
-        
-        // Validar los campos requeridos
-        let isValid = true;
         const $form = $(this);
         
-        // Validar campos de sexo y demarcación
-        $('.jugador-form').each(function(index) {
-            const jugadorNum = index + 1;
-            const $jugadorForm = $(this);
-            
-            // Validar sexo
-            if (!$jugadorForm.find(`input[name="sexo_${jugadorNum}"]:checked`).length) {
-                $jugadorForm.find(`input[name="sexo_${jugadorNum}"]`).first()
-                    .closest('.form-control').addClass('is-invalid');
-                isValid = false;
-            }
-            
-            // Validar demarcación
-            if (!$jugadorForm.find(`input[name="demarcacion_${jugadorNum}"]:checked`).length) {
-                $jugadorForm.find(`input[name="demarcacion_${jugadorNum}"]`).first()
-                    .closest('.form-control').addClass('is-invalid');
-                isValid = false;
-            }
-        });
-
-        // Validar otros campos requeridos
-        $form.find('[required]').each(function() {
-            if (!$(this).val()) {
-                $(this).addClass('is-invalid');
-                isValid = false;
-            }
-        });
-
-        if (!isValid) {
-            $form.addClass('was-validated');
-            return false;
-        }
-
-        // Recolectar todos los datos
-        const formData = $form.serializeArray();
-        
-        // Enviar datos via AJAX
+        // No limpiar el formulario antes del envío
         $.ajax({
             type: 'POST',
             url: 'process.php',
-            data: formData,
+            data: $form.serialize(),
             dataType: 'json',
             beforeSend: function() {
-                // Deshabilitar el botón de envío
                 $form.find('button[type="submit"]')
                     .prop('disabled', true)
-                    .html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Enviando...');
+                    .html('<span class="spinner-border spinner-border-sm"></span> Enviando...');
             },
             success: function(response) {
                 if (response.status === 'success') {
                     window.location.href = response.redirect_url;
                 } else {
-                    alert('Error: ' + response.message);
+                    alert(response.message || 'Error en el proceso');
                 }
             },
-            error: function(xhr, status, error) {
-                console.error('Error:', error);
-                alert('Error en el proceso de registro. Por favor, inténtelo de nuevo.');
+            error: function() {
+                alert('Error en el proceso de registro');
             },
             complete: function() {
-                // Rehabilitar el botón de envío
                 $form.find('button[type="submit"]')
                     .prop('disabled', false)
-                    .html('<i class="fas fa-save"></i> Enviar Inscripción');
+                    .html('Enviar Inscripción');
             }
         });
     });
-
-    // Validación de email
-    $('input[type="email"]').on('input', function() {
-        const email = $(this).val();
-        const validEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-        
-        if (email && !validEmail) {
-            $(this).addClass('is-invalid');
-        } else {
-            $(this).removeClass('is-invalid');
-        }
-    });
-
-    // Validación de teléfono
-    $('input[type="tel"]').on('input', function() {
-        const phone = $(this).val();
-        const validPhone = /^[0-9]{9}$/.test(phone);
-        
-        if (phone && !validPhone) {
-            $(this).addClass('is-invalid');
-        } else {
-            $(this).removeClass('is-invalid');
-        }
-    });
-
-    // Validaciones básicas
-    const validations = {
-        padre_dni: {
-            regex: /^[0-9]{8}[A-Z]$/,
-            message: 'DNI debe tener 8 números y una letra mayúscula'
-        },
-        padre_email: {
-            regex: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-            message: 'Introduce un email válido'
-        },
-        cuenta_bancaria: {
-            regex: /^ES[0-9]{22}$/,
-            message: 'IBAN debe comenzar con ES seguido de 22 números'
-        },
-        padre_telefono: {
-            regex: /^[0-9]{9}$/,
-            message: 'El teléfono debe tener 9 dígitos'
-        }
-    };
-
-    // Aplicar validaciones en tiempo real
-    Object.keys(validations).forEach(fieldName => {
-        $(`[name="${fieldName}"]`).on('input', function() {
-            const validation = validations[fieldName];
-            if (this.value && !validation.regex.test(this.value)) {
-                $(this).addClass('is-invalid')
-                       .removeClass('is-valid');
-                if (!$(this).next('.invalid-feedback').length) {
-                    $(this).after(`<div class="invalid-feedback">${validation.message}</div>`);
-                }
-            } else {
-                $(this).removeClass('is-invalid')
-                       .addClass('is-valid')
-                       .next('.invalid-feedback').remove();
-            }
-        });
-    });
-
-    // Validación para grupo y modalidad
-    $('select[name="grupo"], select[name="modalidad"]').on('change', function() {
-        if (this.value) {
-            $(this).removeClass('is-invalid').addClass('is-valid');
-        } else {
-            $(this).removeClass('is-valid').addClass('is-invalid');
-        }
-    });
-
-    // Gestión del método de pago
-    $('#metodo_pago').on('change', function() {
-        const metodoPago = $(this).val();
-        const $cuentaContainer = $('#cuenta_bancaria_container');
-        const $cuentaBancaria = $('#cuenta_bancaria');
-        const $infoTransferencia = $('#info_transferencia');
-        const $infoCoordinador = $('#info_coordinador');
-        
-        if (metodoPago === 'transferencia') {
-            $cuentaContainer.slideDown();
-            $cuentaBancaria.prop('required', true);
-            $infoTransferencia.show();
-            $infoCoordinador.hide();
-        } else if (metodoPago === 'coordinador') {
-            $cuentaContainer.slideUp();
-            $cuentaBancaria.prop('required', false);
-            $infoTransferencia.hide();
-            $infoCoordinador.show();
-        }
-    });
-
-    // Ocultar campo de cuenta bancaria inicialmente
-    $('#cuenta_bancaria_container').hide();
-    $('#cuenta_bancaria').prop('required', false);
+    
 });
 </script>
 

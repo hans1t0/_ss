@@ -102,28 +102,29 @@ try {
     // Validar y procesar datos de jugadores
     $stmtJugador = $pdo->prepare("
         INSERT INTO jugadores (
-            padre_id, nombre_completo, fecha_nacimiento, sexo, 
-            grupo, modalidad, demarcacion, lesiones
+            padre_id, hijo_nombre_completo, hijo_fecha_nacimiento, sexo, 
+            grupo, modalidad, demarcacion, lesiones, jugador_numero
         )
-        VALUES (:padre_id, :nombre, :fecha_nac, :sexo, :grupo, :modalidad, :demarcacion, :lesiones)
+        VALUES (
+            :padre_id, :nombre, :fecha_nac, :sexo, :grupo, 
+            :modalidad, :demarcacion, :lesiones, :jugador_numero
+        )
     ");
 
     $jugadorCount = 1;
-    while (isset($_POST["hijo_nombre_completo" . ($jugadorCount > 1 ? "_$jugadorCount" : "")])) {
-        $suffix = $jugadorCount > 1 ? "_$jugadorCount" : "";
-        
+    while (isset($_POST["hijo_nombre_completo_{$jugadorCount}"])) {
         // Validar datos del jugador
-        $nombre = limpiarEntrada($_POST["hijo_nombre_completo$suffix"]);
+        $nombre = limpiarEntrada($_POST["hijo_nombre_completo_{$jugadorCount}"]);
         if (!validarTexto($nombre)) {
             throw new Exception("Nombre del jugador $jugadorCount no válido");
         }
 
-        $fecha_nac = limpiarEntrada($_POST["hijo_fecha_nacimiento$suffix"]);
+        $fecha_nac = limpiarEntrada($_POST["hijo_fecha_nacimiento_{$jugadorCount}"]);
         if (!strtotime($fecha_nac)) {
             throw new Exception("Fecha de nacimiento del jugador $jugadorCount no válida");
         }
 
-        $sexo = limpiarEntrada($_POST["sexo$suffix"]);
+        $sexo = limpiarEntrada($_POST["sexo_{$jugadorCount}"]);
         if (!in_array($sexo, ['H', 'M'])) {
             throw new Exception("Sexo del jugador $jugadorCount no válido");
         }
@@ -134,10 +135,11 @@ try {
             ':nombre' => $nombre,
             ':fecha_nac' => $fecha_nac,
             ':sexo' => $sexo,
-            ':grupo' => limpiarEntrada($_POST["grupo$suffix"]),
-            ':modalidad' => limpiarEntrada($_POST["modalidad$suffix"]),
-            ':demarcacion' => limpiarEntrada($_POST["demarcacion$suffix"]),
-            ':lesiones' => limpiarEntrada($_POST["lesiones$suffix"] ?? '')
+            ':grupo' => limpiarEntrada($_POST["grupo_{$jugadorCount}"]),
+            ':modalidad' => limpiarEntrada($_POST["modalidad_{$jugadorCount}"]),
+            ':demarcacion' => limpiarEntrada($_POST["demarcacion_{$jugadorCount}"]),
+            ':lesiones' => limpiarEntrada($_POST["lesiones_{$jugadorCount}"] ?? ''),
+            ':jugador_numero' => $jugadorCount
         ]);
         
         $jugadorCount++;
