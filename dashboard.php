@@ -163,38 +163,37 @@ try {
         <!-- Gráficos con Tabs -->
         <div class="card mb-4">
             <div class="card-body">
-                <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item">
-                        <a class="nav-link active" data-bs-toggle="tab" href="#gruposTab">
+                <ul class="nav nav-tabs" id="myTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="grupos-tab" data-bs-toggle="tab" data-bs-target="#gruposTab" type="button" role="tab">
                             <i class="fas fa-users"></i> Grupos
-                        </a>
+                        </button>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#sexosTab">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="sexos-tab" data-bs-toggle="tab" data-bs-target="#sexosTab" type="button" role="tab">
                             <i class="fas fa-venus-mars"></i> Sexo
-                        </a>
+                        </button>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#pagosTab">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pagos-tab" data-bs-toggle="tab" data-bs-target="#pagosTab" type="button" role="tab">
                             <i class="fas fa-money-bill"></i> Formas de Pago
-                        </a>
+                        </button>
                     </li>
                 </ul>
                 
-                <div class="tab-content pt-4">
-                    <div class="tab-pane fade show active" id="gruposTab">
-                        <div style="height: 300px">
+                <div class="tab-content pt-4" id="myTabContent">
+                    <div class="tab-pane fade show active" id="gruposTab" role="tabpanel">
+                        <div style="height: 300px" class="chart-container">
                             <canvas id="gruposChart"></canvas>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="sexosTab">
-                        <div style="height: 300px">
+                    <div class="tab-pane fade" id="sexosTab" role="tabpanel">
+                        <div style="height: 300px" class="chart-container">
                             <canvas id="sexosChart"></canvas>
                         </div>
                     </div>
-
-                    <div class="tab-pane fade" id="pagosTab">
-                        <div style="height: 300px">
+                    <div class="tab-pane fade" id="pagosTab" role="tabpanel">
+                        <div style="height: 300px" class="chart-container">
                             <canvas id="pagosChart"></canvas>
                         </div>
                     </div>
@@ -243,13 +242,25 @@ try {
 
 <script>
 $(document).ready(function() {
-    // Configuración de gráficos
-    function createChart(elementId, data, type = 'doughnut') {
-        const ctx = document.getElementById(elementId);
-        if (!ctx) return;
+    // Variables para almacenar las instancias de los gráficos
+    let charts = {};
+    
+    // Función para destruir un gráfico existente
+    function destroyChart(chartId) {
+        if (charts[chartId]) {
+            charts[chartId].destroy();
+            charts[chartId] = null;
+        }
+    }
 
-        return new Chart(ctx, {
-            type: type,
+    // Función para crear o actualizar un gráfico
+    function createChart(elementId, data) {
+        // Primero destruimos el gráfico existente si lo hay
+        destroyChart(elementId);
+        
+        const ctx = document.getElementById(elementId).getContext('2d');
+        charts[elementId] = new Chart(ctx, {
+            type: 'doughnut',
             data: {
                 labels: data.map(item => item.label),
                 datasets: [{
@@ -268,17 +279,7 @@ $(document).ready(function() {
                         position: 'right',
                         labels: {
                             boxWidth: 12,
-                            padding: 15,
-                            font: {
-                                size: 12
-                            }
-                        }
-                    },
-                    title: {
-                        display: true,
-                        font: {
-                            size: 14,
-                            weight: 'bold'
+                            padding: 15
                         }
                     }
                 }
@@ -286,42 +287,41 @@ $(document).ready(function() {
         });
     }
 
-    // Inicializar los tabs de Bootstrap
-    const triggerTabList = document.querySelectorAll('.nav-tabs button');
-    triggerTabList.forEach(function(triggerEl) {
-        const tabTrigger = new bootstrap.Tab(triggerEl);
-        triggerEl.addEventListener('click', function(event) {
-            event.preventDefault();
-            tabTrigger.show();
-        });
-    });
+    // Datos para los gráficos
+    const gruposData = <?= json_encode(array_map(function($item) {
+        return ['label' => $item['grupo'], 'total' => (int)$item['total']];
+    }, $grupos)) ?>;
 
-    // Crear gráficos cuando se muestra cada tab
-    $('.nav-tabs a[data-bs-toggle="tab"]').on('shown.bs.tab', function(e) {
-        const targetId = $(e.target).attr('href');
-        if (targetId === '#gruposTab') {
-            createChart('gruposChart', <?= json_encode(array_map(function($item) {
-                return ['label' => $item['grupo'], 'total' => (int)$item['total']];
-            }, $grupos)) ?>);
-        } else if (targetId === '#sexosTab') {
-            createChart('sexosChart', <?= json_encode(array_map(function($item) {
-                return ['label' => $item['sexo'] === 'H' ? 'Hombre' : 'Mujer', 'total' => (int)$item['total']];
-            }, $sexos)) ?>);
-        } else if (targetId === '#pagosTab') {
-            createChart('pagosChart', <?= json_encode(array_map(function($item) {
-                return [
-                    'label' => $item['metodo_pago'] === 'transferencia' ? 'Transferencia Bancaria' : 'Pago al Coordinador',
-                    'total' => (int)$item['total']
-                ];
-            }, $metodos_pago)) ?>);
+    const sexosData = <?= json_encode(array_map(function($item) {
+        return ['label' => $item['sexo'] === 'H' ? 'Hombre' : 'Mujer', 'total' => (int)$item['total']];
+    }, $sexos)) ?>;
+
+    const pagosData = <?= json_encode(array_map(function($item) {
+        return [
+            'label' => $item['metodo_pago'] === 'transferencia' ? 'Transferencia Bancaria' : 'Pago al Coordinador',
+            'total' => (int)$item['total']
+        ];
+    }, $metodos_pago)) ?>;
+
+    // Crear gráfico inicial
+    createChart('gruposChart', gruposData);
+
+    // Manejar el cambio de tabs
+    $('button[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
+        const target = $(e.target).data('bs-target');
+        switch(target) {
+            case '#gruposTab':
+                createChart('gruposChart', gruposData);
+                break;
+            case '#sexosTab':
+                createChart('sexosChart', sexosData);
+                break;
+            case '#pagosTab':
+                createChart('pagosChart', pagosData);
+                break;
         }
     });
 
-    // Inicializar el primer gráfico
-    createChart('gruposChart', <?= json_encode(array_map(function($item) {
-        return ['label' => $item['grupo'], 'total' => (int)$item['total']];
-    }, $grupos)) ?>);
-    
     // Inicializar DataTables
     const table = $('#jugadoresTable').DataTable({
         language: {

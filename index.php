@@ -97,14 +97,14 @@
                                 <label class="form-label">Sexo</label>
                                 <div class="form-control py-2">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="sexo" 
-                                               value="H" required>
-                                        <label class="form-check-label">Hombre</label>
+                                        <input class="form-check-input" type="radio" name="sexo_1" 
+                                               id="sexo_h_1" value="H" required>
+                                        <label class="form-check-label" for="sexo_h_1">Hombre</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="sexo" 
-                                               value="M">
-                                        <label class="form-check-label">Mujer</label>
+                                        <input class="form-check-input" type="radio" name="sexo_1" 
+                                               id="sexo_m_1" value="M">
+                                        <label class="form-check-label" for="sexo_m_1">Mujer</label>
                                     </div>
                                 </div>
                             </div>
@@ -114,7 +114,7 @@
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="demarcacion" 
                                                value="jugador" required>
-                                        <label class="form-check-label">Jugador</label>
+                                        <label class="form-check-label">Jugador campo</label>
                                     </div>
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="demarcacion" 
@@ -171,6 +171,26 @@
 
 <script>
 $(document).ready(function() {
+    // Añadir función validateField al inicio
+    function validateField($field, validation) {
+        const value = $field.val();
+        const isValid = !value || validation.regex.test(value);
+        
+        $field.toggleClass('is-invalid', !isValid)
+              .toggleClass('is-valid', isValid);
+        
+        // Manejar mensaje de error
+        if (!isValid) {
+            if (!$field.next('.invalid-feedback').length) {
+                $field.after(`<div class="invalid-feedback">${validation.message}</div>`);
+            }
+        } else {
+            $field.next('.invalid-feedback').remove();
+        }
+        
+        return isValid;
+    }
+
     let jugadorCount = 1;
 
     // Función para clonar formulario de jugador
@@ -178,23 +198,54 @@ $(document).ready(function() {
         jugadorCount++;
         const newForm = $('.jugador-form:first').clone();
         
-        // Limpiar valores
+        // Limpiar valores y actualizar ID
         newForm.attr('data-jugador-id', jugadorCount);
         newForm.find('input, select, textarea').val('');
         newForm.find('input[type="radio"]').prop('checked', false);
         newForm.find('.is-valid, .is-invalid').removeClass('is-valid is-invalid');
         
-        // Actualizar nombres de campos
-        newForm.find('input, select, textarea').each(function() {
+        // Actualizar nombres e IDs de radio buttons
+        newForm.find('input[type="radio"]').each(function() {
+            const $input = $(this);
+            const oldName = $input.attr('name');
+            const oldId = $input.attr('id');
+            
+            if (oldName.startsWith('sexo_')) {
+                const newName = `sexo_${jugadorCount}`;
+                $input.attr('name', newName);
+                // Actualizar ID y label para sexo
+                const newId = oldId.replace(/_\d+$/, `_${jugadorCount}`);
+                $input.attr('id', newId);
+                $input.next('label').attr('for', newId);
+            }
+        });
+
+        // Actualizar nombres de campos radio y select
+        newForm.find('input[type="radio"], select').each(function() {
             const oldName = $(this).attr('name');
             if (oldName) {
                 $(this).attr('name', oldName + '_' + jugadorCount);
             }
         });
-        
-        // Actualizar nombres de campos de sexo
-        newForm.find('input[name="sexo"]').each(function() {
-            $(this).attr('name', 'sexo_' + jugadorCount);
+
+        // Actualizar otros campos
+        newForm.find('input:not([type="radio"]), textarea').each(function() {
+            const oldName = $(this).attr('name');
+            if (oldName && !oldName.includes('padre_')) {
+                $(this).attr('name', oldName + '_' + jugadorCount);
+            }
+        });
+
+        // Actualizar nombre y mantener valores correctos para radio buttons
+        newForm.find('input[type="radio"]').each(function() {
+            const oldName = $(this).attr('name');
+            if (oldName === 'sexo') {
+                $(this).attr('name', `sexo_${jugadorCount}`);
+            } else if (oldName === 'demarcacion') {
+                $(this).attr('name', `demarcacion_${jugadorCount}`);
+            }
+            // Mantener los valores originales
+            // No modificar el value de los radio buttons
         });
 
         // Añadir botón eliminar
@@ -233,28 +284,29 @@ $(document).ready(function() {
 
     // Función para inicializar validaciones en un formulario
     function initializeValidations($form) {
-        // Aplicar validaciones a los campos del nuevo formulario
         const formId = $form.data('jugador-id');
         const validations = {
-            [`hijo_nombre_completo_${formId}`]: {
+            [`hijo_nombre_completo${formId ? '_' + formId : ''}`]: {
                 regex: /^[A-Za-zÀ-ÿ\s]{2,100}$/,
                 message: 'El nombre completo debe contener solo letras y espacios'
             }
         };
 
+        // Aplicar validaciones a los campos
         Object.keys(validations).forEach(fieldName => {
-            $form.find(`[name="${fieldName}"]`).on('input', function() {
-                validateField($(this), validations[fieldName]);
-            });
+            const $field = $form.find(`[name="${fieldName}"]`);
+            if ($field.length) {
+                $field.on('input', function() {
+                    validateField($(this), validations[fieldName]);
+                });
+            }
         });
 
-        // Reinicializar select validations
+        // Validación de selects
         $form.find('select').on('change', function() {
-            if (this.value) {
-                $(this).removeClass('is-invalid').addClass('is-valid');
-            } else {
-                $(this).removeClass('is-valid').addClass('is-invalid');
-            }
+            const $select = $(this);
+            $select.toggleClass('is-valid', !!$select.val())
+                  .toggleClass('is-invalid', !$select.val());
         });
     }
 
@@ -262,27 +314,74 @@ $(document).ready(function() {
     $('#inscripcion-form').on('submit', function(e) {
         e.preventDefault();
         
-        if (!this.checkValidity()) {
-            $(this).addClass('was-validated');
+        // Validar los campos requeridos
+        let isValid = true;
+        const $form = $(this);
+        
+        // Validar campos de sexo y demarcación
+        $('.jugador-form').each(function(index) {
+            const jugadorNum = index + 1;
+            const $jugadorForm = $(this);
+            
+            // Validar sexo
+            if (!$jugadorForm.find(`input[name="sexo_${jugadorNum}"]:checked`).length) {
+                $jugadorForm.find(`input[name="sexo_${jugadorNum}"]`).first()
+                    .closest('.form-control').addClass('is-invalid');
+                isValid = false;
+            }
+            
+            // Validar demarcación
+            if (!$jugadorForm.find(`input[name="demarcacion_${jugadorNum}"]:checked`).length) {
+                $jugadorForm.find(`input[name="demarcacion_${jugadorNum}"]`).first()
+                    .closest('.form-control').addClass('is-invalid');
+                isValid = false;
+            }
+        });
+
+        // Validar otros campos requeridos
+        $form.find('[required]').each(function() {
+            if (!$(this).val()) {
+                $(this).addClass('is-invalid');
+                isValid = false;
+            }
+        });
+
+        if (!isValid) {
+            $form.addClass('was-validated');
             return false;
         }
 
+        // Recolectar todos los datos
+        const formData = $form.serializeArray();
+        
+        // Enviar datos via AJAX
         $.ajax({
             type: 'POST',
             url: 'process.php',
-            data: $(this).serialize(),
+            data: formData,
             dataType: 'json',
+            beforeSend: function() {
+                // Deshabilitar el botón de envío
+                $form.find('button[type="submit"]')
+                    .prop('disabled', true)
+                    .html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Enviando...');
+            },
             success: function(response) {
                 if (response.status === 'success') {
-                    // Redireccionar a la página de éxito
                     window.location.href = response.redirect_url;
                 } else {
-                    // Mostrar error
                     alert('Error: ' + response.message);
                 }
             },
-            error: function() {
-                alert('Error en el proceso de registro');
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+                alert('Error en el proceso de registro. Por favor, inténtelo de nuevo.');
+            },
+            complete: function() {
+                // Rehabilitar el botón de envío
+                $form.find('button[type="submit"]')
+                    .prop('disabled', false)
+                    .html('<i class="fas fa-save"></i> Enviar Inscripción');
             }
         });
     });
