@@ -1042,3 +1042,1543 @@ Array
 )
 
 
+2025-01-27 09:31:47 - Datos recibidos:
+Array
+(
+    [telefono] => 647729651
+    [mensaje] => ¡Hola Gema Bustos! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Benjamin), Mia Cok (Querubin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+)
+
+
+2025-01-27 09:31:47 - Request a WhatsApp API:
+Array
+(
+    [url] => https://graph.facebook.com/v21.0/547808498413811/messages
+    [data] => Array
+        (
+            [messaging_product] => whatsapp
+            [recipient_type] => individual
+            [to] => 34647729651
+            [type] => text
+            [text] => Array
+                (
+                    [preview_url] => 
+                    [body] => ¡Hola Gema Bustos! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Benjamin), Mia Cok (Querubin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+                )
+
+        )
+
+    [headers] => Array
+        (
+            [Authorization] => Bearer EAAIOyA5wqXoBO1k6qq4...
+            [Content-Type] => application/json
+        )
+
+)
+
+
+2025-01-27 09:31:47 - cURL verbose log:
+*   Trying 157.240.5.12:443...
+* TCP_NODELAY set
+* Connected to graph.facebook.com (157.240.5.12) port 443 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+* successfully set certificate verify locations:
+*   CAfile: /Applications/MAMP/Library/OpenSSL/cert.pem
+  CApath: none
+* SSL connection using TLSv1.2 / ECDHE-ECDSA-AES128-GCM-SHA256
+* ALPN, server accepted to use h2
+* Server certificate:
+*  subject: C=US; ST=California; L=Menlo Park; O=Meta Platforms, Inc.; CN=*.facebook.com
+*  start date: Nov  5 00:00:00 2024 GMT
+*  expire date: Feb  3 23:59:59 2025 GMT
+*  subjectAltName: host "graph.facebook.com" matched cert's "*.facebook.com"
+*  issuer: C=US; O=DigiCert Inc; OU=www.digicert.com; CN=DigiCert SHA2 High Assurance Server CA
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multi-use
+* Connection state changed (HTTP/2 confirmed)
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* Using Stream ID: 1 (easy handle 0x7fa70d86fa00)
+> POST /v21.0/547808498413811/messages HTTP/2
+Host: graph.facebook.com
+accept: */*
+authorization: Bearer EAAIOyA5wqXoBO1k6qq47AWGZA5HScNkR03iKUpJXjBJj8UjAqaerjaOZC8XB389PosfGGUBVHypLBOZB6NZC20QZA0ddrQ029VGPyOSkqx0G62ZBvOoKcWfalFbJZA0h8oZB26BBnZCZBD02H52lgdDvNxm4Fn1TurVbX2tZASGxhjvrj7iLDioIIzMDADGiPloyMM07GgfEAfNaVtIRsQh
+content-type: application/json
+content-length: 1022
+
+* Connection state changed (MAX_CONCURRENT_STREAMS == 100)!
+* We are completely uploaded and fine
+< HTTP/2 400 
+< error-mid: c9506d75f8a0bd5f3f8148f654c4f51e
+< vary: Origin
+< vary: Accept-Encoding
+< x-business-use-case-usage: {"480783388460957":[{"type":"whatsapp","call_count":0,"total_cputime":0,"total_time":0,"estimated_time_to_regain_access":0}]}
+< content-type: application/json; charset=UTF-8
+< www-authenticate: OAuth "Facebook Platform" "invalid_request" "(#131030) Recipient phone number not in allowed list"
+< access-control-allow-origin: *
+< facebook-api-version: v21.0
+< strict-transport-security: max-age=15552000; preload
+< pragma: no-cache
+< cache-control: no-store
+< expires: Sat, 01 Jan 2000 00:00:00 GMT
+< x-fb-request-id: Az2L2qdOOQzqJMCUixak3Mb
+< x-fb-trace-id: Gk2xhezyasZ
+< x-fb-rev: 1019600648
+< x-fb-debug: GQPQNSP2BtqisHTCjpmwT8oKS8isX81dpAB2ih4SZhQEJMtu7eo5iVV+A2/zN1CjOdMoXQphrCs/SaX7bwxi5Q==
+< date: Mon, 27 Jan 2025 09:31:47 GMT
+< proxy-status: http_request_error; e_proxy="AcKq7ldKKEPjm8yjZODD4AoT01SgtEZu-NW44ipUQcJWAeF648l4fwa9cr-TO3xLthudccyMSElm6eLKcmJl"; e_fb_binaryversion="AcKLWW3M4Wv-s-YnhF9vPAKzI0mE7HsKtpRlROmbp6EPUHnCHGCQ59CvhkmfaSfHu4oAzO4-hPx22YZEe_I9RvYUfUhIs9iYyyw"; e_fb_httpversion="AcIoZmYWz34M3KOwTLyxbb-u1e6Txp-dVBFcg796ZRj2r3C2-kJBdGAQwe2O"; e_fb_responsebytes="AcLMw1f9Eg5pPrybeAxxZg1MToq7s4OurcbnzZdYKR_Zc9iHwbC1MG0DtMQ9"; e_fb_requesttime="AcLH4VvjRmO-jzAgiq_LjK2CNbdt1naOZeVjH9z-q18ZB--cncYiXhMcq7CInrKGskN8NYq4ZQ"; e_fb_requesthandler="AcJZVN2EXMIEp4gaOOJHd-oFqxNw6s29TdNbKLQVB5o54jDBOOb3a5I_4QeTJchPjgU2GbC25oY"; e_fb_hostheader="AcKFRZRlTWs1_43oOwaOexUDqoc6YEtsxkimfaw9G5IsjDN9WM3tM9cWlPrIkmly_0JPpYd6QYR5Q8fV"; e_fb_requestsequencenumber="AcIk-jS8aKkk4AyqKHrJQCehM_jNb5AzUuYbi3ecT3UjQthpYtpeawV0M-nK"; e_upip="AcKzx63Wyd8Lmhi47P-i5lhzhCw1M7qu1NK-19LGZ5iMk_PMCsorn_SFMFg9osNp4M2gxUktABAxHyE08_yKN_7nfNPnKBFmup1JuU4"; e_fb_builduser="AcKytuyFYEbaoj_vHV5K0RdoQxo3RMF7KiEiXYenXLKgc45BuY9VeqC7M4KEhYvUeUk"; e_fb_vipport="AcKIjcBTUG49Pn70wSjChz8PKueIov7pjZifLIiu7lDV-fT7nup3uohh5RhF"; e_clientaddr="AcLVwU86rPIRRoi8VtKkgfMOEr4XnLKIZn6KDqfxoQcqsrboqIL7OntU5Fft4VYGbcVKcmhR9F3UxPjdD1Pgu0Sf5Ad99EGPO-ErmwuMfwDvEInw"; e_fb_vipaddr="AcKjp8buBpq8VAdmNsiWRRdmWhk2DiOpgjq5swFkAfLLeX59kVEzFIn4Gk-Sqpq81L8XmLD8i1RfSZbZGno9GxhCtg2lFZLr2A"; e_fb_configversion="AcKUWAKgSnoUPhK7529MBD0CWpkuvdXPGbvRfcajfGdl64mRMUX0Z-Ce823ZEg", http_request_error; e_fb_configversion="AcKeaz3V1RgkQRvMyVz-18IqCapnySVOn1oqtx7wk8_soMmjYoxaGmByJL-OJQ"; e_clientaddr="AcJotXp004WGz5izjtWnsd2bkvgj4xYD_vbmzQv24UUhrBZ_lOVTx41urF19uAXYsU27so_te1lyropvplw"; e_fb_vipport="AcIfsTrDcYYoohqPto-7DnRbZbwub6QG3UB6xK_STxPygKb185I3Vii4LbHP"; e_upip="AcKrBWTUs-G2bcky9YaYHoTjV34TC_R9WPM-fd1RbCu4BE6uEwGVUrSwqOoQk8kgk5lfJRZuevy-uw-fPKN49dgIQCX1raYtoQ"; e_fb_requestsequencenumber="AcJ8eLQ3EXPLQn_f2UdNUelb8OOuJ_2CwQ90pwuOoI_6-vQkE06QQo-0JQ"; e_fb_hostheader="AcIks_LbFhQ8YQZWJsHvZcclxElFU5eBwinsD9P5LLuVzHBfcZG6kSjgnlkUSRRfkQL5YOUnXsyg2Eut"; e_fb_vipaddr="AcK0A2sGDUI7hZqOXHo8eiklz8uNbgD5t19MF1I1TioZKwHGJ-x5riuGpCbTpsJNO4naeBLZ"; e_fb_requesthandler="AcKgmQ1H3xVGszgbBvhLkjFFFGKqf0zz5YGreZZDxphg6ZclisseUkYYThfqd0dHY2ZEHKSQTyA"; e_fb_requesttime="AcKNchYuvf4ST0eJU44mnogRA97FMjrGQ-wT4lo-Qya0PH1nzT9gcUkDW3nef5NQuwpHOWZgjQ"; e_fb_builduser="AcIJh5iIR2uf1VJr90PZVL_9a7GgsgfMPYauTv0XJzAJTEMwS35bGdHPnUuSwA8U4_E"; e_fb_httpversion="AcL08h5_dI_IgHwjsj-l5-2yLenK5NKfcMfk2A_0fIXmsLae-yagval4sXN0"; e_fb_binaryversion="AcKopV175c7ksSh9iyAZJYI4mEbSmgZFHxwVE5TsMwansdDDDMHCgunF6xi2hLVHqdtI1-Abh91kPwnc4zpCkeJZBf4pZQnKwM8"; e_proxy="AcLprgTwFsjUOUkD9RP37SM9rhTIeeIomQ_oxCzaTcy6g2ZNKvBdo3hJR7mzoYSTR1fvkHmaspqO1Us"
+< x-fb-connection-quality: EXCELLENT; q=0.9, rtt=14, rtx=0, c=10, mss=1380, tbw=3393, tp=-1, tpl=-1, uplat=285, ullat=0
+< alt-svc: h3=":443"; ma=86400
+< 
+* Connection #0 to host graph.facebook.com left intact
+
+
+2025-01-27 09:31:47 - Respuesta de WhatsApp API:
+Array
+(
+    [httpCode] => 400
+    [response] => Array
+        (
+            [error] => Array
+                (
+                    [message] => (#131030) Recipient phone number not in allowed list
+                    [type] => OAuthException
+                    [code] => 131030
+                    [error_data] => Array
+                        (
+                            [messaging_product] => whatsapp
+                            [details] => Número de teléfono del destinatario no incluido en la lista de autorizados: Añade el número de teléfono del destinatario a la lista de destinatarios y vuelve a intentarlo.
+                        )
+
+                    [fbtrace_id] => Az2L2qdOOQzqJMCUixak3Mb
+                )
+
+        )
+
+)
+
+
+2025-01-27 09:33:22 - Datos recibidos:
+Array
+(
+    [telefono] => 647729651
+    [mensaje] => ¡Hola Gema Bustos! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Benjamin), Mia Cok (Querubin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+)
+
+
+2025-01-27 09:33:22 - Request a WhatsApp API:
+Array
+(
+    [url] => https://graph.facebook.com/v21.0/547808498413811/messages
+    [data] => Array
+        (
+            [messaging_product] => whatsapp
+            [recipient_type] => individual
+            [to] => 34647729651
+            [type] => text
+            [text] => Array
+                (
+                    [preview_url] => 
+                    [body] => ¡Hola Gema Bustos! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Benjamin), Mia Cok (Querubin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+                )
+
+        )
+
+    [headers] => Array
+        (
+            [Authorization] => Bearer EAAIOyA5wqXoBO1k6qq4...
+            [Content-Type] => application/json
+        )
+
+)
+
+
+2025-01-27 09:33:23 - cURL verbose log:
+*   Trying 157.240.5.12:443...
+* TCP_NODELAY set
+* Connected to graph.facebook.com (157.240.5.12) port 443 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+* successfully set certificate verify locations:
+*   CAfile: /Applications/MAMP/Library/OpenSSL/cert.pem
+  CApath: none
+* SSL connection using TLSv1.2 / ECDHE-ECDSA-AES128-GCM-SHA256
+* ALPN, server accepted to use h2
+* Server certificate:
+*  subject: C=US; ST=California; L=Menlo Park; O=Meta Platforms, Inc.; CN=*.facebook.com
+*  start date: Nov  5 00:00:00 2024 GMT
+*  expire date: Feb  3 23:59:59 2025 GMT
+*  subjectAltName: host "graph.facebook.com" matched cert's "*.facebook.com"
+*  issuer: C=US; O=DigiCert Inc; OU=www.digicert.com; CN=DigiCert SHA2 High Assurance Server CA
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multi-use
+* Connection state changed (HTTP/2 confirmed)
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* Using Stream ID: 1 (easy handle 0x7fa70d855c00)
+> POST /v21.0/547808498413811/messages HTTP/2
+Host: graph.facebook.com
+accept: */*
+authorization: Bearer EAAIOyA5wqXoBO1k6qq47AWGZA5HScNkR03iKUpJXjBJj8UjAqaerjaOZC8XB389PosfGGUBVHypLBOZB6NZC20QZA0ddrQ029VGPyOSkqx0G62ZBvOoKcWfalFbJZA0h8oZB26BBnZCZBD02H52lgdDvNxm4Fn1TurVbX2tZASGxhjvrj7iLDioIIzMDADGiPloyMM07GgfEAfNaVtIRsQh
+content-type: application/json
+content-length: 1022
+
+* We are completely uploaded and fine
+* Connection state changed (MAX_CONCURRENT_STREAMS == 100)!
+< HTTP/2 400 
+< error-mid: c9506d75f8a0bd5f3f8148f654c4f51e
+< vary: Origin
+< vary: Accept-Encoding
+< x-business-use-case-usage: {"480783388460957":[{"type":"whatsapp","call_count":1,"total_cputime":1,"total_time":1,"estimated_time_to_regain_access":0}]}
+< content-type: application/json; charset=UTF-8
+< www-authenticate: OAuth "Facebook Platform" "invalid_request" "(#131030) Recipient phone number not in allowed list"
+< access-control-allow-origin: *
+< facebook-api-version: v21.0
+< strict-transport-security: max-age=15552000; preload
+< pragma: no-cache
+< cache-control: no-store
+< expires: Sat, 01 Jan 2000 00:00:00 GMT
+< x-fb-request-id: AtOdmHFOAApgWUYAsz7p156
+< x-fb-trace-id: Dovmyf+5yt9
+< x-fb-rev: 1019601120
+< x-fb-debug: aMoJ3L1w48n8NjKbjc/knfc+wciPtspzJqdk5+R66rXCwmaW9a1dHtYOODDJCbOO6hscZuB7FAM8oOZ0rINc7A==
+< date: Mon, 27 Jan 2025 09:33:23 GMT
+< proxy-status: http_request_error; e_proxy="AcLZXN6-cmpnNiGfL1G4l21GGhN7cl0P11mOzFdBSvPc-rRlslEHkm9-aEfRuB1aMqfXSNDcWV9z3ewwrOeX"; e_fb_binaryversion="AcLy1zTnuyW3Xs48NgaScQl7XZO_0O8YN5bwQjRFBMF8HZ420nl3PywvoTy9Ln3fmOc4NQayfr8RuhDkuHo5xCdIS5__Xfb0sMY"; e_fb_httpversion="AcLKNVwvZqIB_S0fCOvZkNIO30hJ1kysJeU9KpPN5bqtNk6GSHkZqtNy36xS"; e_fb_responsebytes="AcLd3JPKT9ov_WkaySa3UsEBAr2dHfr-bpYWQxc6X7m75UbHmFV09-U2z-zK"; e_fb_requesttime="AcINskt4VSlh3VZSNr05zmZoZktewFM-DXY5Xof-x7RStsEJvs3wtGjmI-WVh_VkxhaYRre-VQ"; e_fb_requesthandler="AcLZ34f-qqGkcv6a3OHzLn5r6k2S-K8eC8oaZy8TjLRh8wPBFflUjQpl6eK2pSdoTCPFMyRXK7o"; e_fb_hostheader="AcJluxi8kTAdYHiV4S9ghI7dpHmA-PUE94r2DfC_VTZnwc1dxPdfUowdDEkVMIbUYWeaRn_a914_AW_y"; e_fb_requestsequencenumber="AcKTGOZATqxcqry9iLeUqrUAsS-WEqEzgoTyiVJm2FNFxzQuncLEx-NyO5P9Bg"; e_upip="AcIixqn-8qgCCz9DlJb7eYUz1l_8Kfblj5tVnP2dTJny0XHdOt0JoRsTtEmJ9L0O9tcY9xKNMqdh3bKqc8dsGSUsp2O82KgLNiccAt4"; e_fb_builduser="AcLWfxHN0TkRtTocRGxZwgJ9u36c2Bs3oE7xachtwsP1xU9lrxqVsfKeSLRwcbOlGBU"; e_fb_vipport="AcLXvm75sJWuR-ImLpgKdSdiOmEjyi6Ev36kNV5H2699HYZlvf56bu7LcZe7"; e_clientaddr="AcJ6-a606IBpEHZykMKaXg3M1MfoixihK6T5ZtU9fneljH7aEB-zSmpElZNCocSlGs75Lj2ylxm1wTR-sVc9_DHAqHBlLI9g1jZIAAViS5RXjD666A"; e_fb_vipaddr="AcKRZFrE74Fg0ZjiBs1ckh7Jr-Oi8loLGi72ajwpEVYJmGI5Wf_6mLJ_bQnZDmAIpMyr2I2Bk6t02WsJAVndXropWXNT9l0caA"; e_fb_configversion="AcI8hWmd254TnyYdKN4Vj8kH1W7blI0NcxTDAKmNC8u0JoP0Elk48JGqntNjpw", http_request_error; e_fb_configversion="AcK2ApSQHbZ3QmsyxGTbN_aDbmtKiXX4fQRsmjwXhQGrN2NoBD0rgOX5VO06wA"; e_clientaddr="AcJJMPRaxOIiIu-0lsmiEOIJRVSDrJaz5S58VsvMW4qK6Vf3x70A4WBq4oF1ZUWDcgbH0cCwtBvObnpnkgk"; e_fb_vipport="AcL2_PadLgtmbWYMSu8BL5Ued4E1nDLiw8a4vh_IABRWdrc76EfidDX1swfz"; e_upip="AcLqvRg161UQunD96iQFqEFanvnV7OjJ6H8mDJrgGf5NxiiqEmIS2WTIm2MRYEd79oVwqhZlDoX6rJB2lTs0paZ8kl3Nn56zhQ"; e_fb_requestsequencenumber="AcIAxImgdxv-Bwyvhh5Ttw3CuyPvEMBTS9NoEArdf4VRU7gRwKSF0rpt-Q"; e_fb_hostheader="AcJOdb3RR9rp75l4AGmVNXaGIrE8X3fhWZmCozGMZ78baSOkb0tNd8l9tSjonEVKAoZpbKDYp8Ew5GYB"; e_fb_vipaddr="AcJY70ZwdoZb1cKyZ9JzQhBAGbOkTV8Orf2TTAwAI8GuPz-RGFFOr-itcv-0O2XtIxXGbD-u"; e_fb_requesthandler="AcIAsZeBeQcwBXv5uWS4WrspiEEIAS0Rrkl9DfmoVamqXyw2O09K2qOgHTbhmCXeGuGC_YEEf4w"; e_fb_requesttime="AcLKvY4Tbm6W3e6FnmRYc22lLTR0h8f48ulHKozp3dOiAv47err3vyhbTnvGiv65bH8m10BMFg"; e_fb_builduser="AcLNSm6NH47MOIgsG-Z15fFsE2IMMi-ocBBdyjo_P3z6aecv8XKM2xu2GvMYV_WBn3k"; e_fb_httpversion="AcIzUEnTtvpdc4JwuIv0L84zHHJpZ7Gcr5gLI2nj6UQzpAa-TYNGuyNo_Va8"; e_fb_binaryversion="AcIanVet8dKkYvjRwqlrRqUjoU_KUKT7YngcxX6egZH5xZ9-MpMwMo2xWF1p8PqrRtZs_IFqdkniF166TzyNi7AXwjpJr2oWjh8"; e_proxy="AcIuh_4-cpIO38Dpn6NRNIl51c7lTRM_uUh9aXyvK6Z25Qr8nMCPdgOqSaRzy694Tn1E16zffVmZt44"
+< x-fb-connection-quality: EXCELLENT; q=0.9, rtt=17, rtx=0, c=10, mss=1380, tbw=3392, tp=-1, tpl=-1, uplat=176, ullat=0
+< alt-svc: h3=":443"; ma=86400
+< 
+* Connection #0 to host graph.facebook.com left intact
+
+
+2025-01-27 09:33:23 - Respuesta de WhatsApp API:
+Array
+(
+    [httpCode] => 400
+    [response] => Array
+        (
+            [error] => Array
+                (
+                    [message] => (#131030) Recipient phone number not in allowed list
+                    [type] => OAuthException
+                    [code] => 131030
+                    [error_data] => Array
+                        (
+                            [messaging_product] => whatsapp
+                            [details] => Número de teléfono del destinatario no incluido en la lista de autorizados: Añade el número de teléfono del destinatario a la lista de destinatarios y vuelve a intentarlo.
+                        )
+
+                    [fbtrace_id] => AtOdmHFOAApgWUYAsz7p156
+                )
+
+        )
+
+)
+
+
+2025-01-27 09:36:29 - Datos recibidos:
+Array
+(
+    [telefono] => 647729651
+    [mensaje] => ¡Hola Gema Bustos! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Benjamin), Mia Cok (Querubin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+)
+
+
+2025-01-27 09:36:29 - Request a WhatsApp API:
+Array
+(
+    [url] => https://graph.facebook.com/v21.0/480063901866760/messages
+    [data] => Array
+        (
+            [messaging_product] => whatsapp
+            [recipient_type] => individual
+            [to] => 34647729651
+            [type] => text
+            [text] => Array
+                (
+                    [preview_url] => 
+                    [body] => ¡Hola Gema Bustos! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Benjamin), Mia Cok (Querubin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+                )
+
+        )
+
+    [headers] => Array
+        (
+            [Authorization] => Bearer EAAIOyA5wqXoBO9GjOQL...
+            [Content-Type] => application/json
+        )
+
+)
+
+
+2025-01-27 09:36:29 - cURL verbose log:
+*   Trying 157.240.5.12:443...
+* TCP_NODELAY set
+* Connected to graph.facebook.com (157.240.5.12) port 443 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+* successfully set certificate verify locations:
+*   CAfile: /Applications/MAMP/Library/OpenSSL/cert.pem
+  CApath: none
+* SSL connection using TLSv1.2 / ECDHE-ECDSA-AES128-GCM-SHA256
+* ALPN, server accepted to use h2
+* Server certificate:
+*  subject: C=US; ST=California; L=Menlo Park; O=Meta Platforms, Inc.; CN=*.facebook.com
+*  start date: Nov  5 00:00:00 2024 GMT
+*  expire date: Feb  3 23:59:59 2025 GMT
+*  subjectAltName: host "graph.facebook.com" matched cert's "*.facebook.com"
+*  issuer: C=US; O=DigiCert Inc; OU=www.digicert.com; CN=DigiCert SHA2 High Assurance Server CA
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multi-use
+* Connection state changed (HTTP/2 confirmed)
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* Using Stream ID: 1 (easy handle 0x7fa70e045a00)
+> POST /v21.0/480063901866760/messages HTTP/2
+Host: graph.facebook.com
+accept: */*
+authorization: Bearer EAAIOyA5wqXoBO9GjOQLCAER5uuJ6oCCvvKvU7RQwnpfN1swkWZCAjQo6njTik2X0hjiKYbNZC9E8fxRWwIKVEpFZBTKHKGuS6yjVMdY72KtJEbgzdZCZBY4sYWL97M7FjxF5JVBpuXiivelYbZBfyue3RBprrtUg8vBZAAhn4lJ3VmcKTNlNEDVfiy5cP3sblc1maloZBraxsz99zYlyFqpYO1pwGVf7ZBRnhh3T0qwfL
+content-type: application/json
+content-length: 1022
+
+* Connection state changed (MAX_CONCURRENT_STREAMS == 100)!
+* We are completely uploaded and fine
+< HTTP/2 400 
+< error-mid: 1b58965a90b35b0e1d734ce192a458f9
+< vary: Origin
+< vary: Accept-Encoding
+< access-control-allow-origin: *
+< cross-origin-resource-policy: cross-origin
+< x-app-usage: {"call_count":0,"total_cputime":0,"total_time":0}
+< content-type: application/json; charset=UTF-8
+< www-authenticate: OAuth "Facebook Platform" "invalid_request" "Unsupported post request. Object with ID '480063901866760' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
+< facebook-api-version: v21.0
+< strict-transport-security: max-age=15552000; preload
+< pragma: no-cache
+< cache-control: no-store
+< expires: Sat, 01 Jan 2000 00:00:00 GMT
+< x-fb-request-id: ADx8pbdg8gx7CVbYJWN0NZ4
+< x-fb-trace-id: D1XxAimSyDZ
+< x-fb-rev: 1019601120
+< x-fb-debug: b7wcbXn8XkZdp9s/hS0cGPU8oACLR9sp2ACDtjXY+JS1ZGmVYeGCt3ukVhmPWXlcYmUBO9yi6ZWt7n+qoxbgWQ==
+< date: Mon, 27 Jan 2025 09:36:29 GMT
+< proxy-status: http_request_error; e_proxy="AcJGKpREZvovCedopZdaRlBa6vUp0w1E_YlJuQjzhbiGxRldcxGjtpRFaQQzwFZsasadWssfJIDA6l724QvY"; e_fb_binaryversion="AcJm1s-jKQV0itfefe08YW45ZlV9kV2EuNhld25oB71PycnTucaHLEgW474z7akf1RmVMWTLZCYmw7O2qvs3OUPAl3TK2a9kPdQ"; e_fb_httpversion="AcLyMmKbkQeapllRybBDDOnhyzWW-RJlDctQ3H0jTf5SPnNBQ_1BMMjiRZNx"; e_fb_responsebytes="AcL24ZzKtXNgSZznMZZo1OxwW8NvZmAY-_TMbfW9z0qCKPMZtuhBtgWwzun3"; e_fb_requesttime="AcI7U9cQMsKPGLgeFakkJUzG12H5V7D5I8oOgwTHP1llz10fWfuzPmSir7BBGpWT3JKukqWhAQ"; e_fb_requesthandler="AcIkH_V0RiSBkws04aSyO-DEjgGnyGLxXeEEv1DQHi8exC3NUgp19esOU1fBsH-UXsvhAyr7QR4"; e_fb_hostheader="AcI8CQS-agZ38F0V-H12KomjS63bJiXFhoLdeYcOHjM9QNQF9RjnZmbsHU7Vwtok8e2tyoXJ-N9HCu6r"; e_fb_requestsequencenumber="AcIHqp-4FGnMUihp0kG-9z0q80eQSJmiuQwY4qZB3W1mXaS5m3Xfv_d5CeGL"; e_upip="AcKL6Tm26_gIeEnrA-PKOnyII0TPJo_765H18fZtZOaoaSVFTGS0JjC2cnlnxLpH8vMLKU8NzDA8elIJDqs8xvPqdYPMOUqyl1RaMw"; e_fb_builduser="AcIhHZQIbyrI19yY7tyTGbU5wG1QqJNzIVGM5jffMrfNPCaB8NNiMg8kscz7mEk43PU"; e_fb_vipport="AcLWtNObvV0sN-LSmkVDh8sjwpKBKPo79iv7j7flfzzdDx65DILAXBg6d_R1"; e_clientaddr="AcIx1a8GAUPnXNbqk86EUZqC3fdIyYAlp8alQZCTCt79RcTZjqkX5wGaPJAEEriatNlH50i1CKEGedZdDHxpDuP89WLrFaUIsAlbjUhNYqwOGJKY1Q"; e_fb_vipaddr="AcK2Uf7lS3rFMCiGd6HxJ1tv9O-Fxvdq3OAemzLWItLX1k7tbOVaw8ZBhC-YUgd3P4SS6ZfcpYLup_tjLHd0oaqAbGgxgYOYmQ"; e_fb_configversion="AcJom8v_qlwKaLqi8gPsXftv-Ukvt3hZrO2cJUapRRw8ozFv_F8XcJ0slkZXxQ", http_request_error; e_fb_configversion="AcLOWWCcoIoKkHywVtcv5fCSVsCL0nk6lEHhUbgQf88FsXqLDsFkjEtsTaxhqw"; e_clientaddr="AcJvUEMDQ3zv2fhB1GdFTKhZ71PDQfEew9hsl2SfqP930oSR5Mg-Wm3SPXYIsTuQknlCv5qAAC9z9N4yYsw"; e_fb_vipport="AcLl0sl1NeynStjM6EewJNPrw5BtU3gye9Qq2e-PRgGnbCLn0jdXu3ZbqryP"; e_upip="AcJ4thFCMt84c-I3sypdWW1FMxu76PB2vkNM9RBhRPhw76MXbpktnOFzLyJPvw7xABWbu7eG6la9YLv-EzPws9Gz1aIJM7Z3tw"; e_fb_requestsequencenumber="AcL9NO8h-zFW4yiWnSyZP_nTDinTHl7_cUqgCfeQiD133XubnSGmi1Ovyg"; e_fb_hostheader="AcLHvSrSRsIFt_gWkYNVHDZ5voFN9DW60mlyMDHMFm2bqLElf5SPGJnciRXcoFdUu8OSJUoxLww5ivSL"; e_fb_vipaddr="AcKM830nwoURleXRt7OwzrcvdT_RsPmRl0XRgeNdH3K7fLVSr8bsil6KiKsBd1Xcv8PmPHjt"; e_fb_requesthandler="AcIvNqf87xAyaxesFUXM7xgsdvZ7-2eUhsQLqG1dOAcDO_Ft8SV7k6SsoYRR9DbJcuHf4UWiAM8"; e_fb_requesttime="AcI7WhAkm21wPHRkHB-PBTpAx_tDfIexGIKks_y_9SRYWaH0uaeGNeauIHKdettcG0yyRMP58A"; e_fb_builduser="AcK81W4HjLh9YJ5-qPw43SsiG7zDemCThyPgs7DLbhEkWqaD03zztQX5xbQWW4vJDzM"; e_fb_httpversion="AcKtj0t1GQsB1RPEQZsW2jvgdVmcJeyAHV46_2_2hDglwegsfDVIZoSbrex4"; e_fb_binaryversion="AcLbNovswTkRpoOshHXm4uNc8D1_r4aNOijCO6cbgn3it2kadJJrRKChKaGtjsKzDaxSVDRQcCw5kLcbHqtcROy2-o5gKPzpBiM"; e_proxy="AcKPZcKJwc9CYaS0t3f6E6e6vcNhcGcIqn0qF_0MSdykzfqldvCOkT4Kyn2dehOTKJDDFa9kBA7A5_g"
+< x-fb-connection-quality: EXCELLENT; q=0.9, rtt=14, rtx=0, c=10, mss=1380, tbw=3392, tp=-1, tpl=-1, uplat=354, ullat=1
+< alt-svc: h3=":443"; ma=86400
+< 
+* Connection #0 to host graph.facebook.com left intact
+
+
+2025-01-27 09:36:29 - Respuesta de WhatsApp API:
+Array
+(
+    [httpCode] => 400
+    [response] => Array
+        (
+            [error] => Array
+                (
+                    [message] => Unsupported post request. Object with ID '480063901866760' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api
+                    [type] => GraphMethodException
+                    [code] => 100
+                    [error_subcode] => 33
+                    [fbtrace_id] => ADx8pbdg8gx7CVbYJWN0NZ4
+                )
+
+        )
+
+)
+
+
+2025-01-27 09:39:48 - Datos recibidos:
+Array
+(
+    [telefono] => 647729651
+    [mensaje] => ¡Hola Gema Bustos! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Benjamin), Mia Cok (Querubin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+)
+
+
+2025-01-27 09:39:48 - Request a WhatsApp API:
+Array
+(
+    [url] => https://graph.facebook.com/v14.0/518378664697887/messages
+    [data] => Array
+        (
+            [messaging_product] => whatsapp
+            [recipient_type] => individual
+            [to] => 34647729651
+            [type] => text
+            [text] => Array
+                (
+                    [preview_url] => 
+                    [body] => ¡Hola Gema Bustos! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Benjamin), Mia Cok (Querubin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+                )
+
+        )
+
+    [headers] => Array
+        (
+            [Authorization] => Bearer EAAIOyA5wqXoBO9GjOQL...
+            [Content-Type] => application/json
+        )
+
+)
+
+
+2025-01-27 09:39:48 - cURL verbose log:
+*   Trying 31.13.83.8:443...
+* TCP_NODELAY set
+* Connected to graph.facebook.com (31.13.83.8) port 443 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+* successfully set certificate verify locations:
+*   CAfile: /Applications/MAMP/Library/OpenSSL/cert.pem
+  CApath: none
+* SSL connection using TLSv1.2 / ECDHE-ECDSA-AES128-GCM-SHA256
+* ALPN, server accepted to use h2
+* Server certificate:
+*  subject: C=US; ST=California; L=Menlo Park; O=Meta Platforms, Inc.; CN=*.facebook.com
+*  start date: Nov  5 00:00:00 2024 GMT
+*  expire date: Feb  3 23:59:59 2025 GMT
+*  subjectAltName: host "graph.facebook.com" matched cert's "*.facebook.com"
+*  issuer: C=US; O=DigiCert Inc; OU=www.digicert.com; CN=DigiCert SHA2 High Assurance Server CA
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multi-use
+* Connection state changed (HTTP/2 confirmed)
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* Using Stream ID: 1 (easy handle 0x7fa70d86c800)
+> POST /v14.0/518378664697887/messages HTTP/2
+Host: graph.facebook.com
+accept: */*
+authorization: Bearer EAAIOyA5wqXoBO9GjOQLCAER5uuJ6oCCvvKvU7RQwnpfN1swkWZCAjQo6njTik2X0hjiKYbNZC9E8fxRWwIKVEpFZBTKHKGuS6yjVMdY72KtJEbgzdZCZBY4sYWL97M7FjxF5JVBpuXiivelYbZBfyue3RBprrtUg8vBZAAhn4lJ3VmcKTNlNEDVfiy5cP3sblc1maloZBraxsz99zYlyFqpYO1pwGVf7ZBRnhh3T0qwfL
+content-type: application/json
+content-length: 1022
+
+* We are completely uploaded and fine
+* Connection state changed (MAX_CONCURRENT_STREAMS == 100)!
+< HTTP/2 400 
+< error-mid: 1b58965a90b35b0e1d734ce192a458f9
+< vary: Origin
+< vary: Accept-Encoding
+< access-control-allow-origin: *
+< x-ad-api-version-warning: The call has been auto-upgraded to v21.0 as v14.0 has been deprecated.
+< cross-origin-resource-policy: cross-origin
+< x-app-usage: {"call_count":0,"total_cputime":0,"total_time":0}
+< content-type: application/json; charset=UTF-8
+< www-authenticate: OAuth "Facebook Platform" "invalid_request" "Unsupported post request. Object with ID '518378664697887' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api"
+< facebook-api-version: v21.0
+< strict-transport-security: max-age=15552000; preload
+< pragma: no-cache
+< cache-control: no-store
+< expires: Sat, 01 Jan 2000 00:00:00 GMT
+< x-fb-request-id: ACeRivN0hdeynJads_gy6ku
+< x-fb-trace-id: CTHEIRzSba4
+< x-fb-rev: 1019601120
+< x-fb-debug: kP7s196v5xwVO5FrK7vvvSvzUVtJ3/nyUCQRJhPLSVnMoYBIf3Tu2jYbRcQR7I7sV0TESAowNAnS/+KrWLWotw==
+< date: Mon, 27 Jan 2025 09:39:48 GMT
+< proxy-status: http_request_error; e_proxy="AcKTAv4wTMC8-w4lpC9WOSLZik-gcYaV51rUtW-pixcYseYifmz1taFtJBJPh38Akof8YTHQ_rB4GYuaEmQ"; e_fb_binaryversion="AcLsb6njz8sUIzrP6yXs4gdToLQgjKblsyqrFpJjtnffzSJoPLJxLcnTNcLO6p07KawpAe15Kutyeh1q4ByRzWnnQL3IMIbX7lk"; e_fb_httpversion="AcLsGxu5mH4vhJVmY7RcCctJvSwJGVoSklFM6T2JawpLnauU04A8JPR7d4vE"; e_fb_responsebytes="AcIyOywytZCuxVDYzrHIGevoiuw4QeMC9uAaCNs8_83P2CQVP6f0OF7TCrIU"; e_fb_requesttime="AcKaytYIo-TB1UrYLe22Ey6471ZF3dtyF8xNuUHJQVxuzOG39Ps9BvPi2JC0ceTuvUyNtMBHcA"; e_fb_requesthandler="AcIft2iP4flreWDmWzLZiuukfj03Ji8FkSKkSV3B-ymfd3kpKFBbm6t-GuThe7WXtnQpeI8MssQ"; e_fb_hostheader="AcLK1SXqzAK7ejBCnRhYrn0V4W_Mcjluag-lrgPCW6svG28ZvpIO8FmpP-RTY1m0UERUVMIAmKOW2jDj"; e_fb_requestsequencenumber="AcIuo-cXZpRP0-8MEHucsGKPrEsj9YiFwhrQiIsxWpiTZlEPL0VoUJ-LqJBnNA"; e_upip="AcI2E6UMo-dxflpJEL2Q9RWR0ePZRWhD5TS4G4xBoRxeH4HGPj8UUSN_v1E_abPFTF9ZPGZQb-ZPWM3C1aeHsLAdavpYLj8YPriVO54"; e_fb_builduser="AcLJNeyDYDQikmaByGDyrPL0cauj2wmbLFotm-xA2ntx8Ei_wFVWeAPu0dWOfLi7NYs"; e_fb_vipport="AcKvs_TEKfEemkha_jzpX-H6MEAAkftfD6DesUSLJDOh6EsaRt-GErMkAzZM"; e_clientaddr="AcJ80jb9-gWbgSO_Hjzu2VJB_dOuV6mUoPBqS05EZjSgobQ0xN8hEyivnsc3FO87WCJrj2YgGNxPh5GQmxiSZrdqtiDhvhe9eMzI-RvSoZNPq2s5EA"; e_fb_vipaddr="AcKc1Qwg_m-D_R7yGVHaeJJ7tmWqz7RSLpRj8MbVAlLmeEI86pa6QWs_Rnc9IGTOcAxHSkfD8eDm6AyzET0SO8wObfV2LHsbCA"; e_fb_configversion="AcJvYl3muwgWCzA2A8GmqKvL-GlqqX8wxmJGx-HOZTaO8nPmH6XgiWlaqKh_Yw", http_request_error; e_fb_configversion="AcIg2-m-jewjIdln1GENFUmDjdNA7wVH5MlAotmCQVjREfLTgduMT2fCFq9H2w"; e_clientaddr="AcLiXpzgsOluJ22Kn5XchZwL_Tr00IIc-RyVy1ZXpWjOEl7OzW8Kpb0hDaepM6rt5FBaiuWpyL98NMuyNa4"; e_fb_vipport="AcJQugiiXbK7B8bbBcNJmtAathCV2xSM1LFPY_qQXZDuemBuwkSH8Fb0lKKo"; e_upip="AcII8rTe91dQpgWIKLxOA7liqGD1DmdAVeKD2iOVSVQKCALSjC4mlFDjnnH1iVo8xU7l4G5g7HYRKm3RkSqnsvi5vMq6LL4_oA"; e_fb_requestsequencenumber="AcKwo_7NPYjd3xaRz1iBy6KpQd9uTaHBmhfIcMpO0Iq0cNJT4RBAYkQu4Q"; e_fb_hostheader="AcL4XqY5hKZ6WRC1bBtl-sFDysxOznmC5YZ0tgknUCd9e7oCG_dpQYD97VabMIm7vbg0UbVQxCWPa7I_"; e_fb_vipaddr="AcJkvcnTNzCX2zM4zepGo5YJzBYxEmvKxgEpJObtiuXhn_NsNA8mlYuRVe52_3LI2T3qwQ"; e_fb_requesthandler="AcIH9LqUwEwyqy5QwE95eqNGAcY2ZuW02A-SKE1TexGORWSwbqEc23TouAkVGbpfp6p7QreIR3I"; e_fb_requesttime="AcK7UnN8RbJ-OiC3YybpeKY1Vdp7ge-cB9J0ZR3QjnraRd_cuIz3ZAv2Du28R-r9adcbRHnHOw"; e_fb_builduser="AcLQF9hZgHhvTYhuIozneA42PGiKIdNIeYJ_9oSPZi3-bLP2QgvRgHoaQ9wLNP8dHiY"; e_fb_httpversion="AcI_P3zq78ZUHWJNoRzEG2QFZ1S7oB9UpU1hhWFx3_LhQFld0Lk5591N0Dkr"; e_fb_binaryversion="AcL8eA9G-FD3gLBySdoKrsjeIeMYOBtWE9PYrAhoxQxY5XB4zacoV92gK0tROcyEEDmQBjGYXjfLugP5fC4m77DaPKKuugFg7EA"; e_proxy="AcIZrDQEy3bEtcvE0g1HhNxKi68NGiA4BmNEWPrLEsLD94jEkdZ4dYJc-OKgcAel0k7ubSUbyk2cOCAh"
+< x-fb-connection-quality: EXCELLENT; q=0.9, rtt=14, rtx=0, c=10, mss=1380, tbw=3393, tp=-1, tpl=-1, uplat=111, ullat=0
+< alt-svc: h3=":443"; ma=86400
+< 
+* Connection #0 to host graph.facebook.com left intact
+
+
+2025-01-27 09:39:48 - Respuesta de WhatsApp API:
+Array
+(
+    [httpCode] => 400
+    [response] => Array
+        (
+            [error] => Array
+                (
+                    [message] => Unsupported post request. Object with ID '518378664697887' does not exist, cannot be loaded due to missing permissions, or does not support this operation. Please read the Graph API documentation at https://developers.facebook.com/docs/graph-api
+                    [type] => GraphMethodException
+                    [code] => 100
+                    [error_subcode] => 33
+                    [fbtrace_id] => ACeRivN0hdeynJads_gy6ku
+                )
+
+        )
+
+)
+
+
+2025-01-27 09:43:00 - Datos recibidos:
+Array
+(
+    [telefono] => 647729651
+    [mensaje] => ¡Hola Gema Bustos! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Benjamin), Mia Cok (Querubin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+)
+
+
+2025-01-27 09:43:00 - Request a WhatsApp API:
+Array
+(
+    [url] => https://graph.facebook.com/v14.0/547808498413811/messages
+    [data] => Array
+        (
+            [messaging_product] => whatsapp
+            [recipient_type] => individual
+            [to] => 34647729651
+            [type] => text
+            [text] => Array
+                (
+                    [preview_url] => 
+                    [body] => ¡Hola Gema Bustos! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Benjamin), Mia Cok (Querubin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+                )
+
+        )
+
+    [headers] => Array
+        (
+            [Authorization] => Bearer EAAIOyA5wqXoBO9GjOQL...
+            [Content-Type] => application/json
+        )
+
+)
+
+
+2025-01-27 09:43:00 - cURL verbose log:
+*   Trying 157.240.5.12:443...
+* TCP_NODELAY set
+* Connected to graph.facebook.com (157.240.5.12) port 443 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+* successfully set certificate verify locations:
+*   CAfile: /Applications/MAMP/Library/OpenSSL/cert.pem
+  CApath: none
+* SSL connection using TLSv1.2 / ECDHE-ECDSA-AES128-GCM-SHA256
+* ALPN, server accepted to use h2
+* Server certificate:
+*  subject: C=US; ST=California; L=Menlo Park; O=Meta Platforms, Inc.; CN=*.facebook.com
+*  start date: Nov  5 00:00:00 2024 GMT
+*  expire date: Feb  3 23:59:59 2025 GMT
+*  subjectAltName: host "graph.facebook.com" matched cert's "*.facebook.com"
+*  issuer: C=US; O=DigiCert Inc; OU=www.digicert.com; CN=DigiCert SHA2 High Assurance Server CA
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multi-use
+* Connection state changed (HTTP/2 confirmed)
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* Using Stream ID: 1 (easy handle 0x7fa70f083400)
+> POST /v14.0/547808498413811/messages HTTP/2
+Host: graph.facebook.com
+accept: */*
+authorization: Bearer EAAIOyA5wqXoBO9GjOQLCAER5uuJ6oCCvvKvU7RQwnpfN1swkWZCAjQo6njTik2X0hjiKYbNZC9E8fxRWwIKVEpFZBTKHKGuS6yjVMdY72KtJEbgzdZCZBY4sYWL97M7FjxF5JVBpuXiivelYbZBfyue3RBprrtUg8vBZAAhn4lJ3VmcKTNlNEDVfiy5cP3sblc1maloZBraxsz99zYlyFqpYO1pwGVf7ZBRnhh3T0qwfL
+content-type: application/json
+content-length: 1022
+
+* Connection state changed (MAX_CONCURRENT_STREAMS == 100)!
+* We are completely uploaded and fine
+< HTTP/2 400 
+< error-mid: c9506d75f8a0bd5f3f8148f654c4f51e
+< vary: Origin
+< vary: Accept-Encoding
+< x-ad-api-version-warning: The call has been auto-upgraded to v21.0 as v14.0 has been deprecated.
+< x-business-use-case-usage: {"480783388460957":[{"type":"whatsapp","call_count":1,"total_cputime":1,"total_time":1,"estimated_time_to_regain_access":0}]}
+< content-type: application/json; charset=UTF-8
+< www-authenticate: OAuth "Facebook Platform" "invalid_request" "(#131030) Recipient phone number not in allowed list"
+< access-control-allow-origin: *
+< facebook-api-version: v21.0
+< strict-transport-security: max-age=15552000; preload
+< pragma: no-cache
+< cache-control: no-store
+< expires: Sat, 01 Jan 2000 00:00:00 GMT
+< x-fb-request-id: AmrWopoyQoD_jiJUKrmLXrm
+< x-fb-trace-id: F0hZSkkFunM
+< x-fb-rev: 1019601120
+< x-fb-debug: pUUwvIAd/E2ZGBux0XSq1/nLtOu/0oVeNNHhR7JkzWxRnk4rv9bdcJtysWq7h1OzT452AJb1WcBQiwkoYDZ+dw==
+< date: Mon, 27 Jan 2025 09:43:00 GMT
+< proxy-status: http_request_error; e_proxy="AcIR8B6CVSUSiikhRM_VDfWN0CnZtX6eTlzPtUnYuD6QC6J20hunj4bLxD5lyGDc3HbE8sKvDqh8FqjmCO-e"; e_fb_binaryversion="AcK3VHqjZN2G_0ZoMk86W8WZGvSSFA1I09ZK-0WV9gZUqsIsa0RN9E2mOmrbPiqpzAE--lzNDvg0pJs7MNtGA1IK14bu-GG7wlg"; e_fb_httpversion="AcIzl23Y6yLictfe8iyK7Lu5QvB7LMNYrza76FmttbWbnttwAT02zRW_V1lN"; e_fb_responsebytes="AcKpyMhZV5WDe3_LBCd_kq8mCGg5fpBbvV6SCELcyk28tWqeY5y9tjAZygjn"; e_fb_requesttime="AcKyhn8KRSnZqaPpMzY4jOhfoPo8hCDqn2VYZoxMxX7o28I4pvKParhJBdUGFGaeuN3Av4MzRw"; e_fb_requesthandler="AcJoS0h6DulClSbb5Ee6vYitZH6tqt0WpxMiRka52h-ceAqtDVHI9_PMTIQm5vtUD7xYVzNQT6Y"; e_fb_hostheader="AcL3xlg6j_ZddF0qe7kQHrSl3ASo72b5Ee8ljTuhLHZz5pDe82fzbIcP5QsgUvHzMr7lNU_bfsp0QdAX"; e_fb_requestsequencenumber="AcLckoK0pf6HROjfyVReyGiaXOwNO8y7_eCtOV8WZCmafoEAv9eMSIlx0BbcxA"; e_upip="AcLJ5qOJ5DzrfNqofM0_KYxYuzi_Ttu0Y3ww5BIAYCpqHL2jsKyDLKQ_lZc0O0QCj1T6fD2QoChDeUCN7b8gMA7OJZyuMTub_COOWqw"; e_fb_builduser="AcLhuNMVlw1anxE15RYx2Gg_s8OILU5gg-nHwKUGY7duQB2vw6jkbwnoRj_kVztw66w"; e_fb_vipport="AcL6bZWOPzLTMqMV76G-ntQrzInNUMtxpc4SVar6OqRMRaaVRiMlG7Rd8gUD"; e_clientaddr="AcLypE5-LVMEXp9S_eDfSrt9TIVfXxs4HJjiDMYYApqTpOdic_8-vEmX86SF2t8r6t-7Dfnz1lf3d_mcvV-1Zwi2YHn9G20D3ErV-RUP8psFx2hh"; e_fb_vipaddr="AcIVQL-HQy04smFRoUCyzmEhUAYrSoOHh1veVnJOmeM26zO1a28ntk6IcVDihbkGTKfdciWIz7nrNIIwyCET6f3nC0beQxaxKw"; e_fb_configversion="AcJy3qzp1kRCUZS3fQ0rX0LcDMR3p4NuDL46RcNJ0hMWH84k3fOuUJQ7S7j4jA", http_request_error; e_fb_configversion="AcIrIF-3vYo_lUptwYhsq0agKCDc2A5VoEFC0TbZqPym__NDXj7J3E2ZhUrPtQ"; e_clientaddr="AcKiX66-XYTiw7LbpqvytvEKFz4cg1vispZk0zeRDViCQX-gP2WV3WaQsFm7kc1LIrST3zVeroIUKEInCkk"; e_fb_vipport="AcIqPV9txkcc03zP3ZAmgo-_QNp2AkLFyU59-NiXP8LPuuvyx8IHpfyi6yG1"; e_upip="AcL8aQXV0kcf2ZB0QpWOoLt6fMbRvM5J6-q6rmDAraLrPm7UwxFuXupEJ4JJOZagUZlQLA2N83Szn4yyvhHGHmYSuKdbriQdJg"; e_fb_requestsequencenumber="AcKXIA7LaLTkc6j0JPefOdVEbh8fgRaO_veodXlEZaSmHEe4KeStbK8R3g"; e_fb_hostheader="AcKPhwwheLkzLiUnBQgEqEXGzoYkUgEgWTzQO0rOGY40fn0mFDTH0MmXafq9nlylx9cxU30GDyp1qH1r"; e_fb_vipaddr="AcK-azGSIUvxlEfp0WxYgz5RaghYuDNdI1zsIzaMd8NU-DHvGaqtfkhLrR-e4PoTaFhBbkmE"; e_fb_requesthandler="AcIT5TYeW13JKKCgLKLoiD4ddnsfYUF0B8km_DCbRzF3yNAz_hS4wx4PPvWpvxU2rEjb4GpMNZw"; e_fb_requesttime="AcJ5_NSst6bUzgHRhlBmFV-_hzx_D0ge33Rq6dPhoB-bOxYq6s4adZsbQ77lYz4xdGb3g83H-w"; e_fb_builduser="AcJ-ph5Sq51WTDPFK-VA180RHMDICsmIwT_N0hnhhdTIZYGOb4dXiJHodxNB6eV8U4c"; e_fb_httpversion="AcJbOhQyrsC7QcGzBxUnpQa2T_U9obkakSqO-pqbBOKSajcEAOped2IVmXqF"; e_fb_binaryversion="AcI0bZ3XeM5QcJVGA1RKvQH2FfKt7lQoUGzq6qqciyHmSxGxBqNklTMWkcMeRjjxmvd89j7JEbSJU1xHlkqXpZxzOJnh5IvuWH8"; e_proxy="AcLj6vKgrHQkdweorxY6LN3CvCTrKrIWisNTc8ApR6HOBML0Xg6oaOss7M23Gl7NUNaisVg0L4ZTn7U"
+< x-fb-connection-quality: EXCELLENT; q=0.9, rtt=11, rtx=0, c=10, mss=1380, tbw=3393, tp=-1, tpl=-1, uplat=216, ullat=0
+< alt-svc: h3=":443"; ma=86400
+< 
+* Connection #0 to host graph.facebook.com left intact
+
+
+2025-01-27 09:43:00 - Respuesta de WhatsApp API:
+Array
+(
+    [httpCode] => 400
+    [response] => Array
+        (
+            [error] => Array
+                (
+                    [message] => (#131030) Recipient phone number not in allowed list
+                    [type] => OAuthException
+                    [code] => 131030
+                    [error_data] => Array
+                        (
+                            [messaging_product] => whatsapp
+                            [details] => Número de teléfono del destinatario no incluido en la lista de autorizados: Añade el número de teléfono del destinatario a la lista de destinatarios y vuelve a intentarlo.
+                        )
+
+                    [fbtrace_id] => AmrWopoyQoD_jiJUKrmLXrm
+                )
+
+        )
+
+)
+
+
+2025-01-27 09:43:56 - Datos recibidos:
+Array
+(
+    [telefono] => 647729651
+    [mensaje] => ¡Hola Gema Bustos! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Benjamin), Mia Cok (Querubin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+)
+
+
+2025-01-27 09:43:56 - Request a WhatsApp API:
+Array
+(
+    [url] => https://graph.facebook.com/v14.0/547808498413811/messages
+    [data] => Array
+        (
+            [messaging_product] => whatsapp
+            [recipient_type] => individual
+            [to] => 34647729651
+            [type] => text
+            [text] => Array
+                (
+                    [preview_url] => 
+                    [body] => ¡Hola Gema Bustos! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Benjamin), Mia Cok (Querubin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+                )
+
+        )
+
+    [headers] => Array
+        (
+            [Authorization] => Bearer EAAIOyA5wqXoBO9GjOQL...
+            [Content-Type] => application/json
+        )
+
+)
+
+
+2025-01-27 09:43:56 - cURL verbose log:
+*   Trying 157.240.5.12:443...
+* TCP_NODELAY set
+* Connected to graph.facebook.com (157.240.5.12) port 443 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+* successfully set certificate verify locations:
+*   CAfile: /Applications/MAMP/Library/OpenSSL/cert.pem
+  CApath: none
+* SSL connection using TLSv1.2 / ECDHE-ECDSA-AES128-GCM-SHA256
+* ALPN, server accepted to use h2
+* Server certificate:
+*  subject: C=US; ST=California; L=Menlo Park; O=Meta Platforms, Inc.; CN=*.facebook.com
+*  start date: Nov  5 00:00:00 2024 GMT
+*  expire date: Feb  3 23:59:59 2025 GMT
+*  subjectAltName: host "graph.facebook.com" matched cert's "*.facebook.com"
+*  issuer: C=US; O=DigiCert Inc; OU=www.digicert.com; CN=DigiCert SHA2 High Assurance Server CA
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multi-use
+* Connection state changed (HTTP/2 confirmed)
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* Using Stream ID: 1 (easy handle 0x7fa70c061a00)
+> POST /v14.0/547808498413811/messages HTTP/2
+Host: graph.facebook.com
+accept: */*
+authorization: Bearer EAAIOyA5wqXoBO9GjOQLCAER5uuJ6oCCvvKvU7RQwnpfN1swkWZCAjQo6njTik2X0hjiKYbNZC9E8fxRWwIKVEpFZBTKHKGuS6yjVMdY72KtJEbgzdZCZBY4sYWL97M7FjxF5JVBpuXiivelYbZBfyue3RBprrtUg8vBZAAhn4lJ3VmcKTNlNEDVfiy5cP3sblc1maloZBraxsz99zYlyFqpYO1pwGVf7ZBRnhh3T0qwfL
+content-type: application/json
+content-length: 1022
+
+* Connection state changed (MAX_CONCURRENT_STREAMS == 100)!
+* We are completely uploaded and fine
+< HTTP/2 400 
+< error-mid: c9506d75f8a0bd5f3f8148f654c4f51e
+< vary: Origin
+< vary: Accept-Encoding
+< x-ad-api-version-warning: The call has been auto-upgraded to v21.0 as v14.0 has been deprecated.
+< x-business-use-case-usage: {"480783388460957":[{"type":"whatsapp","call_count":1,"total_cputime":1,"total_time":1,"estimated_time_to_regain_access":0}]}
+< content-type: application/json; charset=UTF-8
+< www-authenticate: OAuth "Facebook Platform" "invalid_request" "(#131030) Recipient phone number not in allowed list"
+< access-control-allow-origin: *
+< facebook-api-version: v21.0
+< strict-transport-security: max-age=15552000; preload
+< pragma: no-cache
+< cache-control: no-store
+< expires: Sat, 01 Jan 2000 00:00:00 GMT
+< x-fb-request-id: AdimZJzrfB3Bcw1P4FDoGv9
+< x-fb-trace-id: GHurFlojKJz
+< x-fb-rev: 1019601120
+< x-fb-debug: GgrL0YSgN6nn7trKexUdqKM2UYiD3hxRO+0Xb1EvD1cRQm+CMa+QU1C2vPEbjHimfaEzf1hIqBHhnzsgnWGJtg==
+< date: Mon, 27 Jan 2025 09:43:56 GMT
+< proxy-status: http_request_error; e_proxy="AcJALSbrGLuHi9Q9DFeGrOaIMRmUGgGiDuy-zFsrmrU4RVWrv9ygsTPjZx-68Dw7JiEJyplcQfBcIfM7Umvz"; e_fb_binaryversion="AcKBXkNFvsxeLBBKDTr3k_ljTTVMIDeGoiY5VvB_DytP2Nmonvs8qLO5P_UbImhYO9RZx5XGqHHxUByrau1hnwL1ouNVczX36zo"; e_fb_httpversion="AcIrpSj6MPcn7is7YXosmvXNy8Q4VG4zVV7p-k-MaxQHI0Jx1VF-VxP3Sk57"; e_fb_responsebytes="AcLEKkSthRxnzzndAhOjsvpWQy3xU5piZn8C5wi7S394aJKG-fPvUrwjOBNt"; e_fb_requesttime="AcLwyd7f6S_JFkfmlxFDwjxiBLDNH4WBUrltE9Hz2zO92Dlp0ER_CH9KU3FJKqR_qQAvTz7o4A"; e_fb_requesthandler="AcKnNA_2I3dp4Kvn1F5_sHYm2YE730GEc7laLMMo503KhC38ylhCSQTzbERPsFR2rwYOP4d9ohc"; e_fb_hostheader="AcLsfxZnwrg_8V1ef3yvvKLEoTg8h4-M0mtOkZL3k0oB3PhrnaAL_iaTQYC_3XqigeXKyAxd55mIfbe4"; e_fb_requestsequencenumber="AcJDUAEV7W7IKY2uWuAK7ZoIPhsIvVABcjsDHDRdz7zGrB4MnMKewPM7O2H_"; e_upip="AcI9ODS8yMRDpSMVVvPtnNmpznGfdBVh_FoF9bb1hSC1o6x4i9KRSB0sn1fz0svXll5j7FuibRJn-fKA_u_xLzTrC177fC4Re4iAEXs"; e_fb_builduser="AcJOAnMkix9E3iSqGEwNdfn6UnBHjUpvRYqmZ0xQZqeEYD1v2zUvVMIEbCR-AGgj6GA"; e_fb_vipport="AcLsBsAjUN5eKcCQfyAz4ejURmQkDn6kI29Ke1S7X63YL-A1HSO1PHjDHq3f"; e_clientaddr="AcJobzIt5hCsc28_W3gftAtNa_Xkyw_2UQjpH8OIW6vGc6bdSkgnGeiF_0hxlVnSfE1fFsD6ejs9W5X0mKFqEWpgz8KKjqV_E86hxJMLuWp5LZenJQ"; e_fb_vipaddr="AcLuVOUiUq8ChDpoPmanLrL-wP32PHhkjZL4EviNjOge0bV6uBJXuv_i1xN_C6iVNc2tOOAnd_5bkx3rOJI1nYFXE3pFjAFbUg"; e_fb_configversion="AcLE1d_LnCxqfZcVtZjFfnqUkcAD9TdbGZW-mUT8C1T9ic1nWgSg6DrC9-r6-w", http_request_error; e_fb_configversion="AcJqaY4c36JTCUlFyNcX40uVOAICWhdX3LelrILbC0W4A6dXSQZ_iUENkIbq6g"; e_clientaddr="AcJxkLXl6mUuaT5km-SRJ8phsAl_dWJRFORe3Xa57HpXqH_jKgq3_Jfu-gtYHZx2s4dEj5UXPCjg42rMvKQ"; e_fb_vipport="AcJNztOdBn_vSAftiNuPDM4e5Evmhdm6r0SVsFh-3g0RdN3T9THKzvHmjDFt"; e_upip="AcIf4TjyK2zemtx6CxqjlvckUm8-ZQ2CSO4cuS01F84T-rpVm7qLxcjEvlfERqekpdRIRJvckcELHtnyQ5lc-1hPYxRYJoEm3w"; e_fb_requestsequencenumber="AcK5hk1BUSVN378wiK_zRrXHCT4V1h7tOhUbsMZnT8o9kOaXE3R_Nhmt0A"; e_fb_hostheader="AcJ6ZJGgAL1GKV7kDHPyJpH2MOPTGJ6NTMg3OFywQquw83oFiu7pdHxgTX_o81uQ5oHDnxZLkAzpkGy5"; e_fb_vipaddr="AcKfzeVLdbYNInrdHCvxJm_gEB1XkOKzjibIZPSMe_IpdLr02YHxNttr0tpMFCJVuotsnedq"; e_fb_requesthandler="AcLPADrNaj4JgCIKR4xn51FbpAayUk0T0cIld8PG_p28JGqsx4m_XPZZHFnY3VdKB5GsgUCMasY"; e_fb_requesttime="AcIHxlvMoEY6-laBWeoWUooPFX77cEBidogED1MHY3dZOpemNCxgSOYinkrOcr8d-01emH8aIQ"; e_fb_builduser="AcLL30XfwyjqspIOw6xN-Fwcrvn1f6FsUqk6EFf0bF8aX4-Gchpb7kpisM8fnxuQpvE"; e_fb_httpversion="AcKPoNMcQI2ar9ScnrbmznXVJ34RjWwv8WeSl1DKxNdee_f6e4U4V4vsBS-d"; e_fb_binaryversion="AcLXfpbiEbYtz3DD5Q4TF9Mz6GQwDxQjYojQ296zPPZY7zyUfYY-9AX2LFh8ts2InKLcxZjyT3DoTtST9YmLMAdKKdi4s2m7AXA"; e_proxy="AcKto1cAQEl-x_vNiG2QMlIgzyapc3sNmx08w4YFUc54_5oZMAvO_JgDKtfrZvoAS8wOlzJAz97BSNE"
+< x-fb-connection-quality: EXCELLENT; q=0.9, rtt=14, rtx=0, c=10, mss=1380, tbw=3394, tp=-1, tpl=-1, uplat=200, ullat=0
+< alt-svc: h3=":443"; ma=86400
+< 
+* Connection #0 to host graph.facebook.com left intact
+
+
+2025-01-27 09:43:56 - Respuesta de WhatsApp API:
+Array
+(
+    [httpCode] => 400
+    [response] => Array
+        (
+            [error] => Array
+                (
+                    [message] => (#131030) Recipient phone number not in allowed list
+                    [type] => OAuthException
+                    [code] => 131030
+                    [error_data] => Array
+                        (
+                            [messaging_product] => whatsapp
+                            [details] => Número de teléfono del destinatario no incluido en la lista de autorizados: Añade el número de teléfono del destinatario a la lista de destinatarios y vuelve a intentarlo.
+                        )
+
+                    [fbtrace_id] => AdimZJzrfB3Bcw1P4FDoGv9
+                )
+
+        )
+
+)
+
+
+2025-01-27 09:45:16 - Datos recibidos:
+Array
+(
+    [telefono] => 647729651
+    [mensaje] => ¡Hola Gema Bustos! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Benjamin), Mia Cok (Querubin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+)
+
+
+2025-01-27 09:45:16 - Request a WhatsApp API:
+Array
+(
+    [url] => https://graph.facebook.com/v21.0/547808498413811/messages
+    [data] => Array
+        (
+            [messaging_product] => whatsapp
+            [recipient_type] => individual
+            [to] => 34647729651
+            [type] => text
+            [text] => Array
+                (
+                    [preview_url] => 
+                    [body] => ¡Hola Gema Bustos! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Benjamin), Mia Cok (Querubin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+                )
+
+        )
+
+    [headers] => Array
+        (
+            [Authorization] => Bearer EAAIOyA5wqXoBO9GjOQL...
+            [Content-Type] => application/json
+        )
+
+)
+
+
+2025-01-27 09:45:16 - cURL verbose log:
+*   Trying 157.240.5.12:443...
+* TCP_NODELAY set
+* Connected to graph.facebook.com (157.240.5.12) port 443 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+* successfully set certificate verify locations:
+*   CAfile: /Applications/MAMP/Library/OpenSSL/cert.pem
+  CApath: none
+* SSL connection using TLSv1.2 / ECDHE-ECDSA-AES128-GCM-SHA256
+* ALPN, server accepted to use h2
+* Server certificate:
+*  subject: C=US; ST=California; L=Menlo Park; O=Meta Platforms, Inc.; CN=*.facebook.com
+*  start date: Nov  5 00:00:00 2024 GMT
+*  expire date: Feb  3 23:59:59 2025 GMT
+*  subjectAltName: host "graph.facebook.com" matched cert's "*.facebook.com"
+*  issuer: C=US; O=DigiCert Inc; OU=www.digicert.com; CN=DigiCert SHA2 High Assurance Server CA
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multi-use
+* Connection state changed (HTTP/2 confirmed)
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* Using Stream ID: 1 (easy handle 0x7fa70e83ca00)
+> POST /v21.0/547808498413811/messages HTTP/2
+Host: graph.facebook.com
+accept: */*
+authorization: Bearer EAAIOyA5wqXoBO9GjOQLCAER5uuJ6oCCvvKvU7RQwnpfN1swkWZCAjQo6njTik2X0hjiKYbNZC9E8fxRWwIKVEpFZBTKHKGuS6yjVMdY72KtJEbgzdZCZBY4sYWL97M7FjxF5JVBpuXiivelYbZBfyue3RBprrtUg8vBZAAhn4lJ3VmcKTNlNEDVfiy5cP3sblc1maloZBraxsz99zYlyFqpYO1pwGVf7ZBRnhh3T0qwfL
+content-type: application/json
+content-length: 1022
+
+* Connection state changed (MAX_CONCURRENT_STREAMS == 100)!
+* We are completely uploaded and fine
+< HTTP/2 400 
+< error-mid: c9506d75f8a0bd5f3f8148f654c4f51e
+< vary: Origin
+< vary: Accept-Encoding
+< x-business-use-case-usage: {"480783388460957":[{"type":"whatsapp","call_count":1,"total_cputime":1,"total_time":1,"estimated_time_to_regain_access":0}]}
+< content-type: application/json; charset=UTF-8
+< www-authenticate: OAuth "Facebook Platform" "invalid_request" "(#131030) Recipient phone number not in allowed list"
+< access-control-allow-origin: *
+< facebook-api-version: v21.0
+< strict-transport-security: max-age=15552000; preload
+< pragma: no-cache
+< cache-control: no-store
+< expires: Sat, 01 Jan 2000 00:00:00 GMT
+< x-fb-request-id: Aw-JKfkwWSEHhbRA6xgQ6hh
+< x-fb-trace-id: Fi8VYlChcrC
+< x-fb-rev: 1019601120
+< x-fb-debug: A+ahfveV1E1LF0tOiC1BEewPUlsBviPIujMLVeKKAQKWM6nZ5UFcO4wci0NkmcgeMgk2nYphGQYzp2NQr3sYOA==
+< date: Mon, 27 Jan 2025 09:45:16 GMT
+< proxy-status: http_request_error; e_proxy="AcKVW49rayegwGvDG4TZM2c0jmndQLxPYnk2TntHD1Cqh7gfzmgO7X0gX1fTqa28iAC0M3fE3cWgjkBrDLq2"; e_fb_binaryversion="AcKHTCQ9iqnvD-DZaDuveLwVDTeCLy3LmQ3JYbhh3XZwcnEAl3QwemimI5iKNIZPV0R5_gY2qDXD7EkVqzWwk9XnepE4Ev1F3PA"; e_fb_httpversion="AcKtCZ71ZcDgR1OEG3kcZxhq6WL1TxWpG8L-uxRz52PE8J9gJR3qvKE4DPAJ"; e_fb_responsebytes="AcLKT2XTz2QuBd5ga3LJcTlMrnQh13fJn4PYqdJFA_KtKlV4RKp3vcVyziPw"; e_fb_requesttime="AcI280dDsGwLsKHsp3yF-duwTnAwG0Em3Ud0gm3mQrcJUnhuLzNsk2nelkYYPVqqArWoBO-LQA"; e_fb_requesthandler="AcLERehP9op3zpuMK-4scGx6g7Aawtby7Nz9nW7BTkWYm-3gpNdkWqxtLYuqMk4tnxYsfbULlhU"; e_fb_hostheader="AcIlHSHeqoBduZeqCyDGrP0XFsRlOjxxQF_89jP-LaP__BcMuUB3LCIoJQvHamXj-Uonm4INM9Lg6_F7"; e_fb_requestsequencenumber="AcIfKzmS2LB8juruTprZZEqDglBWYOxa_egdVPcr0q5A8-T2dNdif4X89uA"; e_upip="AcKeMUv3vBr7jfgdqQk53k5FvkwLiPD2IU2w97UFXmYJEjfVHtseNXlna2wo3M9w2xDkFnrOZZ4wxqSdRx8SQZ0g0gvUeBxKHSR0Rpc"; e_fb_builduser="AcI4szVsrXpw2q51xQhCxLs-vuhaPaPnWu_yNz0JKa1AynQTPwcapYlL8J5KcH8d_Og"; e_fb_vipport="AcL5sLUBWpzxqFvRVzENaNM_BAgPriiI5fJqZrslD--TBM1m1i-pZ4umht3A"; e_clientaddr="AcKDk9WAWyL2SBnayk_SwJLpesC6Gp5z0lUx4MzkKbZeY8F71ztd3uHQHrCiv2mQN0-QD6DdoC4y-yOGcaW1AUPzu6vhlgHNoOMYfbAgOhGlIfJGSA"; e_fb_vipaddr="AcI-zrOQpEF0icXohPYdIaQGRshVxrmmigP4K9RSq3oHeXRbzMzlCjRqp8fSyyJihnWKI-Zp9L0QXG5CWh7fG7br0fLQlCSOFw"; e_fb_configversion="AcJYGVZa5OuMDSmQpN-mszMvjXU8PWC384cyVLWTgpS3noJEVq42iPQZ0aLefg", http_request_error; e_fb_configversion="AcKEWftYUIRt0l00J2pgckF7B0xWUQa0sdoIC64rl-yOKN0sEc29upHX5bD9kA"; e_clientaddr="AcI1RxrtHWe6zuQNajpaXYOt0_lEK_fdTuUChVq5HEVrwgugoNqeiCgFizKVQLd3aAZsxi_hNQxHlPCILgA"; e_fb_vipport="AcIIwkASHzEzNSFc08Av8yCESswk5pvrNpBI-1qgI024acjFbOyJT6jip31J"; e_upip="AcKJO7-TGdPFlSk3dcGN7evIAIzbyTQT35dMEPXpKjc0VdAKizrUTfERoSZhvy6lHDj_eRysQkP8xhw1I48TtjM43dRWBcmJWA"; e_fb_requestsequencenumber="AcJamWTUlywaRWQgXafI5bseRwXPJF6JnhumEGg-xkl3lxGJfxv4TKF8cQ"; e_fb_hostheader="AcK9jdiT-zVEgctJ0DwCVW0_e10jT96H4qpxBDygiSbSVx-Loyoj7xx7wI8asFko7zka7iS0ntsX6Waj"; e_fb_vipaddr="AcKcAi9OkaLenUvkgEhjo7GPDZzrRfdjZg0aQ06TvHF5a2DCQGU08p5Orq6AcHKLnMm84KcJ"; e_fb_requesthandler="AcJuDftyREcBtewCH4_7Er10quVuzGo1OWgW613tbb9d-crji5EsifQKVaEvvjP11rJbsK66DH0"; e_fb_requesttime="AcIfQTdZWRX4_P3NVnA8QNpaXDvtT4tUsYhicSqVg6gX4VY2VaOjApHzQ0VBgS99tNFkNOTQeA"; e_fb_builduser="AcLX_JOmUISu3dwOJ4_q0OwdnBDOBlgE8QO-UaevG8PTLTL9ddVtzlLQp8k_UqSh_eA"; e_fb_httpversion="AcIizSyJ5z8tMdBdj0sD0Ki3XkyXVKtzzEnPe7J-eJWSimbfX-dPd_2Vo4WF"; e_fb_binaryversion="AcKyOke5nFC5pXDEF3dVUELL8tMejQluZm3NGrCc2YzeJM1ZsaKROnfMziH5F4KRSOThXRYXOPnMNgNEdJZVhw0n_075Nphu1ys"; e_proxy="AcLQ3kPdE-L22woJXhsxGBrt5DRgGxPeCNtw7IQtmLK_lvY8QqE50XbHHNTNNMjPyC-XIYd4KqnpWNY"
+< x-fb-connection-quality: EXCELLENT; q=0.9, rtt=14, rtx=0, c=10, mss=1380, tbw=3394, tp=-1, tpl=-1, uplat=230, ullat=0
+< alt-svc: h3=":443"; ma=86400
+< 
+* Connection #0 to host graph.facebook.com left intact
+
+
+2025-01-27 09:45:16 - Respuesta de WhatsApp API:
+Array
+(
+    [httpCode] => 400
+    [response] => Array
+        (
+            [error] => Array
+                (
+                    [message] => (#131030) Recipient phone number not in allowed list
+                    [type] => OAuthException
+                    [code] => 131030
+                    [error_data] => Array
+                        (
+                            [messaging_product] => whatsapp
+                            [details] => Número de teléfono del destinatario no incluido en la lista de autorizados: Añade el número de teléfono del destinatario a la lista de destinatarios y vuelve a intentarlo.
+                        )
+
+                    [fbtrace_id] => Aw-JKfkwWSEHhbRA6xgQ6hh
+                )
+
+        )
+
+)
+
+
+2025-01-27 09:46:37 - Datos recibidos:
+Array
+(
+    [telefono] => 647729651
+    [mensaje] => ¡Hola Gema Bustos! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Benjamin), Mia Cok (Querubin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+)
+
+
+2025-01-27 09:46:37 - Request a WhatsApp API:
+Array
+(
+    [url] => https://graph.facebook.com/v21.0/547808498413811/messages
+    [data] => Array
+        (
+            [messaging_product] => whatsapp
+            [recipient_type] => individual
+            [to] => 34647729651
+            [type] => text
+            [text] => Array
+                (
+                    [preview_url] => 
+                    [body] => ¡Hola Gema Bustos! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Benjamin), Mia Cok (Querubin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+                )
+
+        )
+
+    [headers] => Array
+        (
+            [Authorization] => Bearer EAAIOyA5wqXoBO9GjOQL...
+            [Content-Type] => application/json
+        )
+
+)
+
+
+2025-01-27 09:46:37 - cURL verbose log:
+*   Trying 31.13.83.8:443...
+* TCP_NODELAY set
+* Connected to graph.facebook.com (31.13.83.8) port 443 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+* successfully set certificate verify locations:
+*   CAfile: /Applications/MAMP/Library/OpenSSL/cert.pem
+  CApath: none
+* SSL connection using TLSv1.2 / ECDHE-ECDSA-AES128-GCM-SHA256
+* ALPN, server accepted to use h2
+* Server certificate:
+*  subject: C=US; ST=California; L=Menlo Park; O=Meta Platforms, Inc.; CN=*.facebook.com
+*  start date: Nov  5 00:00:00 2024 GMT
+*  expire date: Feb  3 23:59:59 2025 GMT
+*  subjectAltName: host "graph.facebook.com" matched cert's "*.facebook.com"
+*  issuer: C=US; O=DigiCert Inc; OU=www.digicert.com; CN=DigiCert SHA2 High Assurance Server CA
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multi-use
+* Connection state changed (HTTP/2 confirmed)
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* Using Stream ID: 1 (easy handle 0x7fa70d03f600)
+> POST /v21.0/547808498413811/messages HTTP/2
+Host: graph.facebook.com
+accept: */*
+authorization: Bearer EAAIOyA5wqXoBO9GjOQLCAER5uuJ6oCCvvKvU7RQwnpfN1swkWZCAjQo6njTik2X0hjiKYbNZC9E8fxRWwIKVEpFZBTKHKGuS6yjVMdY72KtJEbgzdZCZBY4sYWL97M7FjxF5JVBpuXiivelYbZBfyue3RBprrtUg8vBZAAhn4lJ3VmcKTNlNEDVfiy5cP3sblc1maloZBraxsz99zYlyFqpYO1pwGVf7ZBRnhh3T0qwfL
+content-type: application/json
+content-length: 1022
+
+* Connection state changed (MAX_CONCURRENT_STREAMS == 100)!
+* We are completely uploaded and fine
+< HTTP/2 200 
+< content-type: application/json; charset=UTF-8
+< vary: Origin
+< x-business-use-case-usage: {"480783388460957":[{"type":"whatsapp","call_count":1,"total_cputime":1,"total_time":1,"estimated_time_to_regain_access":0}]}
+< access-control-allow-origin: *
+< facebook-api-version: v21.0
+< strict-transport-security: max-age=15552000; preload
+< pragma: no-cache
+< cache-control: private, no-cache, no-store, must-revalidate
+< expires: Sat, 01 Jan 2000 00:00:00 GMT
+< x-fb-request-id: AAQ6dTrMzkYxUQzBwCl5Khx
+< x-fb-trace-id: FmXKadzUG0y
+< x-fb-rev: 1019601120
+< x-fb-debug: wV3bUr0ZRQ7MC9v3fM1V1TL9SMP2/L7XvVLkwy0IR7qymU0byA3b0s+cCgOSW1Ha7CwNKbAeJKIlnatSUet0Dw==
+< content-length: 172
+< date: Mon, 27 Jan 2025 09:46:38 GMT
+< x-fb-connection-quality: EXCELLENT; q=0.9, rtt=10, rtx=0, c=10, mss=1380, tbw=3392, tp=-1, tpl=-1, uplat=567, ullat=0
+< alt-svc: h3=":443"; ma=86400
+< 
+* Connection #0 to host graph.facebook.com left intact
+
+
+2025-01-27 09:46:38 - Respuesta de WhatsApp API:
+Array
+(
+    [httpCode] => 200
+    [response] => Array
+        (
+            [messaging_product] => whatsapp
+            [contacts] => Array
+                (
+                    [0] => Array
+                        (
+                            [input] => 34647729651
+                            [wa_id] => 34647729651
+                        )
+
+                )
+
+            [messages] => Array
+                (
+                    [0] => Array
+                        (
+                            [id] => wamid.HBgLMzQ2NDc3Mjk2NTEVAgARGBIwNzZBRjNCRkE3QTI1Mzc4NjEA
+                        )
+
+                )
+
+        )
+
+)
+
+
+2025-01-27 09:56:59 - Datos recibidos:
+Array
+(
+    [telefono] => 647729651
+    [mensaje] => ¡Hola Gema Bustos! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Benjamin), Mia Cok (Querubin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+)
+
+
+2025-01-27 09:56:59 - Request a WhatsApp API:
+Array
+(
+    [url] => https://graph.facebook.com/v21.0/547808498413811/messages
+    [data] => Array
+        (
+            [messaging_product] => whatsapp
+            [recipient_type] => individual
+            [to] => 34647729651
+            [type] => text
+            [text] => Array
+                (
+                    [preview_url] => 
+                    [body] => ¡Hola Gema Bustos! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Benjamin), Mia Cok (Querubin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+                )
+
+        )
+
+    [headers] => Array
+        (
+            [Authorization] => Bearer EAAIOyA5wqXoBO9GjOQL...
+            [Content-Type] => application/json
+        )
+
+)
+
+
+2025-01-27 09:57:00 - cURL verbose log:
+*   Trying 157.240.5.12:443...
+* TCP_NODELAY set
+* Connected to graph.facebook.com (157.240.5.12) port 443 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+* successfully set certificate verify locations:
+*   CAfile: /Applications/MAMP/Library/OpenSSL/cert.pem
+  CApath: none
+* SSL connection using TLSv1.2 / ECDHE-ECDSA-AES128-GCM-SHA256
+* ALPN, server accepted to use h2
+* Server certificate:
+*  subject: C=US; ST=California; L=Menlo Park; O=Meta Platforms, Inc.; CN=*.facebook.com
+*  start date: Nov  5 00:00:00 2024 GMT
+*  expire date: Feb  3 23:59:59 2025 GMT
+*  subjectAltName: host "graph.facebook.com" matched cert's "*.facebook.com"
+*  issuer: C=US; O=DigiCert Inc; OU=www.digicert.com; CN=DigiCert SHA2 High Assurance Server CA
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multi-use
+* Connection state changed (HTTP/2 confirmed)
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* Using Stream ID: 1 (easy handle 0x7fa70e047600)
+> POST /v21.0/547808498413811/messages HTTP/2
+Host: graph.facebook.com
+accept: */*
+authorization: Bearer EAAIOyA5wqXoBO9GjOQLCAER5uuJ6oCCvvKvU7RQwnpfN1swkWZCAjQo6njTik2X0hjiKYbNZC9E8fxRWwIKVEpFZBTKHKGuS6yjVMdY72KtJEbgzdZCZBY4sYWL97M7FjxF5JVBpuXiivelYbZBfyue3RBprrtUg8vBZAAhn4lJ3VmcKTNlNEDVfiy5cP3sblc1maloZBraxsz99zYlyFqpYO1pwGVf7ZBRnhh3T0qwfL
+content-type: application/json
+content-length: 1022
+
+* Connection state changed (MAX_CONCURRENT_STREAMS == 100)!
+* We are completely uploaded and fine
+< HTTP/2 200 
+< content-type: application/json; charset=UTF-8
+< vary: Origin
+< x-business-use-case-usage: {"480783388460957":[{"type":"whatsapp","call_count":1,"total_cputime":1,"total_time":1,"estimated_time_to_regain_access":0}]}
+< access-control-allow-origin: *
+< facebook-api-version: v21.0
+< strict-transport-security: max-age=15552000; preload
+< pragma: no-cache
+< cache-control: private, no-cache, no-store, must-revalidate
+< expires: Sat, 01 Jan 2000 00:00:00 GMT
+< x-fb-request-id: AJa_qG-jOiwxVrzQiq52w1l
+< x-fb-trace-id: AHLMwtkIhdI
+< x-fb-rev: 1019601120
+< x-fb-debug: ILykReiirifGurDRUPJLTUl/GSUI7uZwviAtIeZvIqV5eWgEfwul/WM54q0znRVIojUXVThD861DisiaomDHYw==
+< content-length: 172
+< date: Mon, 27 Jan 2025 09:57:00 GMT
+< x-fb-connection-quality: EXCELLENT; q=0.9, rtt=13, rtx=0, c=10, mss=1380, tbw=3393, tp=-1, tpl=-1, uplat=651, ullat=0
+< alt-svc: h3=":443"; ma=86400
+< 
+* Connection #0 to host graph.facebook.com left intact
+
+
+2025-01-27 09:57:00 - Respuesta de WhatsApp API:
+Array
+(
+    [httpCode] => 200
+    [response] => Array
+        (
+            [messaging_product] => whatsapp
+            [contacts] => Array
+                (
+                    [0] => Array
+                        (
+                            [input] => 34647729651
+                            [wa_id] => 34647729651
+                        )
+
+                )
+
+            [messages] => Array
+                (
+                    [0] => Array
+                        (
+                            [id] => wamid.HBgLMzQ2NDc3Mjk2NTEVAgARGBI2OTg0NTMyRTQwRTMxMzIyMUMA
+                        )
+
+                )
+
+        )
+
+)
+
+

@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     
     // Configuración de la API de WhatsApp
-    $token = 'EAAIOyA5wqXoBO1k6qq47AWGZA5HScNkR03iKUpJXjBJj8UjAqaerjaOZC8XB389PosfGGUBVHypLBOZB6NZC20QZA0ddrQ029VGPyOSkqx0G62ZBvOoKcWfalFbJZA0h8oZB26BBnZCZBD02H52lgdDvNxm4Fn1TurVbX2tZASGxhjvrj7iLDioIIzMDADGiPloyMM07GgfEAfNaVtIRsQh';
+    $token = 'EAAIOyA5wqXoBO9GjOQLCAER5uuJ6oCCvvKvU7RQwnpfN1swkWZCAjQo6njTik2X0hjiKYbNZC9E8fxRWwIKVEpFZBTKHKGuS6yjVMdY72KtJEbgzdZCZBY4sYWL97M7FjxF5JVBpuXiivelYbZBfyue3RBprrtUg8vBZAAhn4lJ3VmcKTNlNEDVfiy5cP3sblc1maloZBraxsz99zYlyFqpYO1pwGVf7ZBRnhh3T0qwfL';
     $telefono_id = '547808498413811';
     $version = 'v21.0';  // Versión actualizada de la API
     
@@ -117,11 +117,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'response' => $result
             ]);
         } else {
-            echo json_encode([
-                'status' => 'error',
-                'message' => 'Error en la API: ' . ($result['error']['message'] ?? 'Error desconocido'),
-                'response' => $result
-            ]);
+            if (isset($result['error']['message']) && strpos($result['error']['message'], 'Recipient phone number not in allowed list') !== false) {
+                echo json_encode([
+                    'status' => 'error',
+                    'message' => 'Error: El número de teléfono del destinatario no está en la lista permitida.',
+                    'response' => $result
+                ]);
+            } else {
+                echo json_encode([
+                    'status' => 'error',
+                    'message' => 'Error en la API: ' . ($result['error']['message'] ?? 'Error desconocido'),
+                    'response' => $result
+                ]);
+            }
         }
     }
     

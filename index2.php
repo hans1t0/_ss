@@ -1,24 +1,13 @@
 <?php
-// Iniciar sesión y buffer al principio
-ob_start();
 session_start();
-
-// Incluir configuración de la base de datos
-require_once 'config/database.php';
-
-// Generar nuevo token CSRF si no existe
-if (!isset($_SESSION['csrf_token'])) {
-    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-}
 
 // Mensaje simple de error/éxito
 $status = $_GET['status'] ?? null;
 $message = $_GET['message'] ?? null;
 
-// Cargar primero las funciones compartidas
-require_once 'templates/functions.php';
-// Luego cargar los templates
+// Cargar primero el template del usuario que contiene la función generarCampo
 require_once 'templates/template_usuario.php';
+// Luego cargar el template del padre que usa esa función
 require_once 'templates/template_padre.php';
 ?>
 <!DOCTYPE html>
@@ -32,7 +21,7 @@ require_once 'templates/template_padre.php';
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script src="funciones.js?v=<?= time() ?>"></script>
+    <script src="funciones.js"></script>
 </head>
 <body class="bg-light text-dark">
     <div class="header-banner text-center py-8 bg-cover bg-center mb-4" style="background-image: url('futbol-banner.jpg');">
@@ -56,7 +45,7 @@ require_once 'templates/template_padre.php';
                     <div class="mb-4">
                         <div class="alert alert-info">
                             <h5 class="alert-heading"><i class="fas fa-euro-sign me-2"></i>Información de Precios</h5>
-                            <p class="mb-0">Cuota Campus: 95€</p>
+                            <p class="mb-0">Cuota Campus: 90€</p>
                             <p class="mb-0">Descuento Familiar:</p>
                             <ul>
                                 <li>5€ segundo hij@</li>

@@ -1,10 +1,10 @@
 <?php
 // Configuración de la base de datos
 $config = [
-    'host' => 'localhost',
+    'host' => 'mariadb',
     'dbname' => 'ss_campus_db',
     'user' => 'root',
-    'password' => 'hans'
+    'password' => 'hansitox'
 ];
 
 // Funciones de validación
@@ -36,6 +36,12 @@ function limpiarEntrada($data) {
     return $data;
 }
 
+function logError($mensaje, $nivel = 'ERROR') {
+    $fecha = date('Y-m-d H:i:s');
+    $ip = $_SERVER['REMOTE_ADDR'];
+    error_log("[$fecha][$nivel][$ip] $mensaje");
+}
+
 try {
     // Validar datos del padre/tutor
     $errores = [];
@@ -45,7 +51,23 @@ try {
     $padre_telefono = limpiarEntrada($_POST['padre_telefono'] ?? '');
     $padre_email = limpiarEntrada($_POST['padre_email'] ?? '');
     $metodo_pago = limpiarEntrada($_POST['metodo_pago'] ?? '');
-    $cuenta_bancaria = limpiarEntrada($_POST['cuenta_bancaria'] ?? '');
+
+    // Validar método de pago
+    $metodo_pago = limpiarEntrada($_POST['metodo_pago'] ?? '');
+    if (!in_array($metodo_pago, ['transferencia', 'coordinador'])) {
+        $errores[] = "El método de pago no es válido";
+    }
+
+    // Modificar la sección de método de pago
+    if ($metodo_pago === 'T') {
+        $metodo_pago = 'transferencia';
+    } elseif ($metodo_pago === 'C') {
+        $metodo_pago = 'coordinador';
+    }
+
+    if (!in_array($metodo_pago, ['transferencia', 'coordinador'])) {
+        $errores[] = "El método de pago no es válido";
+    }
 
     if (!validarTexto($padre_nombre)) {
         $errores[] = "El nombre del padre/tutor no es válido";
@@ -58,9 +80,6 @@ try {
     }
     if (!validarEmail($padre_email)) {
         $errores[] = "El email no tiene un formato válido";
-    }
-    if ($metodo_pago === 'transferencia' && !validarIBAN($cuenta_bancaria)) {
-        $errores[] = "El IBAN no tiene un formato válido";
     }
 
     // Si hay errores, detener el proceso
@@ -84,8 +103,8 @@ try {
 
     // Insertar datos validados del padre/tutor
     $stmtPadre = $pdo->prepare("
-        INSERT INTO padres (nombre, dni, telefono, email, metodo_pago, cuenta_bancaria)
-        VALUES (:nombre, :dni, :telefono, :email, :metodo_pago, :cuenta_bancaria)
+        INSERT INTO padres (nombre, dni, telefono, email, metodo_pago)
+        VALUES (:nombre, :dni, :telefono, :email, :metodo_pago)
     ");
 
     $stmtPadre->execute([
@@ -93,8 +112,7 @@ try {
         ':dni' => $padre_dni,
         ':telefono' => $padre_telefono,
         ':email' => $padre_email,
-        ':metodo_pago' => $metodo_pago,
-        ':cuenta_bancaria' => $metodo_pago === 'transferencia' ? $cuenta_bancaria : null
+        ':metodo_pago' => $metodo_pago
     ]);
 
     $padreId = $pdo->lastInsertId();
@@ -102,7 +120,7 @@ try {
     // Validar y procesar datos de jugadores
     $stmtJugador = $pdo->prepare("
         INSERT INTO jugadores (
-            padre_id, hijo_nombre_completo, hijo_fecha_nacimiento, sexo, 
+            padre_id, nombre_completo, fecha_nacimiento, sexo, 
             grupo, modalidad, demarcacion, lesiones, jugador_numero
         )
         VALUES (
@@ -111,7 +129,13 @@ try {
         )
     ");
 
+    $stmtDescuento = $pdo->prepare("
+        INSERT INTO descuentos (jugador_id, descuento, tiene_hermanos)
+        VALUES (:jugador_id, :descuento, :tiene_hermanos)
+    ");
+
     $jugadorCount = 1;
+    $precioTotal = 90; // Precio base del campus
     while (isset($_POST["hijo_nombre_completo_{$jugadorCount}"])) {
         // Validar datos del jugador
         $nombre = limpiarEntrada($_POST["hijo_nombre_completo_{$jugadorCount}"]);
@@ -141,7 +165,29 @@ try {
             ':lesiones' => limpiarEntrada($_POST["lesiones_{$jugadorCount}"] ?? ''),
             ':jugador_numero' => $jugadorCount
         ]);
-        
+
+        $jugadorId = $pdo->lastInsertId();
+        $descuento = 0;
+        $tieneHermanos = $jugadorCount > 1 ? 1 : 0;
+
+        // Aplicar descuentos familiares
+        if ($jugadorCount == 2) {
+            $descuento = 5; // Descuento para el segundo hijo
+            $precioTotal += (90 - $descuento);
+        } elseif ($jugadorCount == 3) {
+            $descuento = 10; // Descuento para el tercer hijo
+            $precioTotal += (90 - $descuento);
+        } else {
+            $precioTotal += 90; // Precio completo para el primer hijo
+        }
+
+        // Insertar descuento en la tabla descuentos
+        $stmtDescuento->execute([
+            ':jugador_id' => $jugadorId,
+            ':descuento' => $descuento,
+            ':tiene_hermanos' => $tieneHermanos
+        ]);
+
         $jugadorCount++;
     }
 
@@ -161,15 +207,27 @@ try {
         ':aceptado' => true
     ]);
 
+    // Insertar consentimiento de imágenes
+    if (!isset($_POST['consentimiento_imagen']) || $_POST['consentimiento_imagen'] !== 'on') {
+        throw new Exception("Debe aceptar el consentimiento de imágenes");
+    }
+
+    $stmtConsentimiento->execute([
+        ':padre_id' => $padreId,
+        ':tipo' => 'imagen',
+        ':aceptado' => true
+    ]);
+
     // Confirmar transacción
     $pdo->commit();
 
     // Respuesta exitosa con URL de redirección
+    $redirect_url = filter_var("success.php?id=" . $padreId . "&metodo=" . $metodo_pago . "&precio=" . $precioTotal, FILTER_SANITIZE_URL);
     $response = [
         'status' => 'success',
         'message' => 'Inscripción completada correctamente',
         'inscripcion_id' => $padreId,
-        'redirect_url' => "success.php?id=" . $padreId . "&metodo=" . $metodo_pago
+        'redirect_url' => $redirect_url
     ];
 
 } catch (Exception $e) {
@@ -179,7 +237,7 @@ try {
     }
 
     // Log del error
-    error_log("Error en inscripción: " . $e->getMessage());
+    logError("Error en inscripción: " . $e->getMessage());
 
     // Responder con error
     $response = [

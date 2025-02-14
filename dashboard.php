@@ -1,27 +1,13 @@
 <?php
 session_start();
-
-// Configuración de la base de datos
-$config = [
-    'host' => 'localhost',
-    'dbname' => 'ss_campus_db',
-    'user' => 'root',
-    'password' => 'hans'
-];
+require_once 'config/database.php';
 
 try {
-    $pdo = new PDO(
-        "mysql:host={$config['host']};dbname={$config['dbname']};charset=utf8mb4",
-        $config['user'],
-        $config['password'],
-        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
-    );
-
     // Estadísticas generales
     $stats = [
         'total_inscripciones' => $pdo->query("SELECT COUNT(*) FROM padres")->fetchColumn(),
         'total_jugadores' => $pdo->query("SELECT COUNT(*) FROM jugadores")->fetchColumn(),
-        'pendiente_pago' => $pdo->query("SELECT COUNT(*) FROM padres WHERE metodo_pago = 'C'")->fetchColumn()
+        'pendiente_pago' => $pdo->query("SELECT COUNT(*) FROM padres WHERE metodo_pago = 'coordinador'")->fetchColumn()
     ];
 
     // Estadísticas por grupo
@@ -53,10 +39,10 @@ try {
         GROUP BY metodo_pago
     ")->fetchAll(PDO::FETCH_KEY_PAIR);
 
-    // Obtener todas las inscripciones con sus jugadores
+    // Obtener todas las inscripciones con sus jugadores y contar hermanos
     $stmt = $pdo->query("
         SELECT 
-            p.id, 
+            p.id AS padre_id,
             p.nombre AS padre_nombre,
             p.dni,
             p.telefono,
@@ -65,18 +51,33 @@ try {
             p.fecha_registro,
             GROUP_CONCAT(
                 CONCAT(
-                    j.hijo_nombre_completo, 
-                    ' (', j.grupo, ')'
+                    j.nombre_completo, 
+                    ' (', j.grupo, ')',
+                    CASE 
+                        WHEN j.jugador_numero > 1 THEN ' - Hermano ' || j.jugador_numero
+                        ELSE ''
+                    END
                 ) 
-                SEPARATOR ', '
-            ) AS jugadores
+                ORDER BY j.jugador_numero
+                SEPARATOR '<br>'
+            ) AS jugadores,
+            COUNT(j.id) AS total_hijos,
+            SUM(CASE WHEN j.jugador_numero > 1 THEN 1 ELSE 0 END) AS num_hermanos,
+            SUM(d.descuento) AS total_descuento,
+            90 + SUM(CASE WHEN d.tiene_hermanos THEN (90 - d.descuento) ELSE 0 END) AS precio_final
         FROM padres p
         LEFT JOIN jugadores j ON p.id = j.padre_id
+        LEFT JOIN descuentos d ON j.id = d.jugador_id
         GROUP BY p.id
         ORDER BY p.fecha_registro DESC
     ");
     
     $inscripciones = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Calcular el balance económico
+    $totalIngresos = array_sum(array_column($inscripciones, 'precio_final'));
+    $totalDescuentos = array_sum(array_column($inscripciones, 'total_descuento'));
+    $balanceEconomico = $totalIngresos;
 
 } catch (PDOException $e) {
     die("Error de conexión: " . $e->getMessage());
@@ -90,15 +91,43 @@ try {
     <title>Dashboard - Campus de Fútbol</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Añadir jQuery antes de Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.2.2/js/buttons.print.min.js"></script>
+    <script src="js/funciones.js"></script>
+    <style>
+        .card {
+            border-radius: 15px;
+        }
+        .card-header {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+        .card-body {
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+        .badge {
+            font-size: 1rem;
+        }
+    </style>
 </head>
 <body class="bg-light">
     <div class="container-fluid py-4">
         <div class="row">
             <div class="col-12">
-                <h1 class="mb-4">
+                <h1 class="mb-4 animate__animated animate__fadeInDown">
                     <i class="fas fa-tachometer-alt"></i> 
                     Dashboard Campus de Fútbol
                 </h1>
@@ -108,7 +137,7 @@ try {
         <!-- Estadísticas -->
         <div class="row mb-4">
             <div class="col-md-4">
-                <div class="card bg-primary text-white">
+                <div class="card bg-primary text-white shadow-sm animate__animated animate__fadeInLeft">
                     <div class="card-body">
                         <h5 class="card-title">
                             <i class="fas fa-users"></i> Total Inscripciones
@@ -118,7 +147,7 @@ try {
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card bg-success text-white">
+                <div class="card bg-success text-white shadow-sm animate__animated animate__fadeInLeft">
                     <div class="card-body">
                         <h5 class="card-title">
                             <i class="fas fa-futbol"></i> Total Jugadores
@@ -128,7 +157,7 @@ try {
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card bg-warning text-white">
+                <div class="card bg-warning text-white shadow-sm animate__animated animate__fadeInLeft">
                     <div class="card-body">
                         <h5 class="card-title">
                             <i class="fas fa-clock"></i> Pendiente de Pago
@@ -143,7 +172,7 @@ try {
                 <div class="row g-4">
                     <!-- Estadísticas por Grupo -->
                     <div class="col-md-6">
-                        <div class="card h-100">
+                        <div class="card h-100 shadow-sm animate__animated animate__fadeInUp">
                             <div class="card-header bg-info text-white">
                                 <h5 class="mb-0"><i class="fas fa-users-class"></i> Por Grupo</h5>
                             </div>
@@ -160,7 +189,7 @@ try {
 
                     <!-- Estadísticas por Demarcación -->
                     <div class="col-md-6">
-                        <div class="card h-100">
+                        <div class="card h-100 shadow-sm animate__animated animate__fadeInUp">
                             <div class="card-header bg-success text-white">
                                 <h5 class="mb-0"><i class="fas fa-running"></i> Por Demarcación</h5>
                             </div>
@@ -181,7 +210,7 @@ try {
 
                     <!-- Estadísticas por Sexo -->
                     <div class="col-md-6">
-                        <div class="card h-100">
+                        <div class="card h-100 shadow-sm animate__animated animate__fadeInUp">
                             <div class="card-header bg-primary text-white">
                                 <h5 class="mb-0"><i class="fas fa-venus-mars"></i> Por Sexo</h5>
                             </div>
@@ -202,18 +231,18 @@ try {
 
                     <!-- Estadísticas de Pagos -->
                     <div class="col-md-6">
-                        <div class="card h-100">
+                        <div class="card h-100 shadow-sm animate__animated animate__fadeInUp">
                             <div class="card-header bg-warning text-white">
                                 <h5 class="mb-0"><i class="fas fa-money-bill-wave"></i> Por Método de Pago</h5>
                             </div>
                             <div class="card-body">
                                 <div class="row text-center">
                                     <div class="col-6">
-                                        <div class="display-4"><?= $stats_pagos['T'] ?? 0 ?></div>
+                                        <div class="display-4"><?= $stats_pagos['transferencia'] ?? 0 ?></div>
                                         <small class="text-muted">Transferencias</small>
                                     </div>
                                     <div class="col-6">
-                                        <div class="display-4"><?= $stats_pagos['C'] ?? 0 ?></div>
+                                        <div class="display-4"><?= $stats_pagos['coordinador'] ?? 0 ?></div>
                                         <small class="text-muted">Coordinador</small>
                                     </div>
                                 </div>
@@ -224,18 +253,63 @@ try {
             </div>
         </div>
 
+        <!-- Balance Económico -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card bg-success text-white shadow-sm animate__animated animate__fadeInUp">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="fas fa-balance-scale"></i> Balance Económico
+                        </h5>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <p class="mb-0">Total Ingresos: <?= $totalIngresos ?>€</p>
+                                <p class="mb-0">Total Descuentos: <?= $totalDescuentos ?>€</p>
+                            </div>
+                            <div>
+                                <h3 class="mb-0">Balance: <?= $balanceEconomico ?>€</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filtros y Exportación -->
+        <div class="card shadow-sm mb-4 animate__animated animate__fadeInUp">
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="filtroGrupo" class="form-label">Filtrar por Categoría:</label>
+                            <select id="filtroGrupo" class="form-select">
+                                <option value="">Todas las categorías</option>
+                                <option value="Querubin">Querubín</option>
+                                <option value="Prebenjamin">Prebenjamín</option>
+                                <option value="Benjamin">Benjamín</option>
+                                <option value="Alevin">Alevín</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Tabla de Inscripciones -->
-        <div class="card">
+        <div class="card shadow-sm animate__animated animate__fadeInUp">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table table-striped">
-                        <thead>
+                    <table id="tablaInscripciones" class="table table-striped">
+                        <thead class="table-dark">
                             <tr>
                                 <th>ID</th>
                                 <th>Padre/Tutor</th>
                                 <th>DNI</th>
                                 <th>Contacto</th>
-                                <th>Jugadores</th>
+                                <th>Jugadores/Hermanos</th>
+                                <th>Total Hijos</th>
+                                <th>Descuento</th>
+                                <th>Precio Final</th>
                                 <th>Pago</th>
                                 <th>Fecha</th>
                                 <th>Acciones</th>
@@ -244,7 +318,7 @@ try {
                         <tbody>
                             <?php foreach ($inscripciones as $i): ?>
                             <tr>
-                                <td><?= $i['id'] ?></td>
+                                <td><?= $i['padre_id'] ?></td>
                                 <td><?= htmlspecialchars($i['padre_nombre']) ?></td>
                                 <td><?= htmlspecialchars($i['dni']) ?></td>
                                 <td>
@@ -254,21 +328,45 @@ try {
                                     <br>
                                     <small><?= htmlspecialchars($i['telefono']) ?></small>
                                 </td>
-                                <td><?= htmlspecialchars($i['jugadores']) ?></td>
                                 <td>
-                                    <span class="badge bg-<?= $i['metodo_pago'] === 'T' ? 'success' : 'warning' ?>">
-                                        <?= $i['metodo_pago'] === 'T' ? 'Transferencia' : 'Coordinador' ?>
+                                    <div class="jugadores-list">
+                                        <?= $i['jugadores'] ?>
+                                        <?php if ($i['num_hermanos'] > 0): ?>
+                                            <span class="badge bg-info ms-2">
+                                                <?= $i['num_hermanos'] ?> hermano(s)
+                                            </span>
+                                        <?php endif; ?>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="badge bg-primary">
+                                        <?= $i['total_hijos'] ?> hijos
+                                    </span>
+                                </td>
+                                <td>
+                                    <?php if ($i['total_descuento'] > 0): ?>
+                                        <span class="badge bg-success">
+                                            <?= $i['total_descuento'] ?>€
+                                        </span>
+                                    <?php else: ?>
+                                        -
+                                    <?php endif; ?>
+                                </td>
+                                <td><?= $i['precio_final'] ?>€</td>
+                                <td>
+                                    <span class="badge bg-<?= $i['metodo_pago'] === 'transferencia' ? 'success' : 'warning' ?>">
+                                        <?= $i['metodo_pago'] === 'transferencia' ? 'Transferencia' : 'Coordinador' ?>
                                     </span>
                                 </td>
                                 <td><?= date('d/m/Y H:i', strtotime($i['fecha_registro'])) ?></td>
                                 <td>
                                     <div class="btn-group">
-                                        <a href="ver_inscripcion.php?id=<?= $i['id'] ?>" 
+                                        <a href="ver_inscripcion.php?id=<?= $i['padre_id'] ?>" 
                                            class="btn btn-sm btn-info">
                                             <i class="fas fa-eye"></i>
                                         </a>
                                         <a href="#" class="btn btn-sm btn-danger" 
-                                           onclick="confirmarEliminacion(<?= $i['id'] ?>)">
+                                           onclick="confirmarEliminacion(<?= $i['padre_id'] ?>)">
                                             <i class="fas fa-trash"></i>
                                         </a>
                                         <button type="button" 
@@ -370,7 +468,11 @@ try {
                         alert('✅ Mensaje enviado correctamente');
                         whatsappModal.hide();
                     } else {
-                        alert('❌ Error: ' + (response.message || 'Error desconocido'));
+                        if (response.message.includes('Recipient phone number not in allowed list')) {
+                            alert('❌ Error: El número de teléfono del destinatario no está en la lista permitida.');
+                        } else {
+                            alert('❌ Error: ' + (response.message || 'Error desconocido'));
+                        }
                         console.error('Error detallado:', response);
                     }
                 },
@@ -384,7 +486,40 @@ try {
                 }
             });
         });
+
+        // Filtrado de tabla
+        $('#filtroGrupo').on('change', function() {
+            const categoria = $(this).val();
+            if (categoria) {
+                $('tbody tr').hide().filter(function() {
+                    return $(this).find('td:eq(4)').text().includes(categoria);
+                }).show();
+            } else {
+                $('tbody tr').show();
+            }
+        });
+
+        // Inicializar DataTables con exportación
+        $('#tablaInscripciones').DataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            language: {
+                url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json'
+            }
+        });
     });
     </script>
+    <style>
+    .jugadores-list {
+        max-width: 300px;
+    }
+
+    .jugadores-list .badge {
+        font-size: 0.8rem;
+        vertical-align: top;
+    }
+    </style>
 </body>
 </html>

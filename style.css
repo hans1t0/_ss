@@ -1,0 +1,526 @@
+:root {
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --primary-color: #ff5733; /* Cambiado a un color más vivo */
+    --secondary-color: #2980b9;
+    --accent-color: #e74c3c;
+    --bg-color: #59a0e6;
+    --text-color: #2c3e50;
+    --success-color: #28a745;
+    --success-hover-color: #218838; /* Nuevo color para hover */
+    --warning-color: #ffc107;
+    --card-bg-color: #ffffff;
+    --form-bg-color: #f0f8ff;
+}
+
+/* Espaciado general */
+.container {
+    padding-bottom: var(--spacing-xl);
+}
+
+/* Formulario y secciones */
+.card {
+    margin-bottom: var(--spacing-xl);
+}
+
+.card-body {
+    padding: var(--spacing-lg);
+}
+
+/* Secciones del formulario */
+.padre-form,
+.jugador-form {
+    background: var(--form-bg-color);
+    border-radius: 1rem;
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Títulos de sección */
+.card-title {
+    padding-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* Campos del formulario */
+.form-group {
+    margin-bottom: var(--spacing-md);
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    margin-bottom: var(--spacing-xs);
+    font-weight: 500;
+}
+
+.form-control {
+    padding: 0.75rem var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Separadores */
+.mb-6 {
+    margin-bottom: var(--spacing-xl);
+}
+
+/* Botones */
+.btn {
+    padding: 0.75rem var(--spacing-md);
+    margin: var(--spacing-xs);
+}
+
+#add-jugador {
+    margin-bottom: var(--spacing-md);
+}
+
+/* Información de pago */
+#info_pago {
+    padding: var(--spacing-md);
+    margin: var(--spacing-md) 0;
+    border-radius: 0.5rem;
+    background-color: #f8f9fa;
+    border-left: 4px solid #0dcaf0;
+    height: 100%;
+    font-size: 0.9rem;
+}
+
+#info_pago .alert-heading {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+#info_pago.alert {
+    padding: 1rem;
+    margin-bottom: 0;
+}
+
+#info_transferencia, #info_coordinador {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Consentimiento */
+.form-check {
+    margin: var(--spacing-md) 0;
+    padding-left: var(--spacing-lg);
+}
+
+/* Espaciado responsivo */
+@media (max-width: 768px) {
+    .card-body {
+        padding: var(--spacing-sm);
+    }
+
+    .padre-form,
+    .jugador-form {
+        padding: var(--spacing-sm);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .form-group {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .btn {
+        width: 100%;
+        margin: var(--spacing-xs) 0;
+    }
+
+    .metodo-pago-container {
+        flex-direction: column;
+    }
+
+    #info_pago {
+        margin-top: 1rem;
+        height: auto;
+        border-left: none;
+        border-top: 4px solid #0dcaf0;
+    }
+
+    #info_transferencia, #info_coordinador {
+        padding: 0.75rem;
+    }
+}
+
+.header-banner {
+  background: url("futbol-banner.jpg") no-repeat center center;
+  background-size: cover;
+  color: white;
+  padding: 20px 0;
+  margin-bottom: 2rem;
+  border-radius: 0 0 1rem 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header-banner img {
+  max-height: 80px;
+}
+
+.header-banner h1 {
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.card {
+  border-radius: 15px;
+  border: 1px solid var(--primary-color);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  background-color: var(--card-bg-color);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-body {
+  padding: 2rem;
+  background: url("futbol-pattern.png") no-repeat center center;
+  background-size: cover;
+}
+
+.card-title {
+  color: var(--text-color);
+  border-bottom: 3px solid var(--primary-color);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.form-label {
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.form-control:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.jugador-form {
+  background: var(--form-bg-color);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.padre-form {
+  background: var(--form-bg-color);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.padre-form .form-group {
+    margin-bottom: 0.75rem;
+}
+
+.padre-form .row + .row {
+    margin-top: 0.5rem;
+}
+
+#add-jugador {
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+#add-jugador:hover {
+  background-color: darken(var(--accent-color), 10%);
+}
+
+.remove-jugador {
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.remove-jugador:hover {
+  background-color: darken(var(--accent-color), 10%);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+.btn-outline-primary {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+}
+
+.btn-success {
+  background-color: var(--success-color);
+  border-color: var(--success-color);
+  transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+  background-color: var(--success-hover-color);
+  border-color: var(--success-hover-color);
+}
+
+.form-section {
+  position: relative;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  background: var(--form-bg-color);
+  border-radius: 1rem;
+}
+
+.form-section::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  bottom: 1rem;
+  width: 4px;
+  background: var(--primary-color);
+  border-radius: 2px;
+}
+
+.step-indicator {
+  display: flex;
+  margin-bottom: 2rem;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.step {
+  padding: 0.5rem 1rem;
+  background: rgba(52, 152, 219, 0.1);
+  border-radius: 2rem;
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.step.active {
+  background: var(--primary-color);
+  color: white;
+}
+
+.alert-info {
+  background-color: rgba(52, 152, 219, 0.1);
+  border: none;
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.alert {
+  border-radius: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.form-check-label {
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .form-section {
+    padding: 1rem;
+  }
+
+  #add-jugador {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .card-title {
+    font-size: 1.
+}
+/* Optimizaciones de rendimiento */
+.header-banner {
+    will-change: transform;
+    transform: translateZ(0);
+}
+
+/* Mejoras de accesibilidad */
+:focus {
+    outline: 3px solid #007bff;
+    outline-offset: 2px;
+}
+
+/* Animaciones fluidas */
+.alert {
+    transition: all 0.3s ease;
+}
+
+/* Mejoras responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+}
+/* Agregar estilos que estaban inline */
+.header-banner {
+    background-image: url('futbol-banner.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+#loader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
+
+/* Estilos para feedback de validación */
+.feedback-mensaje {
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.valid-feedback {
+    color: var(--success-color);
+    display: block !important;
+}
+
+.invalid-feedback {
+    color: #dc3545;
+    display: block !important;
+    display: none;
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+}
+
+.form-control.is-valid {
+    border-color: var(--success-color);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(.375em + .1875rem) center;
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+    padding-right: calc(1.5em + .75rem);
+    border-color: #198754;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.form-control.is-invalid {
+    border-color: #dc3545;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(.375em + .1875rem) center;
+    background-size: calc(.75em + .375rem) calc(.75em + .375rem);
+    padding-right: calc(1.5em + .75rem);
+    border-color: #dc3545;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3e%3cpath fill='none' stroke='%23dc3545' d='M10.97 1.19l-4.88 4.88-4.88-4.88-1.19 1.19 4.88 4.88-4.88 4.88 1.19 1.19 4.88-4.88 4.88 4.88 1.19-1.19-4.88-4.88 4.88-4.88-1.19-1.19z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}
+
+.form-control.is-invalid ~ .invalid-feedback {
+    display: block;
+}
+
+/* Animación para feedback */
+.feedback-mensaje {
+    transition: all 0.3s ease-in-out;
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.feedback-mensaje.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Estilos para feedback de validación */
+.valid-feedback {
+    display: none;
+    color: #198754;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.invalid-feedback {
+    display: none;
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.form-control.is-valid ~ .valid-feedback,
+.form-control.is-invalid ~ .invalid-feedback {
+    display: block;
+}
+
+.form-control.is-valid {
+    border-color: #198754;
+    padding-right: calc(1.5em + 0.75rem);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+}

@@ -1,0 +1,78 @@
+[14-Feb-2025 11:42:39 UTC] [2025-02-14 11:42:39] Iniciando procesamiento de formulario - Data: {"padre_nombre":"Enrico Peez","padre_dni":"12345678Q","padre_email":"hans_cok@hotmail.com","padre_telefono":"677283758","metodo_pago":"transferencia","hijo_nombre_completo_1":"luisa","hijo_fecha_nacimiento_1":"2012-12-12","grupo_1":"Querubin","sexo_1":"M","demarcacion_1":"jugador","modalidad_1":"RPSJ","lesiones_1":"","consentimiento":"on","consentimiento_imagen":"on"}
+[14-Feb-2025 11:42:40 UTC] [2025-02-14 11:42:40][INFO] Datos recibidos | Context: {"post":{"padre_nombre":"Enrico Peez","padre_dni":"12345678Q","padre_email":"hans_cok@hotmail.com","padre_telefono":"677283758","metodo_pago":"transferencia","hijo_nombre_completo_1":"luisa","hijo_fecha_nacimiento_1":"2012-12-12","grupo_1":"Querubin","sexo_1":"M","demarcacion_1":"jugador","modalidad_1":"RPSJ","lesiones_1":"","consentimiento":"on","consentimiento_imagen":"on"}}
+[14-Feb-2025 11:42:40 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function limpiarEntrada() in /Users/jancok/Sites/localhost/_ss/process2.php:68
+Stack trace:
+#0 {main}
+  thrown in /Users/jancok/Sites/localhost/_ss/process2.php on line 68
+[14-Feb-2025 11:43:21 UTC] [2025-02-14 11:43:21] Iniciando procesamiento de formulario - Data: {"padre_nombre":"Enrico Peez","padre_dni":"12345678Q","padre_email":"hans_cok@hotmail.com","padre_telefono":"677283758","metodo_pago":"transferencia","hijo_nombre_completo_1":"luisa","hijo_fecha_nacimiento_1":"2012-12-12","grupo_1":"Benjamin","sexo_1":"H","demarcacion_1":"jugador","modalidad_1":"RPSJ","lesiones_1":"","consentimiento":"on","consentimiento_imagen":"on"}
+[14-Feb-2025 11:43:21 UTC] [2025-02-14 11:43:21][INFO] Datos recibidos | Context: {"post":{"padre_nombre":"Enrico Peez","padre_dni":"12345678Q","padre_email":"hans_cok@hotmail.com","padre_telefono":"677283758","metodo_pago":"transferencia","hijo_nombre_completo_1":"luisa","hijo_fecha_nacimiento_1":"2012-12-12","grupo_1":"Benjamin","sexo_1":"H","demarcacion_1":"jugador","modalidad_1":"RPSJ","lesiones_1":"","consentimiento":"on","consentimiento_imagen":"on"}}
+[14-Feb-2025 11:43:21 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function limpiarEntrada() in /Users/jancok/Sites/localhost/_ss/process2.php:68
+Stack trace:
+#0 {main}
+  thrown in /Users/jancok/Sites/localhost/_ss/process2.php on line 68
+[14-Feb-2025 16:33:24 UTC] Iniciando proceso de inscripción
+[14-Feb-2025 16:33:24 UTC] Array
+(
+    [padre_nombre] => Enrico Peez
+    [padre_dni] => 12345678Q
+    [padre_email] => hans_cok@hotmail.com
+    [padre_telefono] => 677283758
+    [metodo_pago] => transferencia
+    [hijo_nombre_completo_1] => Luis
+    [hijo_fecha_nacimiento_1] => 2012-12-12
+    [grupo_1] => Alevin
+    [sexo_1] => H
+    [demarcacion_1] => jugador
+    [modalidad_1] => RPSJ
+    [lesiones_1] => 
+    [consentimiento] => on
+    [consentimiento_imagen] => on
+)
+
+[14-Feb-2025 16:33:24 UTC] Intentando conectar a la base de datos...
+[14-Feb-2025 16:33:24 UTC] Iniciando configuración de base de datos
+[14-Feb-2025 16:33:24 UTC] Intentando conexión con: 127.0.0.1
+[14-Feb-2025 16:33:24 UTC] Conexión exitosa a la base de datos
+[14-Feb-2025 16:33:24 UTC] Conexión a la base de datos exitosa
+[14-Feb-2025 16:33:24 UTC] [2025-02-14 16:33:24][INFO] Datos recibidos | Context: {"post":{"padre_nombre":"Enrico Peez","padre_dni":"12345678Q","padre_email":"hans_cok@hotmail.com","padre_telefono":"677283758","metodo_pago":"transferencia","hijo_nombre_completo_1":"Luis","hijo_fecha_nacimiento_1":"2012-12-12","grupo_1":"Alevin","sexo_1":"H","demarcacion_1":"jugador","modalidad_1":"RPSJ","lesiones_1":"","consentimiento":"on","consentimiento_imagen":"on"}}
+[14-Feb-2025 16:33:24 UTC] [2025-02-14 16:33:24] Método de pago seleccionado - Data: {"metodo":"transferencia"}
+[14-Feb-2025 16:33:24 UTC] PHP Warning:  Undefined array key "host" in /Users/jancok/Sites/localhost/_ss/process2.php on line 235
+[14-Feb-2025 16:33:24 UTC] PHP Warning:  Undefined array key "port" in /Users/jancok/Sites/localhost/_ss/process2.php on line 235
+[14-Feb-2025 16:33:24 UTC] PHP Warning:  Undefined array key "dbname" in /Users/jancok/Sites/localhost/_ss/process2.php on line 235
+[14-Feb-2025 16:33:24 UTC] PHP Warning:  Undefined array key "user" in /Users/jancok/Sites/localhost/_ss/process2.php on line 241
+[14-Feb-2025 16:33:24 UTC] PHP Warning:  Undefined array key "password" in /Users/jancok/Sites/localhost/_ss/process2.php on line 241
+[14-Feb-2025 16:33:24 UTC] Error general: Error de conexión a la base de datos: SQLSTATE[HY000] [2002] No such file or directory
+[14-Feb-2025 16:33:24 UTC] [2025-02-14 16:33:24] Error general - Data: {"message":"Error de conexión a la base de datos: SQLSTATE[HY000] [2002] No such file or directory","trace":"#0 {main}"}
+[14-Feb-2025 16:36:56 UTC] Iniciando proceso de inscripción
+[14-Feb-2025 16:36:56 UTC] Array
+(
+    [padre_nombre] => Enrico Peez
+    [padre_dni] => 12345678Q
+    [padre_email] => hans_cok@hotmail.com
+    [padre_telefono] => 677283758
+    [metodo_pago] => transferencia
+    [hijo_nombre_completo_1] => Luis
+    [hijo_fecha_nacimiento_1] => 2012-12-12
+    [grupo_1] => Alevin
+    [sexo_1] => H
+    [demarcacion_1] => jugador
+    [modalidad_1] => RPSJ
+    [lesiones_1] => 
+    [consentimiento] => on
+    [consentimiento_imagen] => on
+)
+
+[14-Feb-2025 16:36:56 UTC] Intentando conectar a la base de datos...
+[14-Feb-2025 16:36:56 UTC] Iniciando configuración de base de datos
+[14-Feb-2025 16:36:56 UTC] Intentando conexión...
+[14-Feb-2025 16:36:56 UTC] Conexión exitosa usando socket
+[14-Feb-2025 16:36:56 UTC] Conexión a la base de datos exitosa
+[14-Feb-2025 16:36:56 UTC] [2025-02-14 16:36:56][INFO] Datos recibidos | Context: {"post":{"padre_nombre":"Enrico Peez","padre_dni":"12345678Q","padre_email":"hans_cok@hotmail.com","padre_telefono":"677283758","metodo_pago":"transferencia","hijo_nombre_completo_1":"Luis","hijo_fecha_nacimiento_1":"2012-12-12","grupo_1":"Alevin","sexo_1":"H","demarcacion_1":"jugador","modalidad_1":"RPSJ","lesiones_1":"","consentimiento":"on","consentimiento_imagen":"on"}}
+[14-Feb-2025 16:36:56 UTC] [2025-02-14 16:36:56] Método de pago seleccionado - Data: {"metodo":"transferencia"}
+[14-Feb-2025 16:36:56 UTC] PHP Warning:  Undefined array key "host" in /Users/jancok/Sites/localhost/_ss/process2.php on line 235
+[14-Feb-2025 16:36:56 UTC] PHP Warning:  Undefined array key "port" in /Users/jancok/Sites/localhost/_ss/process2.php on line 235
+[14-Feb-2025 16:36:56 UTC] PHP Warning:  Undefined array key "dbname" in /Users/jancok/Sites/localhost/_ss/process2.php on line 235
+[14-Feb-2025 16:36:56 UTC] PHP Warning:  Undefined array key "user" in /Users/jancok/Sites/localhost/_ss/process2.php on line 241
+[14-Feb-2025 16:36:56 UTC] PHP Warning:  Undefined array key "password" in /Users/jancok/Sites/localhost/_ss/process2.php on line 241
+[14-Feb-2025 16:36:56 UTC] Error general: Error de conexión a la base de datos: SQLSTATE[HY000] [2002] No such file or directory
+[14-Feb-2025 16:36:56 UTC] [2025-02-14 16:36:56] Error general - Data: {"message":"Error de conexión a la base de datos: SQLSTATE[HY000] [2002] No such file or directory","trace":"#0 {main}"}

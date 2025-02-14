@@ -2,10 +2,10 @@
 session_start();
 
 $config = [
-    'host' => 'localhost',
+    'host' => 'mariadb',
     'dbname' => 'ss_campus_db',
     'user' => 'root',
-    'password' => 'hans'
+    'password' => 'hansitox'
 ];
 
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
@@ -35,15 +35,27 @@ try {
         throw new Exception('Inscripción no encontrada');
     }
 
-    // Obtener jugadores
+    // Obtener jugadores y descuentos
     $stmt = $pdo->prepare("
-        SELECT *
-        FROM jugadores
-        WHERE padre_id = ?
-        ORDER BY jugador_numero
+        SELECT j.*, d.descuento
+        FROM jugadores j
+        LEFT JOIN descuentos d ON j.id = d.jugador_id
+        WHERE j.padre_id = ?
+        ORDER BY j.jugador_numero
     ");
     $stmt->execute([$id]);
     $jugadores = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Calcular el precio total
+    $precioBase = 90;
+    $precioFinal = 0;
+    foreach ($jugadores as $index => $jugador) {
+        if ($index === 0) {
+            $precioFinal += $precioBase;
+        } else {
+            $precioFinal += ($precioBase - $jugador['descuento']);
+        }
+    }
 
 } catch (Exception $e) {
     die("Error: " . $e->getMessage());
@@ -131,6 +143,9 @@ try {
                             IBAN: <?= htmlspecialchars($padre['cuenta_bancaria']) ?>
                         </small>
                     <?php endif; ?>
+                    <div class="ms-auto">
+                        <h5>Total a Pagar: <?= $precioFinal ?>€</h5>
+                    </div>
                 </div>
             </div>
         </div>
@@ -147,11 +162,11 @@ try {
                         </h5>
                     </div>
                     <div class="card-body">
-                        <h4 class="card-title"><?= htmlspecialchars($jugador['hijo_nombre_completo']) ?></h4>
+                        <h4 class="card-title"><?= htmlspecialchars($jugador['nombre_completo']) ?></h4>
                         <div class="row g-3">
                             <div class="col-6">
                                 <label class="text-muted d-block">Fecha Nacimiento</label>
-                                <span><?= date('d/m/Y', strtotime($jugador['hijo_fecha_nacimiento'])) ?></span>
+                                <span><?= date('d/m/Y', strtotime($jugador['fecha_nacimiento'])) ?></span>
                             </div>
                             <div class="col-6">
                                 <label class="text-muted d-block">Grupo</label>
@@ -181,6 +196,14 @@ try {
                                 </div>
                             </div>
                             <?php endif; ?>
+                            <div class="col-12">
+                                <label class="text-muted d-block">Descuento</label>
+                                <span><?= $jugador['descuento'] ?>€</span>
+                            </div>
+                            <div class="col-12">
+                                <label class="text-muted d-block">Precio</label>
+                                <span><?= $index === 0 ? $precioBase : $precioBase - $jugador['descuento'] ?>€</span>
+                            </div>
                         </div>
                     </div>
                 </div>
