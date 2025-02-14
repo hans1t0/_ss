@@ -45,7 +45,8 @@ $campos_padre = [
             'coordinador' => 'Pago al Coordinador'
         ],
         'value' => '',
-        'placeholder' => 'Seleccione método de pago'
+        'placeholder' => 'Seleccione método de pago',
+        'class' => 'form-select' // Mantener la clase form-select
     ]
 ];
 
@@ -60,7 +61,7 @@ function generarCamposPadre($campos) {
 
 // Función para generar la información de pago
 function generarInformacionPago() {
-    return '<div class="info-pago">
+    return '<div class="info-pago" style="display: none;">
         <div id="info_pago" class="alert alert-info">
             <div id="info_transferencia">
                 <h5 class="alert-heading">Información Bancaria</h5>

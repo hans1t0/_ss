@@ -2,10 +2,10 @@
 session_start();
 
 $config = [
-    'host' => 'mariadb',
+    'host' => 'localhost',
     'dbname' => 'ss_campus_db',
     'user' => 'root',
-    'password' => 'hansitox'
+    'password' => 'hans'
 ];
 
 $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);

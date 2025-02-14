@@ -4,8 +4,8 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ini_set('error_log', __DIR__ . '/debug.log');
 
-function logDebug($message) {
-    error_log(date('Y-m-d H:i:s') . " - " . $message . "\n");
+function logDebug($message, $data = []) {
+    error_log(date('Y-m-d H:i:s') . " - " . $message . " - Data: " . print_r($data, true));
 }
 
 function sendJsonResponse($data, $status = 200) {
@@ -43,7 +43,7 @@ try {
     $pdo->query("SELECT 1");
     logDebug("Conexión establecida");
 
-    // 3. Recoger datos básicos
+    // 3. Recoger datos básicos del padre
     $padre = [
         'nombre' => trim($_POST['padre_nombre'] ?? ''),
         'dni' => trim($_POST['padre_dni'] ?? ''),
@@ -54,41 +54,133 @@ try {
 
     logDebug("Datos del padre: " . print_r($padre, true));
 
-    // 4. Validación básica
+    // 4. Validación básica del padre
     if (empty($padre['nombre']) || empty($padre['dni']) || empty($padre['email'])) {
-        throw new Exception("Faltan campos obligatorios");
+        throw new Exception("Faltan campos obligatorios del padre");
     }
 
-    // 5. Insertar en la base de datos
+    // 5. Insertar datos del padre en la base de datos
     $pdo->beginTransaction();
     
-    $sql = "INSERT INTO padres (nombre, dni, telefono, email, metodo_pago) 
+    $sqlPadre = "INSERT INTO padres (nombre, dni, telefono, email, metodo_pago) 
             VALUES (:nombre, :dni, :telefono, :email, :metodo_pago)";
     
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute($padre);
+    $stmtPadre = $pdo->prepare($sqlPadre);
+    $stmtPadre->execute([
+        ':nombre' => $padre['nombre'],
+        ':dni' => $padre['dni'],
+        ':telefono' => $padre['telefono'],
+        ':email' => $padre['email'],
+        ':metodo_pago' => $padre['metodo_pago']
+    ]);
     
     $padreId = $pdo->lastInsertId();
-    $pdo->commit();
-    logDebug("Registro completado con éxito. ID: " . $padreId);
+    logDebug("Registro del padre exitoso. ID: " . $padreId);
 
-    // Construir URL de redirección de manera más segura
+    // 6. Recoger datos de los hijos
+    $hijos = [];
+    $jugadorCount = 1;
+    $descuentos = [0, 5, 10]; // Descuentos para el 1er, 2do y 3er hijo
+    $precioTotal = 0;
+
+    while (isset($_POST["hijo_nombre_completo_$jugadorCount"])) {
+        $sexo = trim($_POST["sexo_$jugadorCount"] ?? '');
+        if (!in_array($sexo, ['H', 'M'])) {
+            throw new Exception("Sexo del jugador $jugadorCount no válido");
+        }
+        
+        $descuento = $descuentos[min($jugadorCount - 1, count($descuentos) - 1)];
+        $tieneHermanos = $jugadorCount > 1 ? 1 : 0;
+
+        $hijos[] = [
+            'padre_id' => $padreId,
+            'nombre_completo' => trim($_POST["hijo_nombre_completo_$jugadorCount"] ?? ''),
+            'fecha_nacimiento' => trim($_POST["hijo_fecha_nacimiento_$jugadorCount"] ?? ''),
+            'sexo' => $sexo,
+            'grupo' => trim($_POST["grupo_$jugadorCount"] ?? ''),
+            'modalidad' => trim($_POST["modalidad_$jugadorCount"] ?? ''),
+            'demarcacion' => trim($_POST["demarcacion_$jugadorCount"] ?? ''),
+            'lesiones' => trim($_POST["lesiones_$jugadorCount"] ?? ''),
+            'jugador_numero' => $jugadorCount,
+            'descuento' => $descuento,
+            'tiene_hermanos' => $tieneHermanos
+        ];
+        $precioTotal += 90 - $descuento;
+        $jugadorCount++;
+    }
+
+    logDebug("Datos de los hijos: " . print_r($hijos, true));
+
+    // 7. Insertar datos de los hijos
+    $sqlJugador = "INSERT INTO jugadores (padre_id, nombre_completo, fecha_nacimiento, sexo, grupo, modalidad, demarcacion, lesiones, jugador_numero) 
+                   VALUES (:padre_id, :nombre_completo, :fecha_nacimiento, :sexo, :grupo, :modalidad, :demarcacion, :lesiones, :jugador_numero)";
+    $stmtJugador = $pdo->prepare($sqlJugador);
+
+    $sqlDescuento = "INSERT INTO descuentos (jugador_id, descuento, tiene_hermanos) 
+                      VALUES (:jugador_id, :descuento, :tiene_hermanos)";
+    $stmtDescuento = $pdo->prepare($sqlDescuento);
+
+    foreach ($hijos as $hijo) {
+        $stmtJugador->execute([
+            ':padre_id' => $hijo['padre_id'],
+            ':nombre_completo' => $hijo['nombre_completo'],
+            ':fecha_nacimiento' => $hijo['fecha_nacimiento'],
+            ':sexo' => $hijo['sexo'],
+            ':grupo' => $hijo['grupo'],
+            ':modalidad' => $hijo['modalidad'],
+            ':demarcacion' => $hijo['demarcacion'],
+            ':lesiones' => $hijo['lesiones'],
+            ':jugador_numero' => $hijo['jugador_numero']
+        ]);
+        $jugadorId = $pdo->lastInsertId();
+
+        $stmtDescuento->execute([
+            ':jugador_id' => $jugadorId,
+            ':descuento' => $hijo['descuento'],
+            ':tiene_hermanos' => $hijo['tiene_hermanos']
+        ]);
+
+        logDebug("Hijo registrado: " . $hijo['nombre_completo']);
+    }
+
+    // Insertar consentimiento
+    $consentimiento = isset($_POST['consentimiento']) && $_POST['consentimiento'] === 'on' ? 1 : 0;
+    $consentimiento_imagen = isset($_POST['consentimiento_imagen']) && $_POST['consentimiento_imagen'] === 'on' ? 1 : 0;
+
+    $sqlConsentimiento = "INSERT INTO consentimientos (padre_id, tipo, aceptado) 
+                          VALUES (:padre_id, :tipo, :aceptado)";
+    $stmtConsentimiento = $pdo->prepare($sqlConsentimiento);
+
+    $stmtConsentimiento->execute([
+        ':padre_id' => $padreId,
+        ':tipo' => 'datos',
+        ':aceptado' => $consentimiento
+    ]);
+
+    $stmtConsentimiento->execute([
+        ':padre_id' => $padreId,
+        ':tipo' => 'imagen',
+        ':aceptado' => $consentimiento_imagen
+    ]);
+
+    logDebug("Consentimientos registrados");
+
+    $pdo->commit();
+    logDebug("Transacción completada con éxito");
+
+    // Construir URL de redirección
     $redirectUrl = sprintf(
-        "success.php?id=%d&metodo=%s&token=%s",
+        "inscripcion.php?id=%d&metodo=%s&precio=%d",
         $padreId,
         urlencode($padre['metodo_pago']),
-        urlencode(hash('sha256', $padreId . $_SERVER['REQUEST_TIME']))
+        $precioTotal
     );
 
     // Enviar respuesta
     sendJsonResponse([
         'status' => 'success',
         'message' => 'Registro completado correctamente',
-        'redirect_url' => $redirectUrl,
-        'debug_info' => [
-            'id' => $padreId,
-            'metodo' => $padre['metodo_pago']
-        ]
+        'redirect_url' => $redirectUrl
     ]);
 
 } catch (PDOException $e) {
@@ -103,9 +195,6 @@ try {
 
 } catch (Exception $e) {
     logDebug("Error general: " . $e->getMessage());
-    if (isset($pdo) && $pdo->inTransaction()) {
-        $pdo->rollBack();
-    }
     sendJsonResponse([
         'status' => 'error',
         'message' => $e->getMessage()

@@ -146,3 +146,643 @@
 
 [14-Feb-2025 16:47:10 UTC] 2025-02-14 16:47:10 - Registro completado con éxito. ID: 12
 
+[14-Feb-2025 16:56:44 UTC] 2025-02-14 16:56:44 - Iniciando procesamiento - Data: Array
+(
+)
+
+[14-Feb-2025 16:56:44 UTC] 2025-02-14 16:56:44 - POST data: Array
+(
+    [padre_nombre] => Hans Cok
+    [padre_dni] => 12345678Q
+    [padre_email] => hans_cok@hotmail.com
+    [padre_telefono] => 677123123
+    [metodo_pago] => transferencia
+    [hijo_nombre_completo_1] => Luisito perrito
+    [hijo_fecha_nacimiento_1] => 1201-12-12
+    [sexo_1] => H
+    [grupo_1] => Querubin
+    [modalidad_1] => 
+    [demarcacion_1] => jugador
+    [lesiones_1] => 
+    [consentimiento] => on
+    [consentimiento_imagen] => on
+)
+ - Data: Array
+(
+)
+
+[14-Feb-2025 16:56:44 UTC] 2025-02-14 16:56:44 - Intentando conectar a la base de datos - Data: Array
+(
+)
+
+[14-Feb-2025 16:56:44 UTC] 2025-02-14 16:56:44 - Conexión establecida - Data: Array
+(
+)
+
+[14-Feb-2025 16:56:44 UTC] 2025-02-14 16:56:44 - Datos del padre: Array
+(
+    [nombre] => Hans Cok
+    [dni] => 12345678Q
+    [telefono] => 677123123
+    [email] => hans_cok@hotmail.com
+    [metodo_pago] => transferencia
+)
+ - Data: Array
+(
+)
+
+[14-Feb-2025 16:56:44 UTC] 2025-02-14 16:56:44 - Registro del padre exitoso. ID: 13 - Data: Array
+(
+)
+
+[14-Feb-2025 16:56:44 UTC] 2025-02-14 16:56:44 - Datos de los hijos: Array
+(
+    [0] => Array
+        (
+            [nombre_completo] => Luisito perrito
+            [fecha_nacimiento] => 1201-12-12
+            [sexo] => H
+            [grupo] => Querubin
+            [jugador_numero] => 1
+        )
+
+)
+ - Data: Array
+(
+)
+
+[14-Feb-2025 16:56:44 UTC] 2025-02-14 16:56:44 - Hijo registrado: Luisito perrito - Data: Array
+(
+)
+
+[14-Feb-2025 16:56:44 UTC] 2025-02-14 16:56:44 - Transacción completada con éxito - Data: Array
+(
+)
+
+[14-Feb-2025 17:08:19 UTC] 2025-02-14 17:08:19 - Iniciando procesamiento - Data: Array
+(
+)
+
+[14-Feb-2025 17:08:19 UTC] 2025-02-14 17:08:19 - POST data: Array
+(
+    [padre_nombre] => Hans Cok
+    [padre_dni] => 12345678Q
+    [padre_email] => hans_cok@hotmail.com
+    [padre_telefono] => 677123123
+    [metodo_pago] => transferencia
+    [hijo_nombre_completo_1] => Luisito perrito
+    [hijo_fecha_nacimiento_1] => 2012-12-12
+    [sexo_1] => H
+    [grupo_1] => Benjamin
+    [modalidad_1] => RPSJ
+    [demarcacion_1] => jugador
+    [lesiones_1] => 
+    [hijo_nombre_completo_2] => Mias
+    [hijo_fecha_nacimiento_2] => 2011-11-11
+    [sexo_2] => M
+    [grupo_2] => Querubin
+    [modalidad_2] => RPSJ
+    [demarcacion_2] => jugador
+    [lesiones_2] => 
+    [hijo_nombre_completo_N] => 
+    [hijo_fecha_nacimiento_N] => 
+    [sexo_N] => 
+    [grupo_N] => 
+    [modalidad_N] => 
+    [demarcacion_N] => 
+    [lesiones_N] => 
+    [consentimiento] => on
+    [consentimiento_imagen] => on
+)
+ - Data: Array
+(
+)
+
+[14-Feb-2025 17:08:19 UTC] 2025-02-14 17:08:19 - Intentando conectar a la base de datos - Data: Array
+(
+)
+
+[14-Feb-2025 17:08:19 UTC] 2025-02-14 17:08:19 - Conexión establecida - Data: Array
+(
+)
+
+[14-Feb-2025 17:08:19 UTC] 2025-02-14 17:08:19 - Datos del padre: Array
+(
+    [nombre] => Hans Cok
+    [dni] => 12345678Q
+    [telefono] => 677123123
+    [email] => hans_cok@hotmail.com
+    [metodo_pago] => transferencia
+)
+ - Data: Array
+(
+)
+
+[14-Feb-2025 17:08:19 UTC] 2025-02-14 17:08:19 - Registro del padre exitoso. ID: 14 - Data: Array
+(
+)
+
+[14-Feb-2025 17:08:19 UTC] 2025-02-14 17:08:19 - Datos de los hijos: Array
+(
+    [0] => Array
+        (
+            [nombre_completo] => Luisito perrito
+            [fecha_nacimiento] => 2012-12-12
+            [sexo] => H
+            [grupo] => Benjamin
+            [jugador_numero] => 1
+        )
+
+    [1] => Array
+        (
+            [nombre_completo] => Mias
+            [fecha_nacimiento] => 2011-11-11
+            [sexo] => M
+            [grupo] => Querubin
+            [jugador_numero] => 2
+        )
+
+)
+ - Data: Array
+(
+)
+
+[14-Feb-2025 17:08:19 UTC] 2025-02-14 17:08:19 - Hijo registrado: Luisito perrito - Data: Array
+(
+)
+
+[14-Feb-2025 17:08:19 UTC] 2025-02-14 17:08:19 - Hijo registrado: Mias - Data: Array
+(
+)
+
+[14-Feb-2025 17:08:19 UTC] 2025-02-14 17:08:19 - Transacción completada con éxito - Data: Array
+(
+)
+
+[14-Feb-2025 17:11:52 UTC] 2025-02-14 17:11:52 - Iniciando procesamiento - Data: Array
+(
+)
+
+[14-Feb-2025 17:11:52 UTC] 2025-02-14 17:11:52 - POST data: Array
+(
+    [padre_nombre] => Hans Cok
+    [padre_dni] => 12345678Q
+    [padre_email] => hans_cok@hotmail.com
+    [padre_telefono] => 677123123
+    [metodo_pago] => transferencia
+    [hijo_nombre_completo_1] => Luisito perrito
+    [hijo_fecha_nacimiento_1] => 2012-12-12
+    [sexo_1] => H
+    [grupo_1] => Benjamin
+    [modalidad_1] => RPSJ
+    [demarcacion_1] => jugador
+    [lesiones_1] => 
+    [hijo_nombre_completo_2] => Mias
+    [hijo_fecha_nacimiento_2] => 2011-11-11
+    [sexo_2] => M
+    [grupo_2] => Prebenjamin
+    [modalidad_2] => NO_RPSJ
+    [demarcacion_2] => portero
+    [lesiones_2] => 
+    [hijo_nombre_completo_N] => 
+    [hijo_fecha_nacimiento_N] => 
+    [sexo_N] => 
+    [grupo_N] => 
+    [modalidad_N] => 
+    [demarcacion_N] => 
+    [lesiones_N] => 
+    [consentimiento] => on
+    [consentimiento_imagen] => on
+)
+ - Data: Array
+(
+)
+
+[14-Feb-2025 17:11:52 UTC] 2025-02-14 17:11:52 - Intentando conectar a la base de datos - Data: Array
+(
+)
+
+[14-Feb-2025 17:11:52 UTC] 2025-02-14 17:11:52 - Conexión establecida - Data: Array
+(
+)
+
+[14-Feb-2025 17:11:52 UTC] 2025-02-14 17:11:52 - Datos del padre: Array
+(
+    [nombre] => Hans Cok
+    [dni] => 12345678Q
+    [telefono] => 677123123
+    [email] => hans_cok@hotmail.com
+    [metodo_pago] => transferencia
+)
+ - Data: Array
+(
+)
+
+[14-Feb-2025 17:11:52 UTC] 2025-02-14 17:11:52 - Registro del padre exitoso. ID: 15 - Data: Array
+(
+)
+
+[14-Feb-2025 17:11:52 UTC] 2025-02-14 17:11:52 - Datos de los hijos: Array
+(
+    [0] => Array
+        (
+            [nombre_completo] => Luisito perrito
+            [fecha_nacimiento] => 2012-12-12
+            [sexo] => H
+            [grupo] => Benjamin
+            [jugador_numero] => 1
+            [descuento] => 0
+        )
+
+    [1] => Array
+        (
+            [nombre_completo] => Mias
+            [fecha_nacimiento] => 2011-11-11
+            [sexo] => M
+            [grupo] => Prebenjamin
+            [jugador_numero] => 2
+            [descuento] => 5
+        )
+
+)
+ - Data: Array
+(
+)
+
+[14-Feb-2025 17:11:52 UTC] 2025-02-14 17:11:52 - Error de base de datos: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens - Data: Array
+(
+)
+
+[14-Feb-2025 17:13:12 UTC] 2025-02-14 17:13:12 - Iniciando procesamiento - Data: Array
+(
+)
+
+[14-Feb-2025 17:13:12 UTC] 2025-02-14 17:13:12 - POST data: Array
+(
+    [padre_nombre] => Hans Cok
+    [padre_dni] => 12345678Q
+    [padre_email] => hans_cok@hotmail.com
+    [padre_telefono] => 677123123
+    [metodo_pago] => transferencia
+    [hijo_nombre_completo_1] => Luisito perrito
+    [hijo_fecha_nacimiento_1] => 2012-12-12
+    [sexo_1] => H
+    [grupo_1] => Benjamin
+    [modalidad_1] => RPSJ
+    [demarcacion_1] => jugador
+    [lesiones_1] => 
+    [hijo_nombre_completo_2] => Mias
+    [hijo_fecha_nacimiento_2] => 2011-11-11
+    [sexo_2] => M
+    [grupo_2] => Prebenjamin
+    [modalidad_2] => NO_RPSJ
+    [demarcacion_2] => portero
+    [lesiones_2] => 
+    [hijo_nombre_completo_N] => 
+    [hijo_fecha_nacimiento_N] => 
+    [sexo_N] => 
+    [grupo_N] => 
+    [modalidad_N] => 
+    [demarcacion_N] => 
+    [lesiones_N] => 
+    [consentimiento] => on
+    [consentimiento_imagen] => on
+)
+ - Data: Array
+(
+)
+
+[14-Feb-2025 17:13:12 UTC] 2025-02-14 17:13:12 - Intentando conectar a la base de datos - Data: Array
+(
+)
+
+[14-Feb-2025 17:13:12 UTC] 2025-02-14 17:13:12 - Conexión establecida - Data: Array
+(
+)
+
+[14-Feb-2025 17:13:12 UTC] 2025-02-14 17:13:12 - Datos del padre: Array
+(
+    [nombre] => Hans Cok
+    [dni] => 12345678Q
+    [telefono] => 677123123
+    [email] => hans_cok@hotmail.com
+    [metodo_pago] => transferencia
+)
+ - Data: Array
+(
+)
+
+[14-Feb-2025 17:13:12 UTC] 2025-02-14 17:13:12 - Registro del padre exitoso. ID: 16 - Data: Array
+(
+)
+
+[14-Feb-2025 17:13:12 UTC] 2025-02-14 17:13:12 - Datos de los hijos: Array
+(
+    [0] => Array
+        (
+            [padre_id] => 16
+            [nombre_completo] => Luisito perrito
+            [fecha_nacimiento] => 2012-12-12
+            [sexo] => H
+            [grupo] => Benjamin
+            [jugador_numero] => 1
+            [descuento] => 0
+        )
+
+    [1] => Array
+        (
+            [padre_id] => 16
+            [nombre_completo] => Mias
+            [fecha_nacimiento] => 2011-11-11
+            [sexo] => M
+            [grupo] => Prebenjamin
+            [jugador_numero] => 2
+            [descuento] => 5
+        )
+
+)
+ - Data: Array
+(
+)
+
+[14-Feb-2025 17:13:12 UTC] 2025-02-14 17:13:12 - Hijo registrado: Luisito perrito - Data: Array
+(
+)
+
+[14-Feb-2025 17:13:12 UTC] 2025-02-14 17:13:12 - Hijo registrado: Mias - Data: Array
+(
+)
+
+[14-Feb-2025 17:13:12 UTC] 2025-02-14 17:13:12 - Transacción completada con éxito - Data: Array
+(
+)
+
+[14-Feb-2025 17:25:14 UTC] 2025-02-14 17:25:14 - Iniciando procesamiento - Data: Array
+(
+)
+
+[14-Feb-2025 17:25:14 UTC] 2025-02-14 17:25:14 - POST data: Array
+(
+    [padre_nombre] => Enrico Peez
+    [padre_dni] => 12345678Q
+    [padre_email] => hans_cok@hotmail.com
+    [padre_telefono] => 677123123
+    [metodo_pago] => transferencia
+    [hijo_nombre_completo_1] => Luisito perrito
+    [hijo_fecha_nacimiento_1] => 2012-12-12
+    [sexo_1] => H
+    [grupo_1] => Querubin
+    [modalidad_1] => RPSJ
+    [demarcacion_1] => jugador
+    [lesiones_1] => 
+    [hijo_nombre_completo_N] => 
+    [hijo_fecha_nacimiento_N] => 
+    [sexo_N] => 
+    [grupo_N] => 
+    [modalidad_N] => 
+    [demarcacion_N] => 
+    [lesiones_N] => 
+    [consentimiento] => on
+    [consentimiento_imagen] => on
+)
+ - Data: Array
+(
+)
+
+[14-Feb-2025 17:25:14 UTC] 2025-02-14 17:25:14 - Intentando conectar a la base de datos - Data: Array
+(
+)
+
+[14-Feb-2025 17:25:15 UTC] 2025-02-14 17:25:14 - Conexión establecida - Data: Array
+(
+)
+
+[14-Feb-2025 17:25:15 UTC] 2025-02-14 17:25:15 - Datos del padre: Array
+(
+    [nombre] => Enrico Peez
+    [dni] => 12345678Q
+    [telefono] => 677123123
+    [email] => hans_cok@hotmail.com
+    [metodo_pago] => transferencia
+)
+ - Data: Array
+(
+)
+
+[14-Feb-2025 17:25:15 UTC] 2025-02-14 17:25:15 - Registro del padre exitoso. ID: 17 - Data: Array
+(
+)
+
+[14-Feb-2025 17:25:15 UTC] 2025-02-14 17:25:15 - Datos de los hijos: Array
+(
+    [0] => Array
+        (
+            [padre_id] => 17
+            [nombre_completo] => Luisito perrito
+            [fecha_nacimiento] => 2012-12-12
+            [sexo] => H
+            [grupo] => Querubin
+            [modalidad] => RPSJ
+            [demarcacion] => jugador
+            [lesiones] => 
+            [jugador_numero] => 1
+            [descuento] => 0
+            [tiene_hermanos] => 0
+        )
+
+)
+ - Data: Array
+(
+)
+
+[14-Feb-2025 17:25:15 UTC] 2025-02-14 17:25:15 - Hijo registrado: Luisito perrito - Data: Array
+(
+)
+
+[14-Feb-2025 17:25:15 UTC] 2025-02-14 17:25:15 - Consentimientos registrados - Data: Array
+(
+)
+
+[14-Feb-2025 17:25:15 UTC] 2025-02-14 17:25:15 - Transacción completada con éxito - Data: Array
+(
+)
+
+[14-Feb-2025 17:28:31 UTC] 2025-02-14 17:28:31 - Iniciando procesamiento - Data: Array
+(
+)
+
+[14-Feb-2025 17:28:31 UTC] 2025-02-14 17:28:31 - POST data: Array
+(
+    [padre_nombre] => Alberico perez
+    [padre_dni] => 12345678Q
+    [padre_email] => hans_cok@hotmail.com
+    [padre_telefono] => 622123123
+    [metodo_pago] => 
+    [hijo_nombre_completo_1] => Luisito perrito
+    [hijo_fecha_nacimiento_1] => 2012-12-12
+    [sexo_1] => H
+    [grupo_1] => Querubin
+    [modalidad_1] => RPSJ
+    [demarcacion_1] => jugador
+    [lesiones_1] => 
+    [hijo_nombre_completo_2] => Mias
+    [hijo_fecha_nacimiento_2] => 2011-11-11
+    [sexo_2] => M
+    [grupo_2] => Benjamin
+    [modalidad_2] => NO_RPSJ
+    [demarcacion_2] => jugador
+    [lesiones_2] => 
+    [hijo_nombre_completo_N] => 
+    [hijo_fecha_nacimiento_N] => 
+    [sexo_N] => 
+    [grupo_N] => 
+    [modalidad_N] => 
+    [demarcacion_N] => 
+    [lesiones_N] => 
+    [consentimiento] => on
+    [consentimiento_imagen] => on
+)
+ - Data: Array
+(
+)
+
+[14-Feb-2025 17:28:31 UTC] 2025-02-14 17:28:31 - Intentando conectar a la base de datos - Data: Array
+(
+)
+
+[14-Feb-2025 17:28:31 UTC] 2025-02-14 17:28:31 - Conexión establecida - Data: Array
+(
+)
+
+[14-Feb-2025 17:28:31 UTC] 2025-02-14 17:28:31 - Datos del padre: Array
+(
+    [nombre] => Alberico perez
+    [dni] => 12345678Q
+    [telefono] => 622123123
+    [email] => hans_cok@hotmail.com
+    [metodo_pago] => 
+)
+ - Data: Array
+(
+)
+
+[14-Feb-2025 17:28:31 UTC] 2025-02-14 17:28:31 - Error de base de datos: SQLSTATE[01000]: Warning: 1265 Data truncated for column 'metodo_pago' at row 1 - Data: Array
+(
+)
+
+[14-Feb-2025 17:28:48 UTC] 2025-02-14 17:28:48 - Iniciando procesamiento - Data: Array
+(
+)
+
+[14-Feb-2025 17:28:48 UTC] 2025-02-14 17:28:48 - POST data: Array
+(
+    [padre_nombre] => Alberico perez
+    [padre_dni] => 12345678Q
+    [padre_email] => hans_cok@hotmail.com
+    [padre_telefono] => 622123123
+    [metodo_pago] => transferencia
+    [hijo_nombre_completo_1] => Luisito perrito
+    [hijo_fecha_nacimiento_1] => 2012-12-12
+    [sexo_1] => H
+    [grupo_1] => Querubin
+    [modalidad_1] => RPSJ
+    [demarcacion_1] => jugador
+    [lesiones_1] => 
+    [hijo_nombre_completo_2] => Mias
+    [hijo_fecha_nacimiento_2] => 2011-11-11
+    [sexo_2] => M
+    [grupo_2] => Benjamin
+    [modalidad_2] => NO_RPSJ
+    [demarcacion_2] => jugador
+    [lesiones_2] => 
+    [hijo_nombre_completo_N] => 
+    [hijo_fecha_nacimiento_N] => 
+    [sexo_N] => 
+    [grupo_N] => 
+    [modalidad_N] => 
+    [demarcacion_N] => 
+    [lesiones_N] => 
+    [consentimiento] => on
+    [consentimiento_imagen] => on
+)
+ - Data: Array
+(
+)
+
+[14-Feb-2025 17:28:48 UTC] 2025-02-14 17:28:48 - Intentando conectar a la base de datos - Data: Array
+(
+)
+
+[14-Feb-2025 17:28:48 UTC] 2025-02-14 17:28:48 - Conexión establecida - Data: Array
+(
+)
+
+[14-Feb-2025 17:28:48 UTC] 2025-02-14 17:28:48 - Datos del padre: Array
+(
+    [nombre] => Alberico perez
+    [dni] => 12345678Q
+    [telefono] => 622123123
+    [email] => hans_cok@hotmail.com
+    [metodo_pago] => transferencia
+)
+ - Data: Array
+(
+)
+
+[14-Feb-2025 17:28:48 UTC] 2025-02-14 17:28:48 - Registro del padre exitoso. ID: 18 - Data: Array
+(
+)
+
+[14-Feb-2025 17:28:48 UTC] 2025-02-14 17:28:48 - Datos de los hijos: Array
+(
+    [0] => Array
+        (
+            [padre_id] => 18
+            [nombre_completo] => Luisito perrito
+            [fecha_nacimiento] => 2012-12-12
+            [sexo] => H
+            [grupo] => Querubin
+            [modalidad] => RPSJ
+            [demarcacion] => jugador
+            [lesiones] => 
+            [jugador_numero] => 1
+            [descuento] => 0
+            [tiene_hermanos] => 0
+        )
+
+    [1] => Array
+        (
+            [padre_id] => 18
+            [nombre_completo] => Mias
+            [fecha_nacimiento] => 2011-11-11
+            [sexo] => M
+            [grupo] => Benjamin
+            [modalidad] => NO_RPSJ
+            [demarcacion] => jugador
+            [lesiones] => 
+            [jugador_numero] => 2
+            [descuento] => 5
+            [tiene_hermanos] => 1
+        )
+
+)
+ - Data: Array
+(
+)
+
+[14-Feb-2025 17:28:48 UTC] 2025-02-14 17:28:48 - Hijo registrado: Luisito perrito - Data: Array
+(
+)
+
+[14-Feb-2025 17:28:48 UTC] 2025-02-14 17:28:48 - Hijo registrado: Mias - Data: Array
+(
+)
+
+[14-Feb-2025 17:28:48 UTC] 2025-02-14 17:28:48 - Consentimientos registrados - Data: Array
+(
+)
+
+[14-Feb-2025 17:28:48 UTC] 2025-02-14 17:28:48 - Transacción completada con éxito - Data: Array
+(
+)
+

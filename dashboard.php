@@ -361,7 +361,7 @@ try {
                                 <td><?= date('d/m/Y H:i', strtotime($i['fecha_registro'])) ?></td>
                                 <td>
                                     <div class="btn-group">
-                                        <a href="ver_inscripcion.php?id=<?= $i['padre_id'] ?>" 
+                                        <a href="inscripcion.php?id=<?= $i['padre_id'] ?>" 
                                            class="btn btn-sm btn-info">
                                             <i class="fas fa-eye"></i>
                                         </a>

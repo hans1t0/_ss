@@ -1,13 +1,24 @@
 <?php
+// Iniciar sesión y buffer al principio
+ob_start();
 session_start();
+
+// Incluir configuración de la base de datos
+require_once 'config/database.php';
+
+// Generar nuevo token CSRF si no existe
+if (!isset($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
 
 // Mensaje simple de error/éxito
 $status = $_GET['status'] ?? null;
 $message = $_GET['message'] ?? null;
 
-// Cargar primero el template del usuario que contiene la función generarCampo
+// Cargar primero las funciones compartidas
+require_once 'templates/functions.php';
+// Luego cargar los templates
 require_once 'templates/template_usuario.php';
-// Luego cargar el template del padre que usa esa función
 require_once 'templates/template_padre.php';
 ?>
 <!DOCTYPE html>
@@ -21,13 +32,36 @@ require_once 'templates/template_padre.php';
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script src="funciones.js"></script>
+    <script src="funciones.js?v=<?= time() ?>"></script>
 </head>
 <body class="bg-light text-dark">
-    <div class="header-banner text-center py-8 bg-cover bg-center mb-4" style="background-image: url('futbol-banner.jpg');">
+    <!-- Navbar fixed top -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Campus de Fútbol</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#inscripcion">Inscripción</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="info.php">Info</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Banner -->
+    <div class="header-banner text-center py-8 bg-cover bg-center mb-4" style="background-image: url('futbol-banner.jpg'); margin-top: 80px;">
         <div class="container mx-auto">
             <img src="images/cabecera.png" alt="Cabecera" class="img-fluid mb-4">
-            <img src="logo.png" alt="Racing Playa San Juan" class="img-fluid mb-4">
             <h1 class="display-4 text-white">Campus de Fútbol</h1>
         </div>
     </div>
@@ -38,14 +72,14 @@ require_once 'templates/template_padre.php';
                 <?php echo htmlspecialchars($message); ?>
             </div>
         <?php endif; ?>        
-        <div class="card shadow-lg">
+        <div class="card shadow-lg" id="inscripcion">
             <div class="card-body">
                 <form id="inscripcion-form" action="process2.php" method="post" class="needs-validation" novalidate>
                     <!-- Información de Precios -->
                     <div class="mb-4">
                         <div class="alert alert-info">
                             <h5 class="alert-heading"><i class="fas fa-euro-sign me-2"></i>Información de Precios</h5>
-                            <p class="mb-0">Cuota Campus: 90€</p>
+                            <p class="mb-0">Cuota Campus: 95€</p>
                             <p class="mb-0">Descuento Familiar:</p>
                             <ul>
                                 <li>5€ segundo hij@</li>
@@ -114,6 +148,25 @@ require_once 'templates/template_padre.php';
                         <button type="button" class="btn btn-outline-primary" id="add-jugador">
                             <i class="fas fa-plus me-2"></i>Añadir hermano
                         </button>
+                    </div>
+
+                    <!-- Template para clonar -->
+                    <div id="jugador-template" style="display: none;">
+                        <div class="jugador-form" data-jugador-id="N">
+                            <h3 class="card-title"><i class="fas fa-child me-2"></i>Datos del Jugador</h3>
+                            <div class="row g-4">
+                                <?php
+                                foreach ($campos_jugador as $nombre => $campo) {
+                                    echo '<div class="col-md-6 form-group">';
+                                    echo generarCampo($nombre, $campo, '', '_N');
+                                    echo '</div>';
+                                }
+                                ?>
+                            </div>
+                            <button type="button" class="btn btn-danger remove-jugador">
+                                <i class="fas fa-trash me-2"></i>Eliminar
+                            </button>
+                        </div>
                     </div>
 
                     <!-- Consentimiento -->

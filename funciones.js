@@ -31,6 +31,10 @@ $(document).ready(function () {
     function actualizarInfoPago() {
         const metodoPago = $('#metodo_pago').val();
         console.log('Método de pago seleccionado:', metodoPago); // Debug
+        const infoPagoContainer = $('.info-pago');
+
+        // Mostrar el contenedor principal
+        infoPagoContainer.toggle(metodoPago !== '');
 
         // Actualizar información de pago
         if (metodoPago === 'transferencia') {
@@ -59,27 +63,27 @@ $(document).ready(function () {
         }
 
         jugadorCount++;
-        const nuevoJugador = $('.jugador-form:first').clone()
+        const nuevoJugador = $('#jugador-template .jugador-form').clone()
             .attr('data-jugador-id', jugadorCount);
 
         // Actualizar IDs y names
         nuevoJugador.find('[id]').each(function () {
             const oldId = $(this).attr('id');
-            $(this).attr('id', oldId.replace('_1', '_' + jugadorCount))
-                .attr('name', oldId.replace('_1', '_' + jugadorCount));
+            $(this).attr('id', oldId.replace('_N', '_' + jugadorCount))
+                .attr('name', oldId.replace('_N', '_' + jugadorCount));
         });
 
         // Actualizar labels
         nuevoJugador.find('label[for]').each(function () {
             const oldFor = $(this).attr('for');
-            $(this).attr('for', oldFor.replace('_1', '_' + jugadorCount));
+            $(this).attr('for', oldFor.replace('_N', '_' + jugadorCount));
         });
 
         // Limpiar valores
         nuevoJugador.find('input, select').val('');
 
         // Actualizar título
-        nuevoJugador.find('h3').text('Datos del Hermano ' + jugadorCount);
+        nuevoJugador.find('h3').text('Datos del Jugador ' + jugadorCount);
 
         // Agregar al contenedor
         $('#jugadores-container').append(nuevoJugador);
@@ -87,6 +91,13 @@ $(document).ready(function () {
         if (jugadorCount === MAX_JUGADORES) {
             $(this).prop('disabled', true);
         }
+    });
+
+    // Eliminar hermano
+    $(document).on('click', '.remove-jugador', function () {
+        $(this).closest('.jugador-form').remove();
+        jugadorCount--;
+        $('#add-jugador').prop('disabled', false);
     });
 
     // Validación del formulario
@@ -130,4 +141,19 @@ $(document).ready(function () {
 
     // Inicialización
     actualizarInfoPago();
+
+    // Desplazamiento suave al hacer clic en los enlaces del menú
+    $(".navbar-nav a").on('click', function (event) {
+        if (this.hash !== "") {
+            event.preventDefault();
+
+            var hash = this.hash;
+
+            $('html, body').animate({
+                scrollTop: $(hash).offset().top - 70
+            }, 800, function () {
+                window.location.hash = hash;
+            });
+        }
+    });
 });

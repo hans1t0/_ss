@@ -1,0 +1,414 @@
+[14-Feb-2025 16:56:44 UTC] 2025-02-14 16:56:44 - Parámetros recibidos - Data: Array
+(
+    [id] => 13
+    [metodo] => transferencia
+)
+
+[14-Feb-2025 16:56:44 UTC] Iniciando configuración de base de datos
+[14-Feb-2025 16:56:44 UTC] Intentando conexión...
+[14-Feb-2025 16:56:44 UTC] Conexión exitosa usando socket
+[14-Feb-2025 16:56:44 UTC] 2025-02-14 16:56:44 - Conexión establecida, buscando inscripción - Data: Array
+(
+    [id] => 13
+)
+
+[14-Feb-2025 16:56:44 UTC] 2025-02-14 16:56:44 - Datos recuperados - Data: Array
+(
+    [id] => 13
+    [nombre] => Hans Cok
+    [dni] => 12345678Q
+    [telefono] => 677123123
+    [email] => hans_cok@hotmail.com
+    [metodo_pago] => transferencia
+    [cuenta_bancaria] => 
+    [fecha_registro] => 2025-02-14 17:56:44
+    [jugadores_info] => Luisito perrito|Querubin|1
+)
+
+[14-Feb-2025 16:56:44 UTC] 2025-02-14 16:56:44 - Jugadores procesados - Data: Array
+(
+    [0] => Array
+        (
+            [nombre_completo] => Luisito perrito
+            [grupo] => Querubin
+            [numero] => 1
+        )
+
+)
+
+[14-Feb-2025 17:08:19 UTC] 2025-02-14 17:08:19 - Parámetros recibidos - Data: Array
+(
+    [id] => 14
+    [metodo] => transferencia
+)
+
+[14-Feb-2025 17:08:19 UTC] Iniciando configuración de base de datos
+[14-Feb-2025 17:08:19 UTC] Intentando conexión...
+[14-Feb-2025 17:08:19 UTC] Conexión exitosa usando socket
+[14-Feb-2025 17:08:19 UTC] 2025-02-14 17:08:19 - Conexión establecida, buscando inscripción - Data: Array
+(
+    [id] => 14
+)
+
+[14-Feb-2025 17:08:19 UTC] 2025-02-14 17:08:19 - Datos recuperados - Data: Array
+(
+    [id] => 14
+    [nombre] => Hans Cok
+    [dni] => 12345678Q
+    [telefono] => 677123123
+    [email] => hans_cok@hotmail.com
+    [metodo_pago] => transferencia
+    [cuenta_bancaria] => 
+    [fecha_registro] => 2025-02-14 18:08:19
+    [jugadores_info] => Luisito perrito|Benjamin|1;Mias|Querubin|2
+)
+
+[14-Feb-2025 17:08:19 UTC] 2025-02-14 17:08:19 - Jugadores procesados - Data: Array
+(
+    [0] => Array
+        (
+            [nombre_completo] => Luisito perrito
+            [grupo] => Benjamin
+            [numero] => 1
+        )
+
+    [1] => Array
+        (
+            [nombre_completo] => Mias
+            [grupo] => Querubin
+            [numero] => 2
+        )
+
+)
+
+[14-Feb-2025 17:16:19 UTC] 2025-02-14 17:16:19 - Parámetros recibidos - Data: Array
+(
+    [id] => 16
+    [metodo] => transferencia
+    [precio] => 175
+)
+
+[14-Feb-2025 17:16:19 UTC] Iniciando configuración de base de datos
+[14-Feb-2025 17:16:19 UTC] Intentando conexión...
+[14-Feb-2025 17:16:19 UTC] Conexión exitosa usando socket
+[14-Feb-2025 17:16:19 UTC] 2025-02-14 17:16:19 - Conexión establecida, buscando inscripción - Data: Array
+(
+    [id] => 16
+)
+
+[14-Feb-2025 17:16:19 UTC] 2025-02-14 17:16:19 - Datos recuperados - Data: Array
+(
+    [padre] => Array
+        (
+            [id] => 16
+            [nombre] => Hans Cok
+            [dni] => 12345678Q
+            [telefono] => 677123123
+            [email] => hans_cok@hotmail.com
+            [metodo_pago] => transferencia
+            [cuenta_bancaria] => 
+            [fecha_registro] => 2025-02-14 18:13:12
+        )
+
+    [jugadores] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 14
+                    [padre_id] => 16
+                    [nombre_completo] => Luisito perrito
+                    [fecha_nacimiento] => 2012-12-12
+                    [sexo] => H
+                    [grupo] => Benjamin
+                    [modalidad] => RPSJ
+                    [demarcacion] => jugador
+                    [lesiones] => 
+                    [jugador_numero] => 1
+                    [descuento] => 
+                )
+
+            [1] => Array
+                (
+                    [id] => 15
+                    [padre_id] => 16
+                    [nombre_completo] => Mias
+                    [fecha_nacimiento] => 2011-11-11
+                    [sexo] => M
+                    [grupo] => Prebenjamin
+                    [modalidad] => RPSJ
+                    [demarcacion] => jugador
+                    [lesiones] => 
+                    [jugador_numero] => 2
+                    [descuento] => 
+                )
+
+        )
+
+)
+
+[14-Feb-2025 17:21:46 UTC] 2025-02-14 17:21:46 - Parámetros recibidos - Data: Array
+(
+    [id] => 16
+    [metodo] => transferencia
+    [precio] => 175
+)
+
+[14-Feb-2025 17:21:46 UTC] Iniciando configuración de base de datos
+[14-Feb-2025 17:21:46 UTC] Intentando conexión...
+[14-Feb-2025 17:21:46 UTC] Conexión exitosa usando socket
+[14-Feb-2025 17:21:46 UTC] 2025-02-14 17:21:46 - Conexión establecida, buscando inscripción - Data: Array
+(
+    [id] => 16
+)
+
+[14-Feb-2025 17:21:46 UTC] 2025-02-14 17:21:46 - Datos recuperados - Data: Array
+(
+    [padre] => Array
+        (
+            [id] => 16
+            [nombre] => Hans Cok
+            [dni] => 12345678Q
+            [telefono] => 677123123
+            [email] => hans_cok@hotmail.com
+            [metodo_pago] => transferencia
+            [cuenta_bancaria] => 
+            [fecha_registro] => 2025-02-14 18:13:12
+        )
+
+    [jugadores] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 14
+                    [padre_id] => 16
+                    [nombre_completo] => Luisito perrito
+                    [fecha_nacimiento] => 2012-12-12
+                    [sexo] => H
+                    [grupo] => Benjamin
+                    [modalidad] => RPSJ
+                    [demarcacion] => jugador
+                    [lesiones] => 
+                    [jugador_numero] => 1
+                    [descuento] => 
+                )
+
+            [1] => Array
+                (
+                    [id] => 15
+                    [padre_id] => 16
+                    [nombre_completo] => Mias
+                    [fecha_nacimiento] => 2011-11-11
+                    [sexo] => M
+                    [grupo] => Prebenjamin
+                    [modalidad] => RPSJ
+                    [demarcacion] => jugador
+                    [lesiones] => 
+                    [jugador_numero] => 2
+                    [descuento] => 
+                )
+
+        )
+
+)
+
+[14-Feb-2025 17:21:51 UTC] 2025-02-14 17:21:51 - Parámetros recibidos - Data: Array
+(
+    [id] => 16
+    [metodo] => transferencia
+    [precio] => 175
+)
+
+[14-Feb-2025 17:21:51 UTC] Iniciando configuración de base de datos
+[14-Feb-2025 17:21:51 UTC] Intentando conexión...
+[14-Feb-2025 17:21:51 UTC] Conexión exitosa usando socket
+[14-Feb-2025 17:21:51 UTC] 2025-02-14 17:21:51 - Conexión establecida, buscando inscripción - Data: Array
+(
+    [id] => 16
+)
+
+[14-Feb-2025 17:21:51 UTC] 2025-02-14 17:21:51 - Datos recuperados - Data: Array
+(
+    [padre] => Array
+        (
+            [id] => 16
+            [nombre] => Hans Cok
+            [dni] => 12345678Q
+            [telefono] => 677123123
+            [email] => hans_cok@hotmail.com
+            [metodo_pago] => transferencia
+            [cuenta_bancaria] => 
+            [fecha_registro] => 2025-02-14 18:13:12
+        )
+
+    [jugadores] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 14
+                    [padre_id] => 16
+                    [nombre_completo] => Luisito perrito
+                    [fecha_nacimiento] => 2012-12-12
+                    [sexo] => H
+                    [grupo] => Benjamin
+                    [modalidad] => RPSJ
+                    [demarcacion] => jugador
+                    [lesiones] => 
+                    [jugador_numero] => 1
+                    [descuento] => 
+                )
+
+            [1] => Array
+                (
+                    [id] => 15
+                    [padre_id] => 16
+                    [nombre_completo] => Mias
+                    [fecha_nacimiento] => 2011-11-11
+                    [sexo] => M
+                    [grupo] => Prebenjamin
+                    [modalidad] => RPSJ
+                    [demarcacion] => jugador
+                    [lesiones] => 
+                    [jugador_numero] => 2
+                    [descuento] => 
+                )
+
+        )
+
+)
+
+[14-Feb-2025 17:24:28 UTC] 2025-02-14 17:24:28 - Parámetros recibidos - Data: Array
+(
+    [id] => 16
+    [metodo] => transferencia
+    [precio] => 175
+)
+
+[14-Feb-2025 17:24:28 UTC] Iniciando configuración de base de datos
+[14-Feb-2025 17:24:28 UTC] Intentando conexión...
+[14-Feb-2025 17:24:28 UTC] Conexión exitosa usando socket
+[14-Feb-2025 17:24:28 UTC] 2025-02-14 17:24:28 - Conexión establecida, buscando inscripción - Data: Array
+(
+    [id] => 16
+)
+
+[14-Feb-2025 17:24:28 UTC] 2025-02-14 17:24:28 - Error general - Data: Array
+(
+    [message] => No se encontró la inscripción con ID: 16
+    [trace] => #0 {main}
+)
+
+[14-Feb-2025 17:25:15 UTC] 2025-02-14 17:25:15 - Parámetros recibidos - Data: Array
+(
+    [id] => 17
+    [metodo] => transferencia
+    [precio] => 90
+)
+
+[14-Feb-2025 17:25:15 UTC] Iniciando configuración de base de datos
+[14-Feb-2025 17:25:15 UTC] Intentando conexión...
+[14-Feb-2025 17:25:15 UTC] Conexión exitosa usando socket
+[14-Feb-2025 17:25:15 UTC] 2025-02-14 17:25:15 - Conexión establecida, buscando inscripción - Data: Array
+(
+    [id] => 17
+)
+
+[14-Feb-2025 17:25:15 UTC] 2025-02-14 17:25:15 - Datos recuperados - Data: Array
+(
+    [padre] => Array
+        (
+            [id] => 17
+            [nombre] => Enrico Peez
+            [dni] => 12345678Q
+            [telefono] => 677123123
+            [email] => hans_cok@hotmail.com
+            [metodo_pago] => transferencia
+            [cuenta_bancaria] => 
+            [fecha_registro] => 2025-02-14 18:25:15
+        )
+
+    [jugadores] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 16
+                    [padre_id] => 17
+                    [nombre_completo] => Luisito perrito
+                    [fecha_nacimiento] => 2012-12-12
+                    [sexo] => H
+                    [grupo] => Querubin
+                    [modalidad] => RPSJ
+                    [demarcacion] => jugador
+                    [lesiones] => 
+                    [jugador_numero] => 1
+                    [descuento] => 0.00
+                )
+
+        )
+
+)
+
+[14-Feb-2025 17:28:48 UTC] 2025-02-14 17:28:48 - Parámetros recibidos - Data: Array
+(
+    [id] => 18
+    [metodo] => transferencia
+    [precio] => 175
+)
+
+[14-Feb-2025 17:28:48 UTC] Iniciando configuración de base de datos
+[14-Feb-2025 17:28:48 UTC] Intentando conexión...
+[14-Feb-2025 17:28:48 UTC] Conexión exitosa usando socket
+[14-Feb-2025 17:28:48 UTC] 2025-02-14 17:28:48 - Conexión establecida, buscando inscripción - Data: Array
+(
+    [id] => 18
+)
+
+[14-Feb-2025 17:28:48 UTC] 2025-02-14 17:28:48 - Datos recuperados - Data: Array
+(
+    [padre] => Array
+        (
+            [id] => 18
+            [nombre] => Alberico perez
+            [dni] => 12345678Q
+            [telefono] => 622123123
+            [email] => hans_cok@hotmail.com
+            [metodo_pago] => transferencia
+            [cuenta_bancaria] => 
+            [fecha_registro] => 2025-02-14 18:28:48
+        )
+
+    [jugadores] => Array
+        (
+            [0] => Array
+                (
+                    [id] => 17
+                    [padre_id] => 18
+                    [nombre_completo] => Luisito perrito
+                    [fecha_nacimiento] => 2012-12-12
+                    [sexo] => H
+                    [grupo] => Querubin
+                    [modalidad] => RPSJ
+                    [demarcacion] => jugador
+                    [lesiones] => 
+                    [jugador_numero] => 1
+                    [descuento] => 0.00
+                )
+
+            [1] => Array
+                (
+                    [id] => 18
+                    [padre_id] => 18
+                    [nombre_completo] => Mias
+                    [fecha_nacimiento] => 2011-11-11
+                    [sexo] => M
+                    [grupo] => Benjamin
+                    [modalidad] => NO_RPSJ
+                    [demarcacion] => jugador
+                    [lesiones] => 
+                    [jugador_numero] => 2
+                    [descuento] => 5.00
+                )
+
+        )
+
+)
+

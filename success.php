@@ -11,8 +11,9 @@ function logDebug($message, $data = []) {
 // Verificar parámetros
 $inscripcionId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
 $metodoPago = filter_input(INPUT_GET, 'metodo', FILTER_SANITIZE_SPECIAL_CHARS);
+$precioTotal = filter_input(INPUT_GET, 'precio', FILTER_VALIDATE_INT);
 
-logDebug("Parámetros recibidos", ['id' => $inscripcionId, 'metodo' => $metodoPago]);
+logDebug("Parámetros recibidos", ['id' => $inscripcionId, 'metodo' => $metodoPago, 'precio' => $precioTotal]);
 
 try {
     require_once 'config/database.php';
@@ -26,45 +27,33 @@ try {
     // Obtener datos del padre con una sola consulta
     $stmtPadre = $pdo->prepare("
         SELECT 
-            p.*,
-            GROUP_CONCAT(
-                CONCAT_WS('|', 
-                    j.nombre_completo, 
-                    j.grupo,
-                    j.jugador_numero
-                )
-                ORDER BY j.jugador_numero
-                SEPARATOR ';'
-            ) as jugadores_info
+            p.*
         FROM padres p
-        LEFT JOIN jugadores j ON p.id = j.padre_id
         WHERE p.id = ?
-        GROUP BY p.id
     ");
 
     $stmtPadre->execute([$inscripcionId]);
     $datos = $stmtPadre->fetch(PDO::FETCH_ASSOC);
 
-    logDebug("Datos recuperados", $datos);
-
     if (!$datos) {
         throw new Exception("No se encontró la inscripción con ID: " . $inscripcionId);
     }
 
-    // Procesar datos de jugadores
-    $jugadores = [];
-    if ($datos['jugadores_info']) {
-        foreach (explode(';', $datos['jugadores_info']) as $jugador) {
-            list($nombre, $grupo, $numero) = explode('|', $jugador);
-            $jugadores[] = [
-                'nombre_completo' => $nombre,
-                'grupo' => $grupo,
-                'numero' => $numero
-            ];
-        }
-    }
+    // Obtener datos de los jugadores con descuentos
+    $stmtJugadores = $pdo->prepare("
+        SELECT j.*, d.descuento
+        FROM jugadores j
+        LEFT JOIN descuentos d ON j.id = d.jugador_id
+        WHERE j.padre_id = ?
+        ORDER BY j.jugador_numero
+    ");
+    $stmtJugadores->execute([$inscripcionId]);
+    $jugadores = $stmtJugadores->fetchAll(PDO::FETCH_ASSOC);
 
-    logDebug("Jugadores procesados", $jugadores);
+    logDebug("Datos recuperados", [
+        'padre' => $datos,
+        'jugadores' => $jugadores
+    ]);
 
 } catch (PDOException $e) {
     logDebug("Error de base de datos", [
@@ -111,15 +100,22 @@ try {
                                 <li>
                                     <?= htmlspecialchars($jugador['nombre_completo']) ?> 
                                     (<?= htmlspecialchars($jugador['grupo']) ?>)
+                                    <?php if ($jugador['descuento'] > 0): ?>
+                                        <span class="badge bg-success">
+                                            Descuento: <?= htmlspecialchars($jugador['descuento']) ?>€
+                                        </span>
+                                    <?php endif; ?>
                                 </li>
                             <?php endforeach; ?>
                         </ul>
+
+                        <p class='lead mb-4'>Precio Total: <?= htmlspecialchars($precioTotal) ?> €</p>
 
                         <div class="alert alert-info mb-4">
                             <h4 class="alert-heading mb-3">Próximos Pasos</h4>
                             <div id="info_pago" class="text-start">
                                 <?php
-                                if ($datos['metodo_pago'] === 'T') {
+                                if ($datos['metodo_pago'] === 'transferencia') {
                                     echo "
                                     <p><strong>Datos para la transferencia:</strong></p>
                                     <ul>
@@ -145,7 +141,7 @@ try {
                         </div>
 
                         <div class="d-grid gap-2">
-                            <a href="index.php" class="btn btn-primary btn-lg">
+                            <a href="inscripcion.php" class="btn btn-primary btn-lg">
                                 <i class="fas fa-home"></i> Volver al Inicio
                             </a>
                             <button onclick="window.print()" class="btn btn-outline-secondary btn-lg">
@@ -160,37 +156,26 @@ try {
 
     <style>
     @media print {
-        .btn {
-            display: none !important;
-        }
-        .card {
-            box-shadow: none !important;
-        }
-        body {
-            background-color: white !important;
-        }
+        .btn, .no-print { display: none !important; }
+        .card { border: 1px solid #dee2e6 !important; }
+        .badge { border: 1px solid #666 !important; }
     }
-
-    .alert {
-        border-left-width: 4px;
-    }
-
-    .alert-info {
-        border-left-color: #0dcaf0;
-    }
-
-    .alert-success {
-        border-left-color: #198754;
-    }
-
-    .card {
-        border: none;
-        border-radius: 1rem;
-    }
-
-    .fas.fa-check-circle {
-        color: #198754;
-    }
+    .info-group { margin-bottom: 1.5rem; }
+    .info-group label { font-size: 0.875rem; display: block; margin-bottom: 0.25rem; }
+    .info-group h4 { margin-bottom: 0.5rem; }
+    .badge { font-size: 0.9rem; }
+    .card { box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075); }
     </style>
+
+    <script>
+    function exportarPDF() {
+        // Implementar exportación a PDF
+        alert('Función de exportación a PDF en desarrollo');
+    }
+
+    function enviarEmail() {
+        window.location.href = `mailto:<?= $datos['email'] ?>?subject=Detalles de Inscripción #<?= $inscripcionId ?>&body=Adjunto información de la inscripción...`;
+    }
+    </script>
 </body>
 </html>
