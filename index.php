@@ -4,6 +4,11 @@ session_start();
 // Mensaje simple de error/éxito
 $status = $_GET['status'] ?? null;
 $message = $_GET['message'] ?? null;
+
+// Cargar primero el template del usuario que contiene la función generarCampo
+require_once 'templates/template_usuario.php';
+// Luego cargar el template del padre que usa esa función
+require_once 'templates/template_padre.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -12,366 +17,449 @@ $message = $_GET['message'] ?? null;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Campus de Fútbol | Racing Playa San Juan</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --accent-color: #e74c3c;
+            --bg-color: #f8f9fa;
+            --text-color: #2c3e50;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        .header-banner {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            color: white;
+            border-radius: 0 0 1rem 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .card {
+            border: none;
+            border-radius: 1rem;
+            box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-title {
+            color: var(--text-color);
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(52,152,219,0.25);
+        }
+
+        .jugador-form {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        #add-jugador {
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .remove-jugador {
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .btn-success {
+            transition: all 0.3s ease;
+        }
+
+        .form-section {
+            position: relative;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            background: white;
+            border-radius: 1rem;
+        }
+
+        .form-section::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 1rem;
+            bottom: 1rem;
+            width: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .step-indicator {
+            display: flex;
+            margin-bottom: 2rem;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .step {
+            padding: 0.5rem 1rem;
+            background: rgba(52,152,219,0.1);
+            border-radius: 2rem;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+
+        .step.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .alert-info {
+            background-color: rgba(52,152,219,0.1);
+            border: none;
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .form-section {
+                padding: 1rem;
+            }
+
+            #add-jugador {
+                width: 100%;
+                margin-top: 1rem;
+            }
+
+            .card-title {
+                font-size: 1.25rem;
+                margin-bottom: 1rem;
+            }
+
+            .jugador-form {
+                padding: 1rem;
+            }
+
+            body {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .container {
+                order: 0;
+            }
+
+            #formulario-padre {
+                order: 1;
+            }
+
+            #jugadores-container {
+                order: 2;
+            }
+        }
+    </style>
 </head>
-<body class="bg-light">
-<div class="container py-5">
-    <h1 class="text-center mb-4">Inscripción Campus de Fútbol</h1>
-
-    <?php if (isset($status)): ?>
-    <div class="alert alert-<?= $status === 'success' ? 'success' : 'danger' ?> alert-dismissible fade show">
-        <?php if ($status === 'success'): ?>
-            <strong>¡Éxito!</strong> Su inscripción se completó correctamente.
-        <?php else: ?>
-            <strong>Error:</strong> <?= htmlspecialchars($message) ?>
-        <?php endif; ?>
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    </div>
-    <?php endif; ?>
-
-    <div class="card">
-        <div class="card-body">
-            <form id="inscripcion-form" action="process.php" method="post" class="needs-validation" novalidate>
-                <!-- Datos del Padre/Tutor -->
-                <div class="mb-4">
-                    <h3 class="card-title mb-3">Datos del Padre/Tutor</h3>
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Nombre del Padre/Tutor" 
-                                   name="padre_nombre" required>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="DNI" name="padre_dni" required>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="tel" class="form-control" placeholder="Teléfono" 
-                                   name="padre_telefono" required 
-                                   pattern="[0-9]{9}"
-                                   title="Número de teléfono (9 dígitos)">
-                        </div>
-                        <div class="col-md-6">
-                            <input type="email" class="form-control" placeholder="Correo Electrónico" 
-                                   name="padre_email" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label">Forma de Pago</label>
-                            <select class="form-control" name="metodo_pago" id="metodo_pago" required>
-                                <option value="" selected disabled>Seleccione método de pago</option>
-                                <option value="T">Transferencia Bancaria</option>
-                                <option value="C">Pago al Coordinador</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6" id="cuenta_bancaria_container">
-                            <label class="form-label">IBAN para Cargo</label>
-                            <input type="text" class="form-control" placeholder="ES + 22 dígitos" 
-                                   name="cuenta_bancaria" id="cuenta_bancaria"
-                                   pattern="ES[0-9]{2}[0-9]{20}"
-                                   title="IBAN español: ES seguido de 22 números">
-                            <div class="form-text">Formato: ES seguido de 22 números (ejemplo: ES6621000418401234567891)</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Contenedor de Jugadores -->
-                <div id="jugadores-container">
-                    <div class="jugador-form mb-4" data-jugador-id="1">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h3 class="card-title">Datos del Jugador</h3>
-                            <button type="button" class="btn btn-success btn-sm" id="add-jugador">
-                                <i class="fas fa-plus"></i> Añadir Hermano
-                            </button>
-                        </div>
-                        <div class="row g-3">
-                            <div class="col-md-12">
-                                <input type="text" class="form-control" placeholder="Nombre y Apellidos del jugador" 
-                                       name="hijo_nombre_completo_1" required>  <!-- Añadido _1 -->
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Fecha de Nacimiento</label>
-                                <input type="date" class="form-control" name="hijo_fecha_nacimiento_1" required>  <!-- Añadido _1 -->
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Grupo de Edad</label>
-                                <select class="form-control" name="grupo_1" required>  <!-- Añadido _1 -->
-                                    <option value="" selected disabled>Selecciona Grupo</option>
-                                    <option value="Querubin">Querubines (5 años)</option>
-                                    <option value="Prebenjamin">Prebenjamin (6-7 años)</option>
-                                    <option value="Benjamin">Benjamines (8-9 años)</option>
-                                    <option value="Alevin">Alevines (10-11 años)</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Sexo</label>
-                                <div class="form-control py-2">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="sexo_1" 
-                                               id="sexo_h_1" value="H" required>
-                                        <label class="form-check-label" for="sexo_h_1">Hombre</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="sexo_1" 
-                                               id="sexo_m_1" value="M" required>
-                                        <label class="form-check-label" for="sexo_m_1">Mujer</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Demarcación</label>
-                                <div class="form-control py-2">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="demarcacion_1" 
-                                               id="demarcacion_j_1" value="jugador" required>
-                                        <label class="form-check-label" for="demarcacion_j_1">Jugador campo</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="demarcacion_1" 
-                                               id="demarcacion_p_1" value="portero" required>
-                                        <label class="form-check-label" for="demarcacion_p_1">Portero</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Modalidad</label>
-                                <select class="form-control" name="modalidad_1" required>  <!-- Añadido _1 -->
-                                    <option value="" selected disabled>Selecciona Modalidad</option>
-                                    <option value="RPSJ">Jugador de RPSJ</option>
-                                    <option value="NO_RPSJ">No jugador de RPSJ</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6">
-                                <label class="form-label">Lesiones o Alergias</label>
-                                <textarea class="form-control" placeholder="Opcional" 
-                                         name="lesiones_1" rows="1"></textarea>  <!-- Añadido _1 -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Consentimiento -->
-                <div class="mb-4">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="consentimiento" required>
-                        <label class="form-check-label">
-                            Acepto el tratamiento de los datos proporcionados
-                        </label>
-                    </div>
-                </div>
-
-                <!-- Información de Pago -->
-                <div class="alert alert-info mb-4" id="info_pago">
-                    <strong>INFORMACIÓN DE PAGO</strong><br>
-                    <span id="info_transferencia" style="display: none;">
-                        Se realizará el cargo en la cuenta bancaria proporcionada.<br>
-                        Los datos bancarios serán tratados de forma segura y confidencial.
-                    </span>
-                    <span id="info_coordinador" style="display: none;">
-                        El pago se realizará directamente al coordinador.<br>
-                        Por favor, contacte con el coordinador para acordar el momento del pago.
-                    </span>
-                </div>
-
-                <button type="submit" class="btn btn-primary btn-lg w-100">Enviar Inscripción</button>
-            </form>
+<body>
+    <div class="header-banner">
+        <div class="container text-center">
+            <img src="logo.png" alt="Racing Playa San Juan" class="mb-3" style="max-height: 80px;">
+            <h1 class="display-4 mb-0">Campus de Fútbol</h1>
+            <p class="lead">Racing Playa San Juan - Verano 2024</p>
         </div>
     </div>
-</div>
 
-<script>
-$(document).ready(function() {
-    let jugadorCount = 1;
-
-    $('#add-jugador').click(function() {
-        jugadorCount++;
-        const newForm = $('.jugador-form:first').clone();
+    <div class="container">
+        <!-- Eliminar la sección de pasos -->
         
-        // Actualizar todos los inputs, selects y textareas
-        newForm.find('input:not([type="radio"]), select, textarea').each(function() {
-            const $input = $(this);
-            const oldName = $input.attr('name');
-            if (oldName && !oldName.includes('padre_')) {
-                const newName = oldName.replace('_1', `_${jugadorCount}`);
-                $input.attr('name', newName);
-                $input.val('');
-            }
+        <div class="card">
+            <div class="card-body">
+                <form id="inscripcion-form" action="process.php" method="post" class="needs-validation" novalidate>
+                    <!-- Datos del Padre/Tutor -->
+                    <div class="mb-4" id="formulario-padre">
+                        <h3 class="card-title mb-3">Datos del Padre/Tutor</h3>
+                        <div class="row g-3">
+                            <?php 
+                            // Generar campos del padre usando el template
+                            echo generarCamposPadre($campos_padre);
+                            ?>
+                        </div>
+                    </div>
+
+                    <!-- Contenedor de Jugadores -->
+                    <div id="jugadores-container">
+                        <div class="jugador-form mb-4" data-jugador-id="1">
+                            <h3 class="card-title mb-3">Datos del Jugador</h3>
+                            <div class="row g-3">
+                                <?php
+                                foreach ($campos_jugador as $nombre => $campo) {
+                                    echo '<div class="col-md-6">';
+                                    echo generarCampo($nombre, $campo, '', '_1');
+                                    echo '</div>';
+                                }
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botón Añadir Hermano -->
+                    <div class="text-end mb-4">
+                        <button type="button" class="btn btn-outline-primary" id="add-jugador">
+                            <i class="fas fa-plus"></i> Añadir hermano
+                        </button>
+                    </div>
+
+                    <!-- Consentimiento -->
+                    <div class="mb-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="consentimiento" required>
+                            <label class="form-check-label">
+                                Acepto el tratamiento de los datos proporcionados
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Información de Pago -->
+                    <div class="alert alert-info mb-4" id="info_pago">
+                        <strong>INFORMACIÓN DE PAGO</strong><br>
+                        <span id="info_transferencia" style="display: none;">
+                            Se realizará el cargo en la cuenta bancaria proporcionada.<br>
+                            Los datos bancarios serán tratados de forma segura y confidencial.
+                        </span>
+                        <span id="info_coordinador" style="display: none;">
+                            El pago se realizará directamente al coordinador.<br>
+                            Por favor, contacte con el coordinador para acordar el momento del pago.
+                        </span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg w-100">Enviar Inscripción</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    $(document).ready(function() {
+        let jugadorCount = 1;
+
+        // Función para generar el HTML de un nuevo jugador usando los datos del template
+        function generarFormularioHermano(numero) {
+            return `
+                <div class="jugador-form mb-4" data-jugador-id="${numero}">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h3 class="card-title">Datos del Hermano ${numero}</h3>
+                        <button type="button" class="btn btn-outline-danger btn-sm remove-jugador">
+                            <i class="fas fa-times"></i> Eliminar
+                        </button>
+                    </div>
+                    <div class="row g-3">
+                        <?php
+                        foreach ($campos_jugador as $nombre => $campo) {
+                            echo '<div class="col-md-6">';
+                            echo generarCampo($nombre, $campo, '', "_${numero}");
+                            echo '</div>';
+                        }
+                        ?>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Inicializar el estado del formulario de pago
+        const metodoPago = $('#metodo_pago').val(); // Cambiado el ID
+        $('#cuenta_bancaria_container').toggle(metodoPago === 'T');
+        $('#info_transferencia').toggle(metodoPago === 'T');
+        $('#info_coordinador').toggle(metodoPago === 'C');
+
+        // Gestión del método de pago
+        $('#metodo_pago').change(function() { // Cambiado el ID
+            const metodoPago = $(this).val();
+            $('#cuenta_bancaria_container').toggle(metodoPago === 'T');
+            $('#info_transferencia').toggle(metodoPago === 'T');
+            $('#info_coordinador').toggle(metodoPago === 'C');
         });
 
-        // Actualizar específicamente los radio buttons
-        // Sexo
-        newForm.find('input[name="sexo_1"]').each(function() {
-            const $radio = $(this);
-            const oldId = $radio.attr('id');
-            const newId = oldId.replace('_1', `_${jugadorCount}`);
+        $('#add-jugador').on('click', function() {
+            jugadorCount++;
             
-            $radio.attr('name', `sexo_${jugadorCount}`)
-                  .attr('id', newId)
-                  .prop('checked', false);
+            // Clonar el primer formulario de jugador
+            const newForm = $('.jugador-form:first').clone();
             
-            $radio.next('label').attr('for', newId);
+            // Actualizar el título
+            newForm.find('.card-title').text(`Datos del Hermano ${jugadorCount}`);
+            
+            // Actualizar nombres e IDs de los campos
+            newForm.find('input, select, textarea').each(function() {
+                const $input = $(this);
+                const oldName = $input.attr('name');
+                const oldId = $input.attr('id');
+                
+                if (oldName) {
+                    const baseName = oldName.replace('_1', '');
+                    const newName = `${baseName}_${jugadorCount}`;
+                    
+                    $input.attr('name', newName);
+                    $input.attr('id', newName);
+                    $input.val(''); // Limpiar valor
+                    
+                    // Actualizar labels
+                    newForm.find(`label[for="${oldId}"]`).attr('for', newName);
+                }
+            });
+
+            // Manejar específicamente los radio buttons
+            newForm.find('input[type="radio"]').each(function() {
+                const $radio = $(this);
+                const oldName = $radio.attr('name');
+                if (oldName) {
+                    const baseName = oldName.split('_1')[0];
+                    const newName = `${baseName}_${jugadorCount}`;
+                    $radio.attr('name', newName);
+                    $radio.prop('checked', false);
+                }
+            });
+
+            // Añadir botón eliminar
+            newForm.prepend(`
+                <div class="text-end mb-3">
+                    <button type="button" class="btn btn-outline-danger btn-sm remove-jugador">
+                        <i class="fas fa-times"></i> Eliminar
+                    </button>
+                </div>
+            `);
+
+            // Añadir el nuevo formulario con animación
+            newForm.hide()
+                  .appendTo('#jugadores-container')
+                  .slideDown(300);
         });
 
-        // Demarcación
-        newForm.find('input[name="demarcacion_1"]').each(function() {
-            const $radio = $(this);
-            const oldId = $radio.attr('id');
-            const newId = oldId.replace('_1', `_${jugadorCount}`);
-            
-            $radio.attr('name', `demarcacion_${jugadorCount}`)
-                  .attr('id', newId)
-                  .prop('checked', false);
-            
-            $radio.next('label').attr('for', newId);
+        // Manejador para eliminar jugador
+        $(document).on('click', '.remove-jugador', function() {
+            const $form = $(this).closest('.jugador-form');
+            $form.slideUp(300, function() {
+                $(this).remove();
+                jugadorCount--;
+                
+                // Actualizar títulos de los hermanos
+                $('.jugador-form').each(function(index) {
+                    const title = index === 0 ? 'Datos del Jugador' : `Datos del Hermano ${index + 1}`;
+                    $(this).find('.card-title').text(title);
+                });
+            });
         });
-        
-        // Actualizar el título y añadir botón eliminar
-        const header = newForm.find('.d-flex');
-        header.html(`
-            <h3 class="card-title">Datos del Hermano ${jugadorCount}</h3>
-            <button type="button" class="btn btn-danger btn-sm remove-jugador">
-                <i class="fas fa-times"></i> Eliminar
-            </button>
-        `);
-        
-        $('#jugadores-container').append(newForm);
-    });
 
-    // Resto del código existente para eliminar y gestión del formulario
-    $(document).on('click', '.remove-jugador', function() {
-        if (jugadorCount > 1) {
-            $(this).closest('.jugador-form').remove();
-            jugadorCount--;
+        // Envío simple del formulario sin limpiar datos
+        $('#inscripcion-form').submit(function(e) {
+            e.preventDefault();
+            const $form = $(this);
             
-            // Actualizar números de hermanos
-            $('.jugador-form').each(function(index) {
-                if (index > 0) {
-                    $(this).find('.card-title').text(`Datos del Hermano ${index + 1}`);
+            // No limpiar el formulario antes del envío
+            $.ajax({
+                type: 'POST',
+                url: 'process.php',
+                data: $form.serialize(),
+                dataType: 'json',
+                beforeSend: function() {
+                    $form.find('button[type="submit"]')
+                        .prop('disabled', true)
+                        .html('<span class="spinner-border spinner-border-sm"></span> Enviando...');
+                },
+                success: function(response) {
+                    if (response.status === 'success') {
+                        window.location.href = response.redirect_url;
+                    } else {
+                        alert(response.message || 'Error en el proceso');
+                    }
+                },
+                error: function() {
+                    alert('Error en el proceso de registro');
+                },
+                complete: function() {
+                    $form.find('button[type="submit"]')
+                        .prop('disabled', false)
+                        .html('Enviar Inscripción');
+                }
+            });
+        });
+
+        // Add smooth scrolling
+        $('html, body').animate({
+            scrollTop: $('.alert-danger').offset().top - 100
+        }, 1000);
+
+        // Add animation when adding new player
+        $('#add-jugador').click(function() {
+            const newForm = $('.jugador-form:first').clone();
+            newForm.hide().appendTo('#jugadores-container').slideDown(300);
+        });
+
+        // Add loading animation
+        $('#inscripcion-form').submit(function() {
+            $(this).find('button[type="submit"]')
+                .prop('disabled', true)
+                .html('<span class="spinner-border spinner-border-sm"></span> Procesando...');
+        });
+
+        // Add tooltip for help texts
+        $('[data-bs-toggle="tooltip"]').tooltip();
+
+        // Actualizar la función de progress steps
+        function updateProgress() {
+            const totalSteps = 3;
+            const currentStep = 2; // Cambia según la página actual
+            
+            $('.step').each(function(index) {
+                if (index < currentStep - 1) {
+                    $(this).addClass('completed').removeClass('active');
+                } else if (index === currentStep - 1) {
+                    $(this).addClass('active').removeClass('completed');
+                } else {
+                    $(this).removeClass('completed active');
                 }
             });
         }
     });
-
-    // Gestión básica del método de pago
-    $('#metodo_pago').change(function() {
-        const metodoPago = $(this).val();
-        $('#cuenta_bancaria_container').toggle(metodoPago === 'T');
-        $('#info_transferencia').toggle(metodoPago === 'T');
-        $('#info_coordinador').toggle(metodoPago === 'C');
-    });
-
-    // Envío simple del formulario sin limpiar datos
-    $('#inscripcion-form').submit(function(e) {
-        e.preventDefault();
-        const $form = $(this);
-        
-        // No limpiar el formulario antes del envío
-        $.ajax({
-            type: 'POST',
-            url: 'process.php',
-            data: $form.serialize(),
-            dataType: 'json',
-            beforeSend: function() {
-                $form.find('button[type="submit"]')
-                    .prop('disabled', true)
-                    .html('<span class="spinner-border spinner-border-sm"></span> Enviando...');
-            },
-            success: function(response) {
-                if (response.status === 'success') {
-                    window.location.href = response.redirect_url;
-                } else {
-                    alert(response.message || 'Error en el proceso');
-                }
-            },
-            error: function() {
-                alert('Error en el proceso de registro');
-            },
-            complete: function() {
-                $form.find('button[type="submit"]')
-                    .prop('disabled', false)
-                    .html('Enviar Inscripción');
-            }
-        });
-    });
-    
-});
-</script>
-
-<style>
-.card {
-    border: none;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-}
-
-.card-title {
-    color: #2c3e50;
-    border-bottom: 2px solid #3498db;
-    padding-bottom: 0.5rem;
-}
-
-.form-control:focus {
-    border-color: #3498db;
-    box-shadow: 0 0 0 0.2rem rgba(52,152,219,0.25);
-}
-
-.btn-primary {
-    background-color: #3498db;
-    border-color: #3498db;
-}
-
-.btn-primary:hover {
-    background-color: #2980b9;
-    border-color: #2980b9;
-}
-
-.alert-info {
-    background-color: #f8f9fa;
-    border-left: 4px solid #3498db;
-}
-
-.jugador-form {
-    border: 1px solid #dee2e6;
-    padding: 1.5rem;
-    border-radius: 8px;
-    background-color: #fff;
-    margin-bottom: 1.5rem;
-}
-
-.remove-jugador {
-    margin-left: 1rem;
-}
-
-#add-jugador {
-    white-space: nowrap;
-}
-
-#cuenta_bancaria_container {
-    transition: all 0.3s ease-in-out;
-}
-
-.alert-info span {
-    display: block;
-    margin-top: 0.5rem;
-}
-
-.form-label {
-    font-weight: 500;
-    margin-bottom: 0.3rem;
-    color: #2c3e50;
-}
-
-.row.g-3 {
-    margin-bottom: -0.5rem;
-}
-
-.form-control {
-    margin-bottom: 0.5rem;
-}
-
-.form-check-inline {
-    margin-right: 2rem;
-}
-
-.jugador-form .row {
-    align-items: flex-end;
-}
-</style>
+    </script>
 </body>
 </html>

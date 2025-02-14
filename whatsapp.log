@@ -1,0 +1,1044 @@
+2025-01-20 20:00:55 - Datos recibidos:
+Array
+(
+    [telefono] => 677283758
+    [mensaje] => ¡Hola Pepe Pardo! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Querubin), Mia Cok (Alevin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+Transferencia
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+)
+
+
+2025-01-20 20:00:55 - Request a WhatsApp API:
+Array
+(
+    [url] => https://graph.facebook.com/v21.0/547808498413811/messages
+    [data] => Array
+        (
+            [messaging_product] => whatsapp
+            [recipient_type] => individual
+            [to] => 34677283758
+            [type] => text
+            [text] => Array
+                (
+                    [preview_url] => 
+                    [body] => ¡Hola Pepe Pardo! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Querubin), Mia Cok (Alevin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+Transferencia
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+                )
+
+        )
+
+    [headers] => Array
+        (
+            [Authorization] => Bearer EAAIOyA5wqXoBOZBX70O...
+            [Content-Type] => application/json
+        )
+
+)
+
+
+2025-01-20 20:00:56 - cURL verbose log:
+*   Trying 31.13.83.8:443...
+* TCP_NODELAY set
+* Connected to graph.facebook.com (31.13.83.8) port 443 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+* successfully set certificate verify locations:
+*   CAfile: /Applications/MAMP/Library/OpenSSL/cert.pem
+  CApath: none
+* SSL connection using TLSv1.2 / ECDHE-ECDSA-AES128-GCM-SHA256
+* ALPN, server accepted to use h2
+* Server certificate:
+*  subject: C=US; ST=California; L=Menlo Park; O=Meta Platforms, Inc.; CN=*.facebook.com
+*  start date: Oct 30 00:00:00 2024 GMT
+*  expire date: Jan 28 23:59:59 2025 GMT
+*  subjectAltName: host "graph.facebook.com" matched cert's "*.facebook.com"
+*  issuer: C=US; O=DigiCert Inc; OU=www.digicert.com; CN=DigiCert SHA2 High Assurance Server CA
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multi-use
+* Connection state changed (HTTP/2 confirmed)
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* Using Stream ID: 1 (easy handle 0x7f950d02da00)
+> POST /v21.0/547808498413811/messages HTTP/2
+Host: graph.facebook.com
+accept: */*
+authorization: Bearer EAAIOyA5wqXoBOZBX70OfvvMxnrs7o8A1pAweNBsPxF2KibLNZCezkZAoqrwiCVgHHmZCB0lbsz3Ogf5pUXSanZBxj4O9ZCZCZCjiRtWkqabP6fbKRYmNZC9PPWZB3pLtfuExsntLqWbZCOyNbioxvUYualyUTdaycCYAC3Djk30w30b0s5gQjJ0TUFaMXsqTz8TWxZCR1oZAXPmNpnTyhzN7NlXG3msyH8DIP4DUyZAdgLOBgGrBUZD
+content-type: application/json
+content-length: 1032
+
+* Connection state changed (MAX_CONCURRENT_STREAMS == 100)!
+* We are completely uploaded and fine
+< HTTP/2 200 
+< content-type: application/json; charset=UTF-8
+< vary: Origin
+< x-business-use-case-usage: {"480783388460957":[{"type":"whatsapp","call_count":1,"total_cputime":1,"total_time":1,"estimated_time_to_regain_access":0}]}
+< access-control-allow-origin: *
+< facebook-api-version: v21.0
+< strict-transport-security: max-age=15552000; preload
+< pragma: no-cache
+< cache-control: private, no-cache, no-store, must-revalidate
+< expires: Sat, 01 Jan 2000 00:00:00 GMT
+< x-fb-request-id: A8QU3BPVuSv-CDKG6IbtvND
+< x-fb-trace-id: CgfL0Jk+P9l
+< x-fb-rev: 1019449099
+< x-fb-debug: neR1Xn9kOD6kHp7QhXhXN2Up6qT3If2eCR3IZMywhyXQE7LSWd1YihR2MOi9875vMuUK705nb4hsCCOPJ7pGdQ==
+< content-length: 172
+< date: Mon, 20 Jan 2025 20:00:56 GMT
+< x-fb-connection-quality: EXCELLENT; q=0.9, rtt=11, rtx=0, c=10, mss=1380, tbw=3391, tp=-1, tpl=-1, uplat=804, ullat=0
+< alt-svc: h3=":443"; ma=86400
+< 
+* Connection #0 to host graph.facebook.com left intact
+
+
+2025-01-20 20:00:56 - Respuesta de WhatsApp API:
+Array
+(
+    [httpCode] => 200
+    [response] => Array
+        (
+            [messaging_product] => whatsapp
+            [contacts] => Array
+                (
+                    [0] => Array
+                        (
+                            [input] => 34677283758
+                            [wa_id] => 34677283758
+                        )
+
+                )
+
+            [messages] => Array
+                (
+                    [0] => Array
+                        (
+                            [id] => wamid.HBgLMzQ2NzcyODM3NTgVAgARGBI0M0IxRTNDNzUzMjAzOEVGMzIA
+                        )
+
+                )
+
+        )
+
+)
+
+
+2025-01-20 20:45:29 - Datos recibidos:
+Array
+(
+    [telefono] => 677283758
+    [mensaje] => ¡Hola Pepe Pardo! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Querubin), Mia Cok (Alevin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+Transferencia
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+)
+
+
+2025-01-20 20:45:29 - Request a WhatsApp API:
+Array
+(
+    [url] => https://graph.facebook.com/v21.0/547808498413811/messages
+    [data] => Array
+        (
+            [messaging_product] => whatsapp
+            [recipient_type] => individual
+            [to] => 34677283758
+            [type] => text
+            [text] => Array
+                (
+                    [preview_url] => 
+                    [body] => ¡Hola Pepe Pardo! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Querubin), Mia Cok (Alevin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+Transferencia
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+                )
+
+        )
+
+    [headers] => Array
+        (
+            [Authorization] => Bearer EAAIOyA5wqXoBO0qj9oL...
+            [Content-Type] => application/json
+        )
+
+)
+
+
+2025-01-20 20:45:30 - cURL verbose log:
+*   Trying 31.13.83.8:443...
+* TCP_NODELAY set
+* Connected to graph.facebook.com (31.13.83.8) port 443 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+* successfully set certificate verify locations:
+*   CAfile: /Applications/MAMP/Library/OpenSSL/cert.pem
+  CApath: none
+* SSL connection using TLSv1.2 / ECDHE-ECDSA-AES128-GCM-SHA256
+* ALPN, server accepted to use h2
+* Server certificate:
+*  subject: C=US; ST=California; L=Menlo Park; O=Meta Platforms, Inc.; CN=*.facebook.com
+*  start date: Oct 30 00:00:00 2024 GMT
+*  expire date: Jan 28 23:59:59 2025 GMT
+*  subjectAltName: host "graph.facebook.com" matched cert's "*.facebook.com"
+*  issuer: C=US; O=DigiCert Inc; OU=www.digicert.com; CN=DigiCert SHA2 High Assurance Server CA
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multi-use
+* Connection state changed (HTTP/2 confirmed)
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* Using Stream ID: 1 (easy handle 0x7f950b027600)
+> POST /v21.0/547808498413811/messages HTTP/2
+Host: graph.facebook.com
+accept: */*
+authorization: Bearer EAAIOyA5wqXoBO0qj9oLbGz6St1yMKbvRTjj7YMS9NC2RQxmtwvwkoAQWBlrYQl6DZCU1XWc6PpZCZBdkqnzSoWwCMYoMZBP72N3EDa7bmmvmieNCAOophT6lad7ZCrZCr9x9mvM7tPyrC7vWowZCZAomQjc1JDOdnmDZCL4dOYw0vye56uaZC1lsxkuVoBRDG1BYHR3B2YT5MlZBUw5WfL8Jioa2szpdryrgQgXH2nxEYpC
+content-type: application/json
+content-length: 1032
+
+* We are completely uploaded and fine
+* Connection state changed (MAX_CONCURRENT_STREAMS == 100)!
+< HTTP/2 200 
+< content-type: application/json; charset=UTF-8
+< vary: Origin
+< x-business-use-case-usage: {"480783388460957":[{"type":"whatsapp","call_count":1,"total_cputime":1,"total_time":1,"estimated_time_to_regain_access":0}]}
+< access-control-allow-origin: *
+< facebook-api-version: v21.0
+< strict-transport-security: max-age=15552000; preload
+< pragma: no-cache
+< cache-control: private, no-cache, no-store, must-revalidate
+< expires: Sat, 01 Jan 2000 00:00:00 GMT
+< x-fb-request-id: Azlcklr6GCR6dsoWMnUpP9h
+< x-fb-trace-id: CTl90Q6lPMd
+< x-fb-rev: 1019450141
+< x-fb-debug: +qfhGtWAameBTDYP85TZbp3fwxgb32id8yNQsh1JxaOdrOv2S6GCnfFRf0yNg3UjZ8bArFlg7xbz04UeJ7g/Vg==
+< content-length: 172
+< date: Mon, 20 Jan 2025 20:45:30 GMT
+< x-fb-connection-quality: EXCELLENT; q=0.9, rtt=10, rtx=0, c=10, mss=1380, tbw=3390, tp=-1, tpl=-1, uplat=862, ullat=0
+< alt-svc: h3=":443"; ma=86400
+< 
+* Connection #0 to host graph.facebook.com left intact
+
+
+2025-01-20 20:45:30 - Respuesta de WhatsApp API:
+Array
+(
+    [httpCode] => 200
+    [response] => Array
+        (
+            [messaging_product] => whatsapp
+            [contacts] => Array
+                (
+                    [0] => Array
+                        (
+                            [input] => 34677283758
+                            [wa_id] => 34677283758
+                        )
+
+                )
+
+            [messages] => Array
+                (
+                    [0] => Array
+                        (
+                            [id] => wamid.HBgLMzQ2NzcyODM3NTgVAgARGBJBODU4RTQ0OTMxMTM2MkE5OUEA
+                        )
+
+                )
+
+        )
+
+)
+
+
+2025-01-20 20:57:41 - Datos recibidos:
+Array
+(
+    [telefono] => 677283758
+    [mensaje] => ¡Hola Pepe Pardo! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Querubin), Mia Cok (Alevin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+Transferencia
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+)
+
+
+2025-01-20 20:57:41 - Request a WhatsApp API:
+Array
+(
+    [url] => https://graph.facebook.com/v21.0/547808498413811/messages
+    [data] => Array
+        (
+            [messaging_product] => whatsapp
+            [recipient_type] => individual
+            [to] => 34677283758
+            [type] => text
+            [text] => Array
+                (
+                    [preview_url] => 
+                    [body] => ¡Hola Pepe Pardo! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Querubin), Mia Cok (Alevin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+Transferencia
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+                )
+
+        )
+
+    [headers] => Array
+        (
+            [Authorization] => Bearer EAAIOyA5wqXoBO0qj9oL...
+            [Content-Type] => application/json
+        )
+
+)
+
+
+2025-01-20 20:57:42 - cURL verbose log:
+*   Trying 31.13.83.8:443...
+* TCP_NODELAY set
+* Connected to graph.facebook.com (31.13.83.8) port 443 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+* successfully set certificate verify locations:
+*   CAfile: /Applications/MAMP/Library/OpenSSL/cert.pem
+  CApath: none
+* SSL connection using TLSv1.2 / ECDHE-ECDSA-AES128-GCM-SHA256
+* ALPN, server accepted to use h2
+* Server certificate:
+*  subject: C=US; ST=California; L=Menlo Park; O=Meta Platforms, Inc.; CN=*.facebook.com
+*  start date: Oct 30 00:00:00 2024 GMT
+*  expire date: Jan 28 23:59:59 2025 GMT
+*  subjectAltName: host "graph.facebook.com" matched cert's "*.facebook.com"
+*  issuer: C=US; O=DigiCert Inc; OU=www.digicert.com; CN=DigiCert SHA2 High Assurance Server CA
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multi-use
+* Connection state changed (HTTP/2 confirmed)
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* Using Stream ID: 1 (easy handle 0x7f950a8cd000)
+> POST /v21.0/547808498413811/messages HTTP/2
+Host: graph.facebook.com
+accept: */*
+authorization: Bearer EAAIOyA5wqXoBO0qj9oLbGz6St1yMKbvRTjj7YMS9NC2RQxmtwvwkoAQWBlrYQl6DZCU1XWc6PpZCZBdkqnzSoWwCMYoMZBP72N3EDa7bmmvmieNCAOophT6lad7ZCrZCr9x9mvM7tPyrC7vWowZCZAomQjc1JDOdnmDZCL4dOYw0vye56uaZC1lsxkuVoBRDG1BYHR3B2YT5MlZBUw5WfL8Jioa2szpdryrgQgXH2nxEYpC
+content-type: application/json
+content-length: 1032
+
+* Connection state changed (MAX_CONCURRENT_STREAMS == 100)!
+* We are completely uploaded and fine
+< HTTP/2 200 
+< content-type: application/json; charset=UTF-8
+< vary: Origin
+< x-business-use-case-usage: {"480783388460957":[{"type":"whatsapp","call_count":1,"total_cputime":1,"total_time":1,"estimated_time_to_regain_access":0}]}
+< access-control-allow-origin: *
+< facebook-api-version: v21.0
+< strict-transport-security: max-age=15552000; preload
+< pragma: no-cache
+< cache-control: private, no-cache, no-store, must-revalidate
+< expires: Sat, 01 Jan 2000 00:00:00 GMT
+< x-fb-request-id: A-aQ01b1ruuHfSBB5iqQeCo
+< x-fb-trace-id: FfvRxu5i+at
+< x-fb-rev: 1019450141
+< x-fb-debug: tAFjYDTqPgbE/m+PsdJ9WGVoUsFnQo8RQfr8jb5HMYFrhO8U0X5j1DYK+7x5DjZN/+Uq0IkEjoYrWoPRyIH93g==
+< content-length: 172
+< date: Mon, 20 Jan 2025 20:57:42 GMT
+< x-fb-connection-quality: EXCELLENT; q=0.9, rtt=14, rtx=0, c=10, mss=1380, tbw=3391, tp=-1, tpl=-1, uplat=580, ullat=0
+< alt-svc: h3=":443"; ma=86400
+< 
+* Connection #0 to host graph.facebook.com left intact
+
+
+2025-01-20 20:57:42 - Respuesta de WhatsApp API:
+Array
+(
+    [httpCode] => 200
+    [response] => Array
+        (
+            [messaging_product] => whatsapp
+            [contacts] => Array
+                (
+                    [0] => Array
+                        (
+                            [input] => 34677283758
+                            [wa_id] => 34677283758
+                        )
+
+                )
+
+            [messages] => Array
+                (
+                    [0] => Array
+                        (
+                            [id] => wamid.HBgLMzQ2NzcyODM3NTgVAgARGBIyQzM0RjNFRDEzQkY0MTRBMzgA
+                        )
+
+                )
+
+        )
+
+)
+
+
+2025-01-20 21:33:39 - Datos recibidos:
+Array
+(
+    [telefono] => 677283758
+    [mensaje] => ¡Hola Pepe Pardo! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Querubin), Mia Cok (Alevin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+Transferencia
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+)
+
+
+2025-01-20 21:33:39 - Request a WhatsApp API:
+Array
+(
+    [url] => https://graph.facebook.com/v21.0/547808498413811/messages
+    [data] => Array
+        (
+            [messaging_product] => whatsapp
+            [recipient_type] => individual
+            [to] => 34677283758
+            [type] => text
+            [text] => Array
+                (
+                    [preview_url] => 
+                    [body] => ¡Hola Pepe Pardo! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Querubin), Mia Cok (Alevin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+Transferencia
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+                )
+
+        )
+
+    [headers] => Array
+        (
+            [Authorization] => Bearer EAAIOyA5wqXoBO0qj9oL...
+            [Content-Type] => application/json
+        )
+
+)
+
+
+2025-01-20 21:33:40 - cURL verbose log:
+*   Trying 31.13.83.8:443...
+* TCP_NODELAY set
+* Connected to graph.facebook.com (31.13.83.8) port 443 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+* successfully set certificate verify locations:
+*   CAfile: /Applications/MAMP/Library/OpenSSL/cert.pem
+  CApath: none
+* SSL connection using TLSv1.2 / ECDHE-ECDSA-AES128-GCM-SHA256
+* ALPN, server accepted to use h2
+* Server certificate:
+*  subject: C=US; ST=California; L=Menlo Park; O=Meta Platforms, Inc.; CN=*.facebook.com
+*  start date: Oct 30 00:00:00 2024 GMT
+*  expire date: Jan 28 23:59:59 2025 GMT
+*  subjectAltName: host "graph.facebook.com" matched cert's "*.facebook.com"
+*  issuer: C=US; O=DigiCert Inc; OU=www.digicert.com; CN=DigiCert SHA2 High Assurance Server CA
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multi-use
+* Connection state changed (HTTP/2 confirmed)
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* Using Stream ID: 1 (easy handle 0x7f950d04ca00)
+> POST /v21.0/547808498413811/messages HTTP/2
+Host: graph.facebook.com
+accept: */*
+authorization: Bearer EAAIOyA5wqXoBO0qj9oLbGz6St1yMKbvRTjj7YMS9NC2RQxmtwvwkoAQWBlrYQl6DZCU1XWc6PpZCZBdkqnzSoWwCMYoMZBP72N3EDa7bmmvmieNCAOophT6lad7ZCrZCr9x9mvM7tPyrC7vWowZCZAomQjc1JDOdnmDZCL4dOYw0vye56uaZC1lsxkuVoBRDG1BYHR3B2YT5MlZBUw5WfL8Jioa2szpdryrgQgXH2nxEYpC
+content-type: application/json
+content-length: 1032
+
+* Connection state changed (MAX_CONCURRENT_STREAMS == 100)!
+* We are completely uploaded and fine
+< HTTP/2 200 
+< content-type: application/json; charset=UTF-8
+< vary: Origin
+< x-business-use-case-usage: {"480783388460957":[{"type":"whatsapp","call_count":1,"total_cputime":1,"total_time":1,"estimated_time_to_regain_access":0}]}
+< access-control-allow-origin: *
+< facebook-api-version: v21.0
+< strict-transport-security: max-age=15552000; preload
+< pragma: no-cache
+< cache-control: private, no-cache, no-store, must-revalidate
+< expires: Sat, 01 Jan 2000 00:00:00 GMT
+< x-fb-request-id: AiW2uWkBq-rV-ln33nnSs-L
+< x-fb-trace-id: HWinigDeqXT
+< x-fb-rev: 1019451177
+< x-fb-debug: RDYhl8ewjKL6O2QcLtUwxPL+mKC4afhdWWtVAj6uY56U3bb4fitc2QASbwHOC9SlVdwHr8K4tLySlgOHffptMg==
+< content-length: 172
+< date: Mon, 20 Jan 2025 21:33:40 GMT
+< x-fb-connection-quality: EXCELLENT; q=0.9, rtt=12, rtx=0, c=10, mss=1380, tbw=3390, tp=-1, tpl=-1, uplat=799, ullat=0
+< alt-svc: h3=":443"; ma=86400
+< 
+* Connection #0 to host graph.facebook.com left intact
+
+
+2025-01-20 21:33:40 - Respuesta de WhatsApp API:
+Array
+(
+    [httpCode] => 200
+    [response] => Array
+        (
+            [messaging_product] => whatsapp
+            [contacts] => Array
+                (
+                    [0] => Array
+                        (
+                            [input] => 34677283758
+                            [wa_id] => 34677283758
+                        )
+
+                )
+
+            [messages] => Array
+                (
+                    [0] => Array
+                        (
+                            [id] => wamid.HBgLMzQ2NzcyODM3NTgVAgARGBIyRkJDOTE1MEM2OEM0M0U1RjUA
+                        )
+
+                )
+
+        )
+
+)
+
+
+2025-01-21 10:27:41 - Datos recibidos:
+Array
+(
+    [telefono] => 677283758
+    [mensaje] => ¡Hola Pepe Pardo! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Querubin), Mia Cok (Alevin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+Transferencia
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+)
+
+
+2025-01-21 10:27:41 - Request a WhatsApp API:
+Array
+(
+    [url] => https://graph.facebook.com/v21.0/480063901866760/messages
+    [data] => Array
+        (
+            [messaging_product] => whatsapp
+            [recipient_type] => individual
+            [to] => 34677283758
+            [type] => text
+            [text] => Array
+                (
+                    [preview_url] => 
+                    [body] => ¡Hola Pepe Pardo! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Querubin), Mia Cok (Alevin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+Transferencia
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+                )
+
+        )
+
+    [headers] => Array
+        (
+            [Authorization] => Bearer EAAIOyA5wqXoBO1k6qq4...
+            [Content-Type] => application/json
+        )
+
+)
+
+
+2025-01-21 10:27:42 - cURL verbose log:
+*   Trying 31.13.83.8:443...
+* TCP_NODELAY set
+* Connected to graph.facebook.com (31.13.83.8) port 443 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+* successfully set certificate verify locations:
+*   CAfile: /Applications/MAMP/Library/OpenSSL/cert.pem
+  CApath: none
+* SSL connection using TLSv1.2 / ECDHE-ECDSA-AES128-GCM-SHA256
+* ALPN, server accepted to use h2
+* Server certificate:
+*  subject: C=US; ST=California; L=Menlo Park; O=Meta Platforms, Inc.; CN=*.facebook.com
+*  start date: Oct 30 00:00:00 2024 GMT
+*  expire date: Jan 28 23:59:59 2025 GMT
+*  subjectAltName: host "graph.facebook.com" matched cert's "*.facebook.com"
+*  issuer: C=US; O=DigiCert Inc; OU=www.digicert.com; CN=DigiCert SHA2 High Assurance Server CA
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multi-use
+* Connection state changed (HTTP/2 confirmed)
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* Using Stream ID: 1 (easy handle 0x7f950a8ddc00)
+> POST /v21.0/480063901866760/messages HTTP/2
+Host: graph.facebook.com
+accept: */*
+authorization: Bearer EAAIOyA5wqXoBO1k6qq47AWGZA5HScNkR03iKUpJXjBJj8UjAqaerjaOZC8XB389PosfGGUBVHypLBOZB6NZC20QZA0ddrQ029VGPyOSkqx0G62ZBvOoKcWfalFbJZA0h8oZB26BBnZCZBD02H52lgdDvNxm4Fn1TurVbX2tZASGxhjvrj7iLDioIIzMDADGiPloyMM07GgfEAfNaVtIRsQh
+content-type: application/json
+content-length: 1032
+
+* We are completely uploaded and fine
+* Connection state changed (MAX_CONCURRENT_STREAMS == 100)!
+< HTTP/2 200 
+< content-type: application/json; charset=UTF-8
+< vary: Origin
+< x-business-use-case-usage: {"518378664697887":[{"type":"whatsapp","call_count":1,"total_cputime":1,"total_time":1,"estimated_time_to_regain_access":0}]}
+< access-control-allow-origin: *
+< facebook-api-version: v21.0
+< strict-transport-security: max-age=15552000; preload
+< pragma: no-cache
+< cache-control: private, no-cache, no-store, must-revalidate
+< expires: Sat, 01 Jan 2000 00:00:00 GMT
+< x-fb-request-id: AOkHgRdJjlatLbdYo8NcdhZ
+< x-fb-trace-id: CDr2GeXiSTG
+< x-fb-rev: 1019455744
+< x-fb-debug: bT4Z+z+PHjuMEsXYovkOAMOwdMbT1fPz1varauiyTh9ePxiZ/3q4Og55N/+kpxXF5lZ1MXcxp4LACXoMr0j2eA==
+< content-length: 172
+< date: Tue, 21 Jan 2025 10:27:42 GMT
+< x-fb-connection-quality: EXCELLENT; q=0.9, rtt=16, rtx=0, c=10, mss=1380, tbw=3391, tp=-1, tpl=-1, uplat=862, ullat=0
+< alt-svc: h3=":443"; ma=86400
+< 
+* Connection #0 to host graph.facebook.com left intact
+
+
+2025-01-21 10:27:42 - Respuesta de WhatsApp API:
+Array
+(
+    [httpCode] => 200
+    [response] => Array
+        (
+            [messaging_product] => whatsapp
+            [contacts] => Array
+                (
+                    [0] => Array
+                        (
+                            [input] => 34677283758
+                            [wa_id] => 34677283758
+                        )
+
+                )
+
+            [messages] => Array
+                (
+                    [0] => Array
+                        (
+                            [id] => wamid.HBgLMzQ2NzcyODM3NTgVAgARGBIwMEFFQzU0Q0Q5QTkzNjQ1RTQA
+                        )
+
+                )
+
+        )
+
+)
+
+
+2025-01-21 10:38:00 - Datos recibidos:
+Array
+(
+    [telefono] => 677283758
+    [mensaje] => ¡Hola Pepe Pardo! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Querubin), Mia Cok (Alevin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+Transferencia
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+)
+
+
+2025-01-21 10:38:00 - Request a WhatsApp API:
+Array
+(
+    [url] => https://graph.facebook.com/v21.0/547808498413811/messages
+    [data] => Array
+        (
+            [messaging_product] => whatsapp
+            [recipient_type] => individual
+            [to] => 34677283758
+            [type] => text
+            [text] => Array
+                (
+                    [preview_url] => 
+                    [body] => ¡Hola Pepe Pardo! 👋
+
+⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽
+
+Te confirmamos la inscripción de:
+👤 Lucas Cok (Querubin), Mia Cok (Alevin)
+
+🏃 en el Campus de Fútbol Racing Playa San Juan
+
+📝 *Información importante*:
+• Horario: 9:00 - 14:00
+• Lugar: Campo Municipal Racing Playa San Juan
+• Traer: Ropa deportiva, botella de agua y protección solar
+
+🎽 *Kit del campus*:
+• 2 camisetas de entrenamiento
+• 1 pantalón corto
+• 1 par de medias
+
+💳 *Forma de pago seleccionada*:
+Transferencia
+
+📞 *Contacto*:
+Para cualquier duda o consulta:
+• WhatsApp: 666777888
+• Email: campus@racingplayasanjuan.com
+
+¡Nos vemos pronto! ⚽🔥
+                )
+
+        )
+
+    [headers] => Array
+        (
+            [Authorization] => Bearer EAAIOyA5wqXoBO1k6qq4...
+            [Content-Type] => application/json
+        )
+
+)
+
+
+2025-01-21 10:38:01 - cURL verbose log:
+*   Trying 31.13.83.8:443...
+* TCP_NODELAY set
+* Connected to graph.facebook.com (31.13.83.8) port 443 (#0)
+* ALPN, offering h2
+* ALPN, offering http/1.1
+* Cipher selection: ALL:!EXPORT:!EXPORT40:!EXPORT56:!aNULL:!LOW:!RC4:@STRENGTH
+* successfully set certificate verify locations:
+*   CAfile: /Applications/MAMP/Library/OpenSSL/cert.pem
+  CApath: none
+* SSL connection using TLSv1.2 / ECDHE-ECDSA-AES128-GCM-SHA256
+* ALPN, server accepted to use h2
+* Server certificate:
+*  subject: C=US; ST=California; L=Menlo Park; O=Meta Platforms, Inc.; CN=*.facebook.com
+*  start date: Oct 30 00:00:00 2024 GMT
+*  expire date: Jan 28 23:59:59 2025 GMT
+*  subjectAltName: host "graph.facebook.com" matched cert's "*.facebook.com"
+*  issuer: C=US; O=DigiCert Inc; OU=www.digicert.com; CN=DigiCert SHA2 High Assurance Server CA
+*  SSL certificate verify ok.
+* Using HTTP2, server supports multi-use
+* Connection state changed (HTTP/2 confirmed)
+* Copying HTTP/2 data in stream buffer to connection buffer after upgrade: len=0
+* Using Stream ID: 1 (easy handle 0x7f950c86dc00)
+> POST /v21.0/547808498413811/messages HTTP/2
+Host: graph.facebook.com
+accept: */*
+authorization: Bearer EAAIOyA5wqXoBO1k6qq47AWGZA5HScNkR03iKUpJXjBJj8UjAqaerjaOZC8XB389PosfGGUBVHypLBOZB6NZC20QZA0ddrQ029VGPyOSkqx0G62ZBvOoKcWfalFbJZA0h8oZB26BBnZCZBD02H52lgdDvNxm4Fn1TurVbX2tZASGxhjvrj7iLDioIIzMDADGiPloyMM07GgfEAfNaVtIRsQh
+content-type: application/json
+content-length: 1032
+
+* Connection state changed (MAX_CONCURRENT_STREAMS == 100)!
+* We are completely uploaded and fine
+< HTTP/2 200 
+< content-type: application/json; charset=UTF-8
+< vary: Origin
+< x-business-use-case-usage: {"480783388460957":[{"type":"whatsapp","call_count":0,"total_cputime":0,"total_time":0,"estimated_time_to_regain_access":0}]}
+< access-control-allow-origin: *
+< facebook-api-version: v21.0
+< strict-transport-security: max-age=15552000; preload
+< pragma: no-cache
+< cache-control: private, no-cache, no-store, must-revalidate
+< expires: Sat, 01 Jan 2000 00:00:00 GMT
+< x-fb-request-id: Avjiiyz2UvmTeLbWbL7s0-S
+< x-fb-trace-id: ARwhiYhW1Q1
+< x-fb-rev: 1019455744
+< x-fb-debug: SmXHdu3b5p0c3chkRoxr2e1McFcqmrHQ1s0aY4IIvNH2c59DsNo5gBg3wHZzQWDYWophLgyqHQXFJ/9aj7Qt1g==
+< content-length: 172
+< date: Tue, 21 Jan 2025 10:38:01 GMT
+< x-fb-connection-quality: EXCELLENT; q=0.9, rtt=16, rtx=0, c=10, mss=1380, tbw=3391, tp=-1, tpl=-1, uplat=748, ullat=0
+< alt-svc: h3=":443"; ma=86400
+< 
+* Connection #0 to host graph.facebook.com left intact
+
+
+2025-01-21 10:38:01 - Respuesta de WhatsApp API:
+Array
+(
+    [httpCode] => 200
+    [response] => Array
+        (
+            [messaging_product] => whatsapp
+            [contacts] => Array
+                (
+                    [0] => Array
+                        (
+                            [input] => 34677283758
+                            [wa_id] => 34677283758
+                        )
+
+                )
+
+            [messages] => Array
+                (
+                    [0] => Array
+                        (
+                            [id] => wamid.HBgLMzQ2NzcyODM3NTgVAgARGBJFOUFFOUMzMTQ5NUU3MDQ1NTkA
+                        )
+
+                )
+
+        )
+
+)
+
+

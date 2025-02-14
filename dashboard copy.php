@@ -90,9 +90,6 @@ try {
     <title>Dashboard - Campus de Fútbol</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Añadir jQuery antes de Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </head>
 <body class="bg-light">
     <div class="container-fluid py-4">
@@ -271,13 +268,6 @@ try {
                                            onclick="confirmarEliminacion(<?= $i['id'] ?>)">
                                             <i class="fas fa-trash"></i>
                                         </a>
-                                        <button type="button" 
-                                                class="btn btn-success btn-sm enviar-whatsapp" 
-                                                data-telefono="<?= htmlspecialchars($i['telefono']) ?>"
-                                                data-nombre="<?= htmlspecialchars($i['padre_nombre']) ?>"
-                                                data-hijo="<?= htmlspecialchars($i['jugadores']) ?>">
-                                            <i class="fab fa-whatsapp"></i> WhatsApp
-                                        </button>
                                     </div>
                                 </td>
                             </tr>
@@ -289,102 +279,38 @@ try {
         </div>
     </div>
 
-    <div class="modal fade" id="whatsappModal" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Enviar WhatsApp</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="whatsappForm" action="send_wa.php" method="post">
-                        <input type="hidden" name="telefono" id="whatsapp_telefono">
-                        <div class="mb-3">
-                            <label class="form-label">Mensaje</label>
-                            <textarea class="form-control" name="mensaje" id="whatsapp_mensaje" rows="4" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-success">Enviar WhatsApp</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
-    $(document).ready(function() {
-        // Crear una instancia del modal
-        const whatsappModal = new bootstrap.Modal(document.getElementById('whatsappModal'));
-
-        // Manejo del botón de WhatsApp
-        $('.enviar-whatsapp').on('click', function() {
-            const telefono = $(this).data('telefono');
-            const nombre = $(this).data('nombre');
-            const hijo = $(this).data('hijo');
-            const metodoPago = $(this).closest('tr').find('td:eq(5) .badge').text().trim();
-            
-            // Construir mensaje predeterminado con emojis
-            const mensaje = `¡Hola ${nombre}! 👋\n\n` +
-                          `⚽ *CONFIRMACIÓN DE INSCRIPCIÓN - CAMPUS DE FÚTBOL* ⚽\n\n` +
-                          `Te confirmamos la inscripción de:\n` +
-                          `👤 ${hijo}\n\n` +
-                          `🏃 en el Campus de Fútbol Racing Playa San Juan\n\n` +
-                          `📝 *Información importante*:\n` +
-                          `• Horario: 9:00 - 14:00\n` +
-                          `• Lugar: Campo Municipal Racing Playa San Juan\n` +
-                          `• Traer: Ropa deportiva, botella de agua y protección solar\n\n` +
-                          `🎽 *Kit del campus*:\n` +
-                          `• 2 camisetas de entrenamiento\n` +
-                          `• 1 pantalón corto\n` +
-                          `• 1 par de medias\n\n` +
-                          `💳 *Forma de pago seleccionada*:\n` +
-                          `${metodoPago}\n\n` +
-                          `📞 *Contacto*:\n` +
-                          `Para cualquier duda o consulta:\n` +
-                          `• WhatsApp: 666777888\n` +
-                          `• Email: campus@racingplayasanjuan.com\n\n` +
-                          `¡Nos vemos pronto! ⚽🔥`;
-            
-            $('#whatsapp_telefono').val(telefono);
-            $('#whatsapp_mensaje').val(mensaje);
-            
-            whatsappModal.show();
-        });
-
-        // Manejo del formulario de WhatsApp
-        $('#whatsappForm').on('submit', function(e) {
-            e.preventDefault();
-            const form = $(this);
-            const btnSubmit = form.find('button[type="submit"]');
-            
-            btnSubmit.prop('disabled', true)
-                    .html('<span class="spinner-border spinner-border-sm"></span> Enviando...');
-            
-            $.ajax({
-                type: 'POST',
-                url: 'send_wa.php',
-                data: form.serialize(),
-                dataType: 'json',
-                success: function(response) {
-                    console.log('Respuesta del servidor:', response); // Debug
-                    if (response.status === 'success') {
-                        alert('✅ Mensaje enviado correctamente');
-                        whatsappModal.hide();
-                    } else {
-                        alert('❌ Error: ' + (response.message || 'Error desconocido'));
-                        console.error('Error detallado:', response);
-                    }
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error AJAX:', {xhr, status, error}); // Debug
-                    alert('❌ Error en la petición: ' + error);
-                },
-                complete: function() {
-                    btnSubmit.prop('disabled', false)
-                            .html('Enviar WhatsApp');
-                }
-            });
-        });
-    });
+    function confirmarEliminacion(id) {
+        if (confirm('¿Estás seguro de que deseas eliminar esta inscripción?')) {
+            window.location.href = `eliminar_inscripcion.php?id=${id}`;
+        }
+    }
     </script>
+
+    <style>
+    .card {
+        margin-bottom: 1rem;
+        border: none;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    .table th {
+        background-color: #f8f9fa;
+    }
+    .badge {
+        padding: 0.5em 1em;
+    }
+    .display-4 {
+        font-size: 2.5rem;
+        font-weight: 300;
+        line-height: 1.2;
+    }
+    .card-header h5 {
+        margin-bottom: 0;
+    }
+    .badge {
+        font-size: 1rem;
+    }
+    </style>
 </body>
 </html>
